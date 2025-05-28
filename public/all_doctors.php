@@ -1,5 +1,5 @@
 <?php
-// Mảng bác sĩ mẫu với tên mới theo yêu cầu
+
 $doctors = array(
     array(
         "name" => "BS. Bùi Vũ Hải Phong",

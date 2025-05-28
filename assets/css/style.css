@@ -686,3 +686,47 @@ button {
         top: 4px;
         box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
     }
+/* Message container (initially hidden) */
+.message-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #34C9A5;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 400px;
+    display: none;
+    text-align: center;
+    z-index: 1001;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+    /* Message with fade-out animation */
+    .message-container.fade-out {
+        animation: fadeOut 3s forwards;
+       
+    }
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Error message (red background) */
+.message-container.error {
+    background-color: #f56c93;
+}
+
+/* Success message (green background) */
+.message-container.success {
+    background-color: #34C9A5;
+}

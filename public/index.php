@@ -2,14 +2,14 @@
 include('../includes/db_connect.php');  // Kết nối cơ sở dữ liệu
 
 // Truy vấn dữ liệu cần hiển thị (ví dụ: các dịch vụ)
-$query = "SELECT * FROM dichvu LIMIT 3";
-$result = mysqli_query($conn, $query);
+$querydv = "SELECT * FROM dichvu LIMIT 3";
+$result = mysqli_query($conn, $querydv);
 
-$query = "SELECT * FROM BacSi LIMIT 3";
-$resultBs = mysqli_query($conn, $query);
+$querybs = "SELECT * FROM BacSi LIMIT 3";
+$resultBs = mysqli_query($conn, $querybs);
 
-$query = "SELECT * FROM PhuKien LIMIT 4"; // Fetch the first 4 products, adjust as needed
-$resultPK = mysqli_query($conn, $query);
+$querypk = "SELECT * FROM PhuKien LIMIT 4"; // Fetch the first 4 products, adjust as needed
+$resultPK = mysqli_query($conn, $querypk);
 
 ?>
 
@@ -20,6 +20,7 @@ $resultPK = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetHealing - Trang chủ</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Liên kết với jQuery -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -97,58 +98,64 @@ $resultPK = mysqli_query($conn, $query);
                 <p>Đặt lịch hẹn trực tiếp để được phục vụ tốt nhất. Chúng tôi sẽ liên hệ xác nhận trong vòng 24 giờ.</p>
             </div>
             <div class="appointment_main">
-           
+
             <div class="form-container">
-                <form action="" method="post">
+               
+                <form id="appointment-form">
                     <div class="form-group">
                         <label for="full-name">Họ tên</label>
-                        <input type="text" id="full-name" placeholder="Nguyễn Văn A" required>
+                        <input type="text" id="full-name" name="full-name" placeholder="Nguyễn Văn A" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Số điện thoại</label>
-                        <input type="tel" id="phone" placeholder="0123456789" required>
+                        <input type="tel" id="phone" name="phone" placeholder="0123456789" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="example@email.com" required>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="pet-name">Tên thú cưng</label>
-                        <input type="text" id="pet-name" placeholder="Mèo/Chó..." required>
+                        <input type="text" id="pet-name" name="pet-name"  placeholder="Mèo/Chó..." required>
                     </div>
                     <div class="form-group">
                         <label for="pet-type">Loại thú cưng</label>
-                        <select id="pet-type" required>
-                            <option value="" disabled selected>Chọn</option>
-                            <option value="dog">Chó</option>
-                            <option value="cat">Mèo</option>
-                            <option value="other">Khác</option>
-                        </select>
+                            <select id="pet-type" name="pet-type" required>
+                                <option value="" disabled selected>Chọn</option>
+                                <option value="dog">Chó</option>
+                                <option value="cat">Mèo</option>
+                                <option value="other">Khác</option>
+                            </select>
                     </div>
                     <div class="form-group">
                         <label for="appointment-date">Ngày hẹn</label>
-                        <input type="date" id="appointment-date" required>
+                        <input type="date" id="appointment-date" name="appointment-date" required>
                     </div>
                     <div class="form-group">
                         <label for="appointment-time">Giờ hẹn</label>
-                        <input type="time" id="appointment-time" required>
+                        <input type="time" id="appointment-time" name="appointment-time" required>
                     </div>
                     <div class="form-group">
-                        <label for="service">Dịch vụ</label>
-                        <select id="service" required>
-                            <option value="" disabled selected>Chọn dịch vụ</option>
-                            <option value="grooming">Cắt tỉa lông</option>
-                            <option value="checkup">Kiểm tra sức khỏe</option>
-                            <option value="training">Huấn luyện</option>
-                        </select>
+                     
+                            <label for="service">Dịch vụ</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Chọn dịch vụ</option>
+                                <option value="grooming">Cắt tỉa lông</option>
+                                <option value="checkup">Kiểm tra sức khỏe</option>
+                                <option value="training">Huấn luyện</option>
+                            </select>
                     </div>
                     <div class="form-group">
                         <label for="notes">Ghi chú</label>
-                        <textarea id="notes" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt"></textarea>
+                        <textarea id="notes" name="notes" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt"></textarea>
                     </div>
                     <button>
-                        Gửi yêu cầu
+                        Đặt lịch ngay
                     </button>
+
+                   <div id="message-container" class="message-container"></div>
+                    
+           
                 </form>
             </div>
             <div class="appointment_image">
@@ -253,6 +260,8 @@ $resultPK = mysqli_query($conn, $query);
 </footer>
 
 </body>
-</html>
+   
+
+</html> <script src="../assets/js/formHome.js"></script> <!-- Liên kết với file app.js -->
 
 <?php mysqli_close($conn); ?>

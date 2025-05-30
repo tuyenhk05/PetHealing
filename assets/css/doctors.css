@@ -1,0 +1,214 @@
+body {
+    background: #F3F4F6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.page-title {
+    text-align: center;
+    color: #EB4798;
+    font-size: 2.2rem;
+    margin: 36px 0 32px 0;
+}
+.doctors-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 36px;
+}
+.doctor-card {
+    display: flex;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #cfd8e7;
+    width: 660px;
+    max-width: 98vw;
+    border: 2px solid #F3F4F6;
+    overflow: hidden;
+}
+.doctor-img img {
+    width: 170px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 18px 0 0 18px;
+    background: #F3F4F6;
+    display: block;
+}
+.doctor-info {
+    flex: 1;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.doctor-name {
+    color: #EB4798;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.doctor-role {
+    color: #34C9A5;
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+}
+.doctor-desc, .doctor-exp, .doctor-degree {
+    color: #222;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+.doctor-specialties {
+    margin: 10px 0 15px 0;
+}
+.spec-tag {
+    background: #e0faf3;
+    color: #34C9A5;
+    border-radius: 10px;
+    padding: 3px 12px;
+    margin-right: 8px;
+    font-size: 0.97rem;
+    border: 1px solid #34C9A5;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+.doctor-actions {
+    display: flex;
+    gap: 10px;
+    margin: 16px 0 12px 0;
+}
+.btn {
+    background: #34C9A5;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 0;
+    font-size: 0.98rem;
+    min-width: 110px;
+    max-width: 140px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.schedule-btn { background: #34C9A5; }
+.schedule-btn:hover { background: #EB4798; }
+.contact-btn { background: #EB4798; }
+.contact-btn:hover { background: #34C9A5; }
+.message-btn {
+    background: #F3F4F6;
+    color: #444;
+    border: 1px solid #34C9A5;
+}
+.message-btn:hover {
+    background: #EB4798;
+    color: #fff;
+    border-color: #EB4798;
+}
+.doctor-rating {
+    margin-top: 3px;
+    color: #EB4798;
+    font-size: 1.13rem;
+    letter-spacing: 1.2px;
+}
+@media (max-width: 900px) {
+    .doctor-card {
+        width: 97vw;
+        min-width: 0;
+    }
+}
+@media (max-width: 600px) {
+    .doctor-card {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border-radius: 15px;
+    }
+    .doctor-img img {
+        width: 98vw;
+        max-width: 250px;
+        height: 140px;
+        border-radius: 15px 15px 0 0;
+        margin: 0 auto;
+    }
+    .doctor-info {
+        padding: 16px 9px;
+        width: 100%;
+    }
+    .doctor-actions {
+        flex-direction: column;
+        gap: 7px;
+    }
+    .btn {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        font-size: 0.98rem;
+        padding: 10px 0;
+        justify-content: center;
+    }
+}
+.header {
+    width: 100%;
+    background: #fff;
+    border-bottom: 3px solid #34C9A5;
+    box-sizing: border-box;
+}
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px 12px 30px;
+}
+.logo-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-img {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.site-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222;
+    font-family: 'Poppins', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 38px;
+    margin: 0;
+    padding: 0;
+}
+.main-nav ul li a {
+    color: #111;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.18s;
+}
+.main-nav ul li a:hover {
+    color: #EB4798;
+}
+@media (max-width: 900px) {
+    .header-container {
+        padding: 10px 14px 8px 14px;
+    }
+    .site-title {
+        font-size: 1.3rem;
+    }
+    .main-nav ul {
+        gap: 16px;
+    }
+}
+

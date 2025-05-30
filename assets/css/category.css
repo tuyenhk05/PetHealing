@@ -135,14 +135,9 @@
 
 .category .product .card img {
     width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
     border-radius: 18px 18px 0 0;
+    height: 200px;
     
-}
-.category .product .card img:hover {
-   
-
 }
 
 .category .product .card .card-content {

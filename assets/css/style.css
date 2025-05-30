@@ -6,6 +6,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.header .logo img {
+    wid
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -660,7 +663,7 @@ body {
         }
 
 /*end css Trang chủ*/
-button {
+button.btn-global{
     --bg: #EB4798;
     --text-color: #fff;
     position: relative;

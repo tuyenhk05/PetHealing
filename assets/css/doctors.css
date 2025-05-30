@@ -53,14 +53,6 @@ body {
 .main-nav ul li a:hover {
     color: #EB4798;
 }
-.doctors-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px #e0e7ef;
-    padding: 32px 0;
-}
 .page-title {
     text-align: center;
     color: #EB4798;
@@ -81,25 +73,31 @@ body {
     display: flex;
     width: 98%;
     max-width: 900px;
+    min-height: 320px;
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 2px 16px #cfd8e7;
     overflow: hidden;
-    transition: box-shadow 0.2s;
     margin-bottom: 24px;
-    border: 2px solid #F3F4F6;
+    border: 2px solid #34C9A5;
+    align-items: stretch;
 }
-.doctor-card:hover {
-    box-shadow: 0 4px 28px #bcd0ea;
-    border-color: #34C9A5;
+.doctor-img {
+    width: 260px;
+    min-width: 220px;
+    max-width: 320px;
+    background: #F3F4F6;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
 }
 .doctor-img img {
-    width: 240px;
-    height: 320px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 18px 0 0 18px;
-    background: #F3F4F6;
     display: block;
+    min-height: 320px;
 }
 .doctor-info {
     flex: 1;
@@ -107,6 +105,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 320px;
 }
 .doctor-name {
     margin: 0 0 8px 0;
@@ -201,45 +200,28 @@ body {
     .main-nav ul {
         gap: 16px;
     }
-    .doctors-container {
-        padding: 12px 0;
-        max-width: 99vw;
-    }
     .doctor-card {
         width: 99vw;
         max-width: 99vw;
         flex-direction: column;
         align-items: center;
         border-radius: 16px;
+        min-height: 0;
+    }
+    .doctor-img {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        height: 240px;
+        border-radius: 16px 16px 0 0;
     }
     .doctor-img img {
-        width: 90vw;
-        max-width: 320px;
-        height: 190px;
         border-radius: 16px 16px 0 0;
-        margin: 0 auto;
+        min-height: 0;
+        height: 100%;
     }
     .doctor-info {
-        padding: 18px 12px 22px 12px;
-        align-items: flex-start;
-        width: 100%;
-    }
-    .doctor-name {
-        font-size: 1.22rem;
-    }
-    .doctor-specialties .spec-tag {
-        font-size: 0.95rem;
-        padding: 4px 10px;
-    }
-    .doctor-actions {
-        flex-direction: column;
-        width: 100%;
-        gap: 9px;
-    }
-    .btn {
-        width: 100%;
-        justify-content: center;
-        padding: 11px 0;
-        font-size: 1rem;
+        padding: 18px 16px 22px 16px;
+        min-height: 0;
     }
 }

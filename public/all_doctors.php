@@ -38,7 +38,6 @@ $result = $conn->query($sql);
     <?php
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            // Xử lý tên ảnh
             $anh = isset($row['anh']) && trim($row['anh']) != '' ? trim($row['anh']) : 'doctor_sample.jpg';
             ?>
             <div class="doctor-card">

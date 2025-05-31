@@ -1,0 +1,318 @@
+.intro-card-bg {
+  position: relative;
+  max-width: 100vw;
+  height: 500px;
+  margin: 0 auto 50px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-image: url('../image/dichvu.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Lớp overlay gradient động */
+.intro-card-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  background: linear-gradient(270deg, #34C9A5, #F56C93, #34C9A5);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+  opacity: 0.4; /* Độ mờ của gradient overlay */
+  pointer-events: none; /* Không che khuất tương tác */
+  z-index: 1;
+}
+
+/* Nội dung nằm trên overlay */
+.intro-content-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 40px 60px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Tạo lớp nền trong suốt giúp chữ nổi bật */
+  background: rgba(0,0,0,0.3); 
+  box-sizing: border-box;
+  border-radius: 15px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  z-index: 2;
+}
+
+/* Keyframe animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.intro-content-overlay h2 {
+  font-size: 32px;
+  font-weight: 700; /* in đậm */
+  color: #fff;      /* màu trắng */
+  text-align: center; /* căn giữa */
+  margin-bottom: 15px;
+}
+
+.intro-content-overlay h2 .highlight-pink {
+  color: #F56C93;  /* màu hồng */
+}
+.intro-content-overlay h2 .highlight-blue {
+  color: #34C9A5; /* Màu xanh */
+}
+
+@media (max-width: 768px) {
+  .intro-card-bg {
+    height: 220px;
+  }
+  .intro-content-overlay {
+    padding: 20px 30px;
+  }
+  .intro-content-overlay h3 {
+    font-size: 24px;
+  }
+  .intro-content-overlay p {
+    font-size: 16px;
+  }
+}
+
+.full-width-card {
+  width: 100%;
+  background-color: #fefefe;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.full-width-card .container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.content-left {
+  flex: 1;
+  position: relative;
+}
+
+.content-left h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 15px;
+}
+
+.content-left p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #4B5563;
+  margin-bottom: 20px;
+}
+
+.features-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 80px;
+}
+
+.features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #374151;
+}
+
+.features-list li strong {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.features-list li p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Icon style */
+.features-list li .icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: #34C9A5;
+  margin-top: 2px;
+}
+
+/* bottom card */
+.bottom-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  background: #E0F2FE;
+  padding: 12px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  gap: 16px;
+  max-width: 320px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.bottom-card .icon {
+  font-size: 28px;
+  color: #0284C7;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.bottom-card .text .label {
+  font-size: 12px;
+  color: #2563EB;
+  margin-bottom: 3px;
+}
+
+.bottom-card .text .highlight {
+  font-weight: 700;
+  font-size: 16px;
+  color: #0F172A;
+}
+
+.image-right {
+  flex: 1;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+  max-width: 320px;
+}
+
+.image-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+@media (max-width: 768px) {
+  .full-width-card .container {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .content-left {
+    position: static;
+    margin-bottom: 30px;
+  }
+  .bottom-card {
+    position: static;
+    margin-top: 20px;
+    max-width: 100%;
+  }
+  .image-right {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+}
+
+.services-section {
+  padding: 60px 20px;
+  background-color: #fefefe;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: #34C9A5;
+  margin-bottom: 40px;
+}
+
+.service-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+}
+
+.service-card {
+  display: flex;
+  background-color: #f8f8f8;
+  width: 48%;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-right: 4px solid #34C9A5;
+}
+
+.service-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.service-content h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #F56C93;
+}
+
+.service-content p {
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 15px;
+}
+
+.service-price {
+  font-weight: bold;
+  color: #34C9A5;
+  font-size: 16px;
+}
+
+.service-card:hover .service-content h3::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .service-row {
+    flex-direction: column;
+  }
+
+  .service-card {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .service-card img {
+    width: 100%;
+    height: 300px;
+    border-right: none;
+    border-bottom: 4px solid #34C9A5;
+  }
+}

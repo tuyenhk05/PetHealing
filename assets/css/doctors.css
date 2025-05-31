@@ -9,6 +9,10 @@ body {
     color: #EB4798;
     font-size: 2.2rem;
     margin: 36px 0 32px 0;
+    background-color: #F8F8F8;
+}
+.alldoctor {
+    background-color: #F8F8F8;
 }
 .doctors-list {
     display: flex;
@@ -22,10 +26,11 @@ body {
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 2px 16px #cfd8e7;
-    width: 660px;
+    width: 100%;
     max-width: 98vw;
     border: 2px solid #F3F4F6;
     overflow: hidden;
+    margin:10px 10px;
 }
 .doctor-img img {
     width: 170px;
@@ -154,7 +159,7 @@ body {
 .header {
     width: 100%;
     background: #fff;
-    border-bottom: 3px solid #34C9A5;
+   
     box-sizing: border-box;
 }
 .header-container {

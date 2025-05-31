@@ -660,7 +660,7 @@ body {
         }
 
 /*end css Trang chủ*/
-button {
+.button_home {
     --bg: #EB4798;
     --text-color: #fff;
     position: relative;
@@ -678,11 +678,11 @@ button {
     box-shadow: #DD7390 0px 7px 2px, #000 0px 8px 5px;
 }
 
-    button:hover {
+    .button_home:hover {
         opacity: 1;
     }
 
-    button:active {
+    .button_home:active {
         top: 4px;
         box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
     }

@@ -38,7 +38,7 @@ $resultPK = mysqli_query($conn, $querypk);
                     <li><a href="index.php">Trang chủ</a></li>
                     <li><a href="appointment.php">Đặt lịch hẹn</a></li>
                     <li><a href="services.php">Dịch vụ</a></li>
-                    <li><a href="about.php">Giới thiệu</a></li>
+                    <li><a href="all_doctors.php">Bác sĩ</a></li>
                     <li><a href="contact.php">Liên hệ</a></li>
                 </ul>
             </nav>
@@ -149,7 +149,7 @@ $resultPK = mysqli_query($conn, $querypk);
                         <label for="notes">Ghi chú</label>
                         <textarea id="notes" name="notes" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt"></textarea>
                     </div>
-                    <button>
+                    <button class="button_home">
                         Đặt lịch ngay
                     </button>
 

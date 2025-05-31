@@ -6,10 +6,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-.header .logo img {
-    wid
-}
 
+.logo {
+    display: flex;
+    align-items: center;
+}
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #FEFEFE;
@@ -663,18 +664,13 @@ body {
         }
 
 /*end css Trang chủ*/
-<<<<<<< HEAD
+
 .button_home {
-=======
-button.btn-global{
->>>>>>> f5200f913e5111df8e36297a914d989664781e41
-    --bg: #EB4798;
-    --text-color: #fff;
     position: relative;
     width: 150px;
     border: none;
-    background: var(--bg);
-    color: var(--text-color);
+    background: #EB4798;
+    color: #fff;
     padding: 1em;
     font-weight: bold;
     text-transform: uppercase;

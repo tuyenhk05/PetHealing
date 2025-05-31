@@ -1,5 +1,6 @@
 <?php
 include('../includes/db_connect.php');  // Kết nối cơ sở dữ liệu
+include('../includes/header.php'); // Bao gồm header
 
 // Truy vấn dữ liệu cần hiển thị (ví dụ: các dịch vụ)
 $querydv = "SELECT * FROM dichvu LIMIT 3";
@@ -28,26 +29,6 @@ $resultPK = mysqli_query($conn, $querypk);
 
 
 
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.php"><img src="../assets/image/logo.jpg" alt="PetHealing Logo"> PetHealing </a>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.php">Trang chủ</a></li>
-                    <li><a href="appointment.php">Đặt lịch hẹn</a></li>
-                    <li><a href="services.php">Dịch vụ</a></li>
-<<<<<<< HEAD
-                    <li><a href="all_doctors.php">Bác sĩ</a></li>
-=======
-                    <li><a href="all_products.php">Cửa hàng</a></li>
->>>>>>> f5200f913e5111df8e36297a914d989664781e41
-                    <li><a href="contact.php">Liên hệ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
     <section class="hero">
         <div class="container">
@@ -153,11 +134,8 @@ $resultPK = mysqli_query($conn, $querypk);
                         <label for="notes">Ghi chú</label>
                         <textarea id="notes" name="notes" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt"></textarea>
                     </div>
-<<<<<<< HEAD
-                    <button class="button_home">
-=======
-                    <button class="btn-global">
->>>>>>> f5200f913e5111df8e36297a914d989664781e41
+                  
+                    <button class=" button_home">
                         Đặt lịch ngay
                     </button>
 
@@ -216,57 +194,10 @@ $resultPK = mysqli_query($conn, $querypk);
     </div>
 </section>
 
-        <footer class="footer">
-    <div class="container">
-        <div class="footer-left">
-            <div class="footer-logo">
-                <a href="index.php">
-                    <img src="../assets/image/logo.jpg" alt="PetHealing Logo">
-                </a>
-                <p>Chúng tôi cung cấp dịch vụ chăm sóc thú cưng chất lượng cao với đội ngũ bác sĩ thú y giàu kinh nghiệm và tận tâm.</p>
-            </div>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/tuyen.ne.359">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">YouTube</a>
-            </div>
-        </div>
-
-        <div class="footer-center">
-            <h3>Dịch vụ của chúng tôi</h3>
-            <ul>
-                <li><a href="services.php">Khám và điều trị</a></li>
-                <li><a href="services.php">Phẫu thuật</a></li>
-                <li><a href="services.php">Chăm sóc răng miệng</a></li>
-                <li><a href="services.php">Chăm sóc da và lông</a></li>
-                <li><a href="services.php">Khách sạn thú cưng</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-right">
-            <h3>Liên kết nhanh</h3>
-            <ul>
-                <li><a href="all_doctors.php">Đội ngũ bác sĩ</a></li>
-                <li><a href="appointment.php">Đặt lịch hẹn</a></li>
-                <li><a href="all_products.php">Cửa hàng</a></li>
-                <li><a href="#">Hồ sơ thú cưng</a></li>
-                <li><a href="about.php">Liên hệ</a></li>
-            </ul>
-
-            <h3>Thông tin liên hệ</h3>
-            <p>123 Đường Thú Cưng, Quận 1, TP.HCM</p>
-            <p>0123 456 789</p>
-            <p>lienhe@petcare.vn</p>
-            <p>Thứ Hai - Thứ Bảy: 8:00 - 20:00</p>
-            <p>Chủ Nhật: 9:00 - 18:00</p>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>&copy; 2025 PetHealing. Tất cả quyền lợi được bảo vệ.</p>
-    </div>
-</footer>
-
+       
+    <?php
+    include('../includes/footer.php'); // Bao gồm navbar
+          ?>
 </body>
    
 

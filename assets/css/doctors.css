@@ -1,10 +1,62 @@
-body {
-    background: #F3F4F6;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+﻿/* Section Styling */
+section {
+    position: relative;
+    background: linear-gradient(to right, #008080, #007b7f);
+    overflow: hidden;
 }
-<<<<<<< HEAD
+
+/* Background Image Overlay */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.pexels.com/photos/6234600/pexels-photo-6234600.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+}
+
+/* Content Area */
+.content {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5rem 1rem;
+    position: relative;
+    z-index: 10;
+    padding: 120px 20px;
+}
+
+/* Text Centering */
+.text-center {
+    text-align: center;
+}
+
+/* Title Styling */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+    .title .highlight {
+        color: #f06292; /* Pink color for the "bác sĩ" text */
+    }
+
+/* Description Styling */
+.description {
+    color: #b2dfdb;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    max-width: 45rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .page-title {
     text-align: center;
     color: #EB4798;
@@ -157,8 +209,6 @@ body {
         justify-content: center;
     }
 }
-=======
->>>>>>> f5200f913e5111df8e36297a914d989664781e41
 .header {
     width: 100%;
     background: #fff;

@@ -1,6 +1,6 @@
 <?php
 include('../includes/db_connect.php');  // Kết nối cơ sở dữ liệu
-
+include('../includes/header.php'); // Bao gồm header
 $querybs = "SELECT * FROM BacSi";
 $result = mysqli_query($conn, $querybs);
 ?>
@@ -15,38 +15,27 @@ $result = mysqli_query($conn, $querybs);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 <body>
-<header class="header">
-    <div class="header-container">
-        <div class="logo-block">
-            <img src="../assets/image/logo.jpg" alt="PetHealing Logo" class="logo-img">
-            <span class="site-title">PetHealing</span>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="appointment.php">Đặt lịch hẹn</a></li>
-                <li><a href="services.php">Dịch vụ</a></li>
-                <li><a href="about.php">Giới thiệu</a></li>
-                <li><a href="contact.php">Liên hệ</a></li>
-            </ul>
-        </nav>
+
+<section class="relative bg-gradient-to-r from-teal-500 to-teal-700 overflow-hidden">
+  <div class="background-overlay"></div>
+  <div class="content">
+    <div class="text-center container">
+      <h1 class="title">Đội ngũ <span class="highlight">bác sĩ</span> của chúng tôi</h1>
+      <p class="description">Gặp gỡ đội ngũ bác sĩ giàu kinh nghiệm và tận tâm của chúng tôi</p>
     </div>
-</header>
+  </div>
+</section>
 <div class="alldoctor">
-<h1 class="page-title container">Đội ngũ Bác sĩ thú y</h1>
+
 <div class="doctors-list container">
     <?php
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-<<<<<<< HEAD
             // Handle image name
-=======
-            $anh = isset($row['anh']) && trim($row['anh']) != '' ? trim($row['anh']) : 'doctor_sample.jpg';
->>>>>>> f5200f913e5111df8e36297a914d989664781e41
             ?>
             <div class="doctor-card">
                 <div class="doctor-img">
-                    <img src="../assets/image//<?php echo $row['ho_ten']; ?>.jpg" alt="<?php echo $row['ho_ten']; ?>>">
+                    <img src="../assets/image/<?php echo $row['ho_ten']; ?>.jpg" alt="<?php echo $row['ho_ten']; ?>>">
                 </div>
                 <div class="doctor-info">
                     <div class="doctor-name">TS. <?php echo htmlspecialchars($row['ho_ten']); ?></div>
@@ -82,55 +71,7 @@ $result = mysqli_query($conn, $querybs);
    
 </div>
     </div>
-      <footer class="footer">
-    <div class="container">
-        <div class="footer-left">
-            <div class="footer-logo">
-                <a href="index.php">
-                    <img src="../assets/image/logo.jpg" alt="PetHealing Logo">
-                </a>
-                <p>Chúng tôi cung cấp dịch vụ chăm sóc thú cưng chất lượng cao với đội ngũ bác sĩ thú y giàu kinh nghiệm và tận tâm.</p>
-            </div>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/tuyen.ne.359">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">YouTube</a>
-            </div>
-        </div>
-
-        <div class="footer-center">
-            <h3>Dịch vụ của chúng tôi</h3>
-            <ul>
-                <li><a href="services.php">Khám và điều trị</a></li>
-                <li><a href="services.php">Phẫu thuật</a></li>
-                <li><a href="services.php">Chăm sóc răng miệng</a></li>
-                <li><a href="services.php">Chăm sóc da và lông</a></li>
-                <li><a href="services.php">Khách sạn thú cưng</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-right">
-            <h3>Liên kết nhanh</h3>
-            <ul>
-                <li><a href="all_doctors.php">Đội ngũ bác sĩ</a></li>
-                <li><a href="appointment.php">Đặt lịch hẹn</a></li>
-                <li><a href="all_products.php">Cửa hàng</a></li>
-                <li><a href="#">Hồ sơ thú cưng</a></li>
-                <li><a href="about.php">Liên hệ</a></li>
-            </ul>
-
-            <h3>Thông tin liên hệ</h3>
-            <p>123 Đường Thú Cưng, Quận 1, TP.HCM</p>
-            <p>0123 456 789</p>
-            <p>lienhe@petcare.vn</p>
-            <p>Thứ Hai - Thứ Bảy: 8:00 - 20:00</p>
-            <p>Chủ Nhật: 9:00 - 18:00</p>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>&copy; 2025 PetHealing. Tất cả quyền lợi được bảo vệ.</p>
-    </div>
-</footer>
+   
 </body>
 </html>
+  <?php include('../includes/footer.php'); ?>

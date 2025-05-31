@@ -3,6 +3,7 @@ section {
     position: relative;
     background: linear-gradient(to right, #008080, #007b7f);
     overflow: hidden;
+    
 }
 
 /* Background Image Overlay */
@@ -66,13 +67,15 @@ section {
 }
 .alldoctor {
     background-color: #F8F8F8;
+    padding-top:60px;
 }
 .doctors-list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
     margin-bottom: 36px;
+    padding-top:30px;
 }
 .doctor-card {
     display: flex;
@@ -284,7 +287,7 @@ section {
     box-shadow: 0 2px 16px #cfd8e7;
     overflow: hidden;
     margin-bottom: 24px;
-    border: 2px solid #34C9A5;
+    border: 2px solid #fff;
     align-items: stretch;
 }
 .doctor-img {
@@ -359,7 +362,7 @@ section {
     color: #fff;
     border: none;
     border-radius: 8px;
-    padding: 12px 22px;
+    padding: -6px 22px;
     font-size: 1.08rem;
     cursor: pointer;
     transition: background 0.15s;
@@ -372,20 +375,32 @@ section {
 .btn:hover {
     background: #EB4798;
 }
-.schedule-btn { background: #34C9A5; }
-.schedule-btn:hover { background: #EB4798; }
-.contact-btn { background: #EB4798; }
+.schedule-btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+    box-shadow: 0 2px 16px #cfd8e7;
+}
+    .schedule-btn:hover {
+        background: #34C9A5;
+    }
+.contact-btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+    box-shadow: 0 2px 16px #cfd8e7;
+}
 .contact-btn:hover { background: #34C9A5; }
 .message-btn {
-    background: #F3F4F6;
-    color: #444;
-    border: 1px solid #34C9A5;
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+    box-shadow: 0 2px 16px #cfd8e7;
 }
-.message-btn:hover {
-    background: #EB4798;
-    color: #fff;
-    border-color: #EB4798;
-}
+    .message-btn:hover {
+        background: #34C9A5;
+       
+    }
 .doctor-rating {
     margin-top: 6px;
     font-size: 1.4rem;

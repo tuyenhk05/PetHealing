@@ -1,8 +1,9 @@
-<?php
-include('../includes/db_connect.php');  // Kết nối cơ sở dữ liệu
-include('../includes/header.php'); // Bao gồm header
-$querybs = "SELECT * FROM BacSi";
-$result = mysqli_query($conn, $querybs);
+<?php 
+$conn = new mysqli("localhost", "root", "", "BenhVienThuCung");
+if ($conn->connect_error) die("Kết nối thất bại: " . $conn->connect_error);
+
+$sql = "SELECT * FROM BacSi";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -11,31 +12,38 @@ $result = mysqli_query($conn, $querybs);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đội ngũ Bác sĩ thú y</title>
     <link rel="stylesheet" href="../assets/css/doctors.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 <body>
-
-<section class="relative bg-gradient-to-r from-teal-500 to-teal-700 overflow-hidden">
-  <div class="background-overlay"></div>
-  <div class="content">
-    <div class="text-center container">
-      <h1 class="title">Đội ngũ <span class="highlight">bác sĩ</span> của chúng tôi</h1>
-      <p class="description">Gặp gỡ đội ngũ bác sĩ giàu kinh nghiệm và tận tâm của chúng tôi</p>
+<header class="header">
+    <div class="header-container">
+        <div class="logo-block">
+            <img src="../assets/image/logo.jpg" alt="PetHealing Logo" class="logo-img">
+            <span class="site-title">PetHealing</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.php">Trang chủ</a></li>
+                <li><a href="all_doctors.php">Bác sĩ</a></li>
+                <li><a href="appointment.php">Đặt lịch hẹn</a></li>
+                <li><a href="services.php">Dịch vụ</a></li>
+                <li><a href="about.php">Giới thiệu</a></li>
+                <li><a href="contact.php">Liên hệ</a></li>
+            </ul>
+        </nav>
     </div>
-  </div>
-</section>
-<div class="alldoctor">
+</header>
 
-<div class="doctors-list container">
+<h1 class="page-title">Đội ngũ Bác sĩ thú y</h1>
+<div class="doctors-list">
     <?php
-    if ($result && $result->num_rows > 0) {
+    if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            // Handle image name
+            $anh = isset($row['anh']) && trim($row['anh']) != '' ? trim($row['anh']) : 'doctor_sample.jpg';
             ?>
             <div class="doctor-card">
                 <div class="doctor-img">
-                    <img src="../assets/image/<?php echo $row['ho_ten']; ?>.jpg" alt="<?php echo $row['ho_ten']; ?>>">
+                    <img src="../assets/image/<?php echo htmlspecialchars($anh); ?>" alt="Bác sĩ thú y">
                 </div>
                 <div class="doctor-info">
                     <div class="doctor-name">TS. <?php echo htmlspecialchars($row['ho_ten']); ?></div>
@@ -52,7 +60,7 @@ $result = mysqli_query($conn, $querybs);
                         ?>
                     </div>
                     <div class="doctor-actions">
-                        <a href="doctor_details.php?id=<?php echo urlencode($row['id']); ?>" class="btn schedule-btn"><i class="fa-regular fa-calendar"></i> Xem thông tin</a>
+                        <button class="btn schedule-btn"><i class="fa-regular fa-calendar"></i> Đặt lịch hẹn</button>
                         <button class="btn contact-btn"><i class="fa-solid fa-phone"></i> Liên hệ</button>
                         <button class="btn message-btn"><i class="fa-regular fa-envelope"></i> Gửi tin nhắn</button>
                     </div>
@@ -66,12 +74,8 @@ $result = mysqli_query($conn, $querybs);
     } else {
         echo "<p>Chưa có bác sĩ nào trong hệ thống.</p>";
     }
+    $conn->close();
     ?>
-        
-   
 </div>
-    </div>
-   
 </body>
 </html>
-  <?php include('../includes/footer.php'); ?>

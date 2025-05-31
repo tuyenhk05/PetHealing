@@ -38,7 +38,11 @@ $result = mysqli_query($conn, $querybs);
     <?php
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+<<<<<<< HEAD
             // Handle image name
+=======
+            $anh = isset($row['anh']) && trim($row['anh']) != '' ? trim($row['anh']) : 'doctor_sample.jpg';
+>>>>>>> f5200f913e5111df8e36297a914d989664781e41
             ?>
             <div class="doctor-card">
                 <div class="doctor-img">

@@ -1,9 +1,10 @@
 body {
     background: #F3F4F6;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
+<<<<<<< HEAD
 .page-title {
     text-align: center;
     color: #EB4798;
@@ -156,6 +157,8 @@ body {
         justify-content: center;
     }
 }
+=======
+>>>>>>> f5200f913e5111df8e36297a914d989664781e41
 .header {
     width: 100%;
     background: #fff;
@@ -163,7 +166,7 @@ body {
     box-sizing: border-box;
 }
 .header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -205,6 +208,143 @@ body {
 .main-nav ul li a:hover {
     color: #EB4798;
 }
+.page-title {
+    text-align: center;
+    color: #EB4798;
+    font-size: 2.5rem;
+    margin-top: 36px;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+}
+.doctors-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 36px;
+    width: 100%;
+}
+.doctor-card {
+    display: flex;
+    width: 98%;
+    max-width: 900px;
+    min-height: 320px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #cfd8e7;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 2px solid #34C9A5;
+    align-items: stretch;
+}
+.doctor-img {
+    width: 260px;
+    min-width: 220px;
+    max-width: 320px;
+    background: #F3F4F6;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+.doctor-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px 0 0 18px;
+    display: block;
+    min-height: 320px;
+}
+.doctor-info {
+    flex: 1;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 320px;
+}
+.doctor-name {
+    margin: 0 0 8px 0;
+    font-size: 1.8rem;
+    color: #EB4798;
+}
+.doctor-role {
+    color: #34C9A5;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+.doctor-desc {
+    color: #1f3347;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+.doctor-exp,
+.doctor-degree {
+    color: #444;
+    font-size: 1.12rem;
+    margin-bottom: 4px;
+}
+.doctor-specialties {
+    margin: 18px 0 14px 0;
+}
+.spec-tag {
+    background: #34C9A511;
+    color: #34C9A5;
+    border-radius: 12px;
+    padding: 6px 18px;
+    margin-right: 10px;
+    font-size: 1.06rem;
+    display: inline-block;
+    margin-bottom: 4px;
+    border: 1px solid #34C9A5;
+}
+.doctor-actions {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+.btn {
+    background: #34C9A5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 1.08rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+.btn:hover {
+    background: #EB4798;
+}
+.schedule-btn { background: #34C9A5; }
+.schedule-btn:hover { background: #EB4798; }
+.contact-btn { background: #EB4798; }
+.contact-btn:hover { background: #34C9A5; }
+.message-btn {
+    background: #F3F4F6;
+    color: #444;
+    border: 1px solid #34C9A5;
+}
+.message-btn:hover {
+    background: #EB4798;
+    color: #fff;
+    border-color: #EB4798;
+}
+.doctor-rating {
+    margin-top: 6px;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+.doctor-rating .fa-star {
+    color: #FFC107 !important;
+    text-shadow: 1px 1px 2px #fff6, 0 2px 4px #e0e0e0;
+}
 @media (max-width: 900px) {
     .header-container {
         padding: 10px 14px 8px 14px;
@@ -215,5 +355,28 @@ body {
     .main-nav ul {
         gap: 16px;
     }
+    .doctor-card {
+        width: 99vw;
+        max-width: 99vw;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 16px;
+        min-height: 0;
+    }
+    .doctor-img {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        height: 240px;
+        border-radius: 16px 16px 0 0;
+    }
+    .doctor-img img {
+        border-radius: 16px 16px 0 0;
+        min-height: 0;
+        height: 100%;
+    }
+    .doctor-info {
+        padding: 18px 16px 22px 16px;
+        min-height: 0;
+    }
 }
-

@@ -38,7 +38,11 @@ $resultPK = mysqli_query($conn, $querypk);
                     <li><a href="index.php">Trang chủ</a></li>
                     <li><a href="appointment.php">Đặt lịch hẹn</a></li>
                     <li><a href="services.php">Dịch vụ</a></li>
+<<<<<<< HEAD
                     <li><a href="all_doctors.php">Bác sĩ</a></li>
+=======
+                    <li><a href="all_products.php">Cửa hàng</a></li>
+>>>>>>> f5200f913e5111df8e36297a914d989664781e41
                     <li><a href="contact.php">Liên hệ</a></li>
                 </ul>
             </nav>
@@ -149,7 +153,11 @@ $resultPK = mysqli_query($conn, $querypk);
                         <label for="notes">Ghi chú</label>
                         <textarea id="notes" name="notes" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt"></textarea>
                     </div>
+<<<<<<< HEAD
                     <button class="button_home">
+=======
+                    <button class="btn-global">
+>>>>>>> f5200f913e5111df8e36297a914d989664781e41
                         Đặt lịch ngay
                     </button>
 

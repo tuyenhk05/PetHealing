@@ -69,12 +69,13 @@ while($row = mysqli_fetch_assoc($result)) {
 
     $image_name = $name . '.jpg';
 ?>
-    <div class="service-card" data-category="<?php echo $category_slug; ?>">
+    <div class="service-card" data-category="<?php echo $category_slug; ?>" data="<?php echo $name; ?>">
         <img src="../assets/image/<?php echo $image_name; ?>" alt="<?php echo $name; ?>">
         <div class="service-content">
             <h3><?php echo $name; ?></h3>
             <p><?php echo $desc; ?></p>
             <div class="service-price"><?php echo $price; ?></div>
+            <button class="button_service">Đặt lịch ngay</button>
         </div>
     </div>
 <?php } ?>

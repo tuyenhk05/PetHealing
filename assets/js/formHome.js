@@ -6,7 +6,6 @@
     function showMessage(message, isSuccess = true) {
         messageContainer.textContent = message;
         messageContainer.classList.add(isSuccess ? "success" : "error");
-        messageContainer.classList.remove("fade-out");
         messageContainer.style.display = "block";
 
         // Automatically hide the message after 3 seconds
@@ -14,8 +13,12 @@
             messageContainer.classList.add("fade-out");
             setTimeout(() => {
                 messageContainer.style.display = "none";
-                messageContainer.classList.remove("success", "error");
-            }, 2000);
+                messageContainer.classList.remove(
+                    "success",
+                    "error",
+                    "fade-out"
+                );
+            }, 2000); // Delay 2 seconds to hide the message
         }, 2000);
     }
 
@@ -37,7 +40,7 @@
                     "Đặt lịch thành công! Chúng tôi sẽ liên hệ với bạn sớm.",
                     true
                 );
-                console.log(data); // Log the response for debugging)
+                console.log(data); // Log the response for debugging
             })
             .catch((error) => {
                 // Display error message
@@ -46,3 +49,9 @@
             });
     });
 });
+const serviceName = localStorage.getItem("selectedService");
+console.log(localStorage.getItem("selectedService")); // Kiểm tra xem có lấy được tên dịch vụ không
+// Nếu có dịch vụ được chọn, điền vào ô input
+if (serviceName) {
+    document.getElementById("service").value = serviceName;
+}

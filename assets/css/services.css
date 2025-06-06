@@ -9,20 +9,32 @@ body {
   color: #333;
   line-height: 1.6;
 }
-
-/* Card lớn nền ảnh với overlay gradient động */
-.intro-card-bg {
-  position: relative;
-  max-width: 100vw;
-  height: 500px;
-  margin: 0 auto 50px;
-  border-radius: 15px;
-  overflow: hidden;
-  background-image: url('../image/dichvu.jpg');
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+.button_service {
+    color: #34C9A5;
+    background: #fff;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
 }
+    .button_service:hover {
+        background: #34C9A5;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+    /* Card lớn nền ảnh với overlay gradient động */
+    .intro-card-bg {
+        position: relative;
+        max-width: 100vw;
+        height: 500px;
+        margin: 0 auto 50px;
+        border-radius: 15px;
+        overflow: hidden;
+        background-image: url('../image/dichvu.jpg');
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
 
 .intro-card-bg::before {
   content: "";

@@ -42,20 +42,22 @@ $result = mysqli_query($conn, $querybs);
 <section class="services-section">
     <div class="intro-card-bg">
         <div class="intro-content-overlay">
-             CHĂM SÓC <span class="highlight-pink">THÚ CƯNG</span> TOÀN DIỆN TẠI <span class="highlight-blue">PetHealing</span>
-            <p>Chúng tôi cung cấp các dịch vụ y tế và làm đẹp chuyên nghiệp, giúp thú cưng của bạn khỏe mạnh và xinh đẹp.</p>
+            <h2>
+                CHĂM SÓC <span class="highlight-pink">THÚ CƯNG</span> TOÀN DIỆN TẠI <span class="highlight-blue">PetHealing</span>
+            </h2>
+            <p>Chúng tôi cung cấp các dịch vụ y tế và làm đẹp chuyên nghiệp, giúp thú cưng của bạn luôn khỏe mạnh và xinh đẹp. Đội ngũ bác sĩ tận tâm, trang thiết bị hiện đại, cam kết mang đến sự hài lòng tuyệt đối.</p>
         </div>
     </div>
-    <section class="services-section">
-        <h2 class="section-title">Dịch vụ của chúng tôi:</h2>
-        <!-- Thanh bộ lọc -->
-        <div class="filter-bar">
-            <button class="filter-btn active" data-filter="all">Tất cả</button>
-            <button class="filter-btn" data-filter="cham-soc">Chăm sóc</button>
-            <button class="filter-btn" data-filter="kham-chua-benh">Khám chữa bệnh</button>
-            <button class="filter-btn" data-filter="van-chuyen">Vận chuyển</button>
-        </div>
-    </section>
+
+    <h2 class="section-title">Dịch vụ của chúng tôi</h2>
+
+    <!-- Thanh bộ lọc -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Tất cả</button>
+        <button class="filter-btn" data-filter="cham-soc">Chăm sóc</button>
+        <button class="filter-btn" data-filter="kham-chua-benh">Khám chữa bệnh</button>
+        <button class="filter-btn" data-filter="van-chuyen">Vận chuyển</button>
+    </div>
 </section>
 <div class="service-row">
 <?php

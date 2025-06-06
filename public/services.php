@@ -48,7 +48,6 @@ $result = mysqli_query($conn, $querybs);
     </div>
     <section class="services-section">
         <h2 class="section-title">Dịch vụ của chúng tôi:</h2>
-
         <!-- Thanh bộ lọc -->
         <div class="filter-bar">
             <button class="filter-btn active" data-filter="all">Tất cả</button>

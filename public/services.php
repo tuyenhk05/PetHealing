@@ -58,7 +58,6 @@ $result = mysqli_query($conn, $querybs);
         </div>
     </section>
 </section>
-
 <div class="service-row">
 <?php
 while($row = mysqli_fetch_assoc($result)) {

@@ -121,13 +121,18 @@ $resultPK = mysqli_query($conn, $querypk);
                         <input type="time" id="appointment-time" name="appointment-time" required>
                     </div>
                     <div class="form-group">
-                     
+                       
                             <label for="service">Dịch vụ</label>
-                            <select id="service" name="service" required>
+                            <select id="service" name="ten_dich_vu" required>
                                 <option value="" disabled selected>Chọn dịch vụ</option>
-                                <option value="grooming">Cắt tỉa lông</option>
-                                <option value="checkup">Kiểm tra sức khỏe</option>
-                                <option value="training">Huấn luyện</option>
+                                <?php
+                                include "../includes/db_connect.php";
+                                $sql2 = "SELECT * FROM dichvu";
+                                $result2 = mysqli_query($conn, $sql2);
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    ?>
+                                    <option > <?php echo $row2['ten_dich_vu']; ?></option>
+                                <?php } ?>
                             </select>
                     </div>
                     <div class="form-group">
@@ -163,7 +168,6 @@ $resultPK = mysqli_query($conn, $querypk);
                 <img src="../assets/image/<?php echo $row['ho_ten']; ?>.jpg" alt="<?php echo $row['ho_ten']; ?>">
                 <h4><?php echo $row['ho_ten']; ?></h4>
                 <p><?php echo $row['chuyen_mon']; ?></p>
-                <a href="doctor_details.php?id=<?php echo $row['id']; ?>" class="btn-primary">Xem thông tin</a>
             </div><?php } ?>
         </div>
     <div class="view-all">
@@ -182,8 +186,8 @@ $resultPK = mysqli_query($conn, $querypk);
                     <img src="../assets/image/<?php echo $row['ten']; ?>.jpg" alt="<?php echo $row['ten']; ?>"> <!-- Placeholder for product images -->
                     <h4><?php echo $row['ten']; ?></h4>
                     <p><?php echo number_format($row['gia'], 0, ',', '.'); ?> đ</p>
-                    <a href="product_details.php?id=<?php echo $row['id']; ?>" class="btn-primary">Chi tiết</a>
-                    <a href="#" class="btn-secondary">Thêm</a>
+                    <a href="#" class="btn-secondary">Thêm vào giỏ hàng</a>
+                   
                 </div>
             <?php } ?>
         </div>

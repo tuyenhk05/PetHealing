@@ -52,7 +52,6 @@ $result = mysqli_query($conn, $querybs);
                         ?>
                     </div>
                     <div class="doctor-actions">
-                        <a href="doctor_details.php?id=<?php echo urlencode($row['id']); ?>" class="btn schedule-btn"><i class="fa-regular fa-calendar"></i> Xem thông tin</a>
                         <button class="btn contact-btn"><i class="fa-solid fa-phone"></i> Liên hệ</button>
                         <button class="btn message-btn"><i class="fa-regular fa-envelope"></i> Gửi tin nhắn</button>
                     </div>

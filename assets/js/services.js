@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const serviceCards = Array.from(document.querySelectorAll('.service-card'));
   const paginationContainer = document.querySelector('.pagination');
-  const itemsPerPage = 4; // số card mỗi trang
+  const itemsPerPage = 6; // số card mỗi trang
+
 
   let currentFilter = 'all';
   let currentPage = 1;

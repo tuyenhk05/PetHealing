@@ -1,4 +1,4 @@
-﻿ <footer class="footer">
+ <footer class="footer">
     <div class="container">
         <div class="footer-left">
             <div class="footer-logo">
@@ -31,7 +31,7 @@
                 <li><a href="all_doctors.php">Đội ngũ bác sĩ</a></li>
                 <li><a href="appointment.php">Đặt lịch hẹn</a></li>
                 <li><a href="all_products.php">Cửa hàng</a></li>
-                <li><a href="#">Hồ sơ thú cưng</a></li>
+       
                 <li><a href="about.php">Liên hệ</a></li>
             </ul>
 

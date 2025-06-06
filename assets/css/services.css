@@ -49,48 +49,34 @@ body {
   }
 }
 
-.intro-card-bg {
-  position: relative;
-  background: url('your-image.jpg') no-repeat center center;
-  background-size: cover;
-  height: 100vh; /* Chiều cao đầy đủ của màn hình */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-}
-
 .intro-content-overlay {
-  color: white;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   padding: 40px 60px;
-  background: rgba(0, 0, 0, 0.3); /* Màu nền mờ */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+  box-sizing: border-box;
   border-radius: 15px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
   z-index: 2;
-  font-size: 2rem;
 }
 
 .intro-content-overlay h2 {
   font-size: 32px;
   font-weight: 700;
   color: #fff;
+  text-align: center;
   margin-bottom: 15px;
 }
 
 .intro-content-overlay h2 .highlight-pink {
-  color: #F56C93 !important; /* Màu hồng nổi bật */
+  color: #F56C93;
 }
-
 .intro-content-overlay h2 .highlight-blue {
-  color: #34C9A5 !important; /* Màu xanh nổi bật */
-}
-
-.intro-content-overlay p {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #fff;
-  margin-top: 10px;
+  color: #34C9A5;
 }
 
 /* Phần dịch vụ */

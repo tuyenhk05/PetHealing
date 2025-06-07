@@ -22,12 +22,11 @@ body {
     margin-bottom: 80px;
 }
 
-/* CARD LỚN, căn giữa */
 .news-card {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 760px;      /* <-- ĐÃ TĂNG LÊN 760px, bạn muốn to hơn có thể để 900px */
+    width: 760px;     
     max-width: 95vw;
     background: #fff;
     border-radius: 32px;
@@ -45,7 +44,7 @@ body {
 }
 
 .news-thumb {
-    width: 160px;  /* HÌNH ẢNH TO */
+    width: 160px;  
     height: 160px;
     object-fit: cover;
     border-radius: 18px;

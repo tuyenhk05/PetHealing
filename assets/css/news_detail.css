@@ -1,0 +1,88 @@
+body {
+    background: linear-gradient(135deg, #47c9ad 0%, #3bbca5 100%);
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+}
+.news-detail-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0 80px 0;
+}
+.news-detail-card {
+    background: #fff;
+    border-radius: 28px;
+    box-shadow: 0 6px 32px 0 #9ee7e41a;
+    padding: 38px 40px 34px 40px;
+    max-width: 800px;
+    width: 98vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.news-detail-img-block {
+    width: 100%;
+    max-width: 530px;
+    margin-bottom: 30px;
+}
+.news-detail-img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 20px;
+    background: #f3f3f3;
+}
+.news-detail-info {
+    width: 100%;
+    max-width: 530px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.news-detail-title {
+    font-size: 2.1rem;
+    color: #ED53A1;
+    font-weight: 700;
+    margin-bottom: 18px;
+    margin-top: 0;
+    line-height: 1.15;
+}
+.news-detail-date {
+    color: #23C6C6;
+    font-weight: 500;
+    margin-bottom: 18px;
+    font-size: 1.09rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.news-detail-content {
+    color: #21272b;
+    font-size: 1.16rem;
+    line-height: 1.65;
+    margin-bottom: 32px;
+    margin-top: 2px;
+}
+.back-link {
+    color: #23C6C6;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.07rem;
+    transition: color 0.15s;
+}
+.back-link:hover {
+    color: #ED53A1;
+}
+@media (max-width: 700px) {
+    .news-detail-card {
+        padding: 13px 3vw 20px 3vw;
+        border-radius: 12px;
+        max-width: 100vw;
+    }
+    .news-detail-img-block { max-width: 100vw; margin-bottom: 14px;}
+    .news-detail-img { height: 150px; border-radius: 10px; }
+    .news-detail-info { max-width: 100vw; }
+    .news-detail-title { font-size: 1.16rem; margin-bottom: 10px; }
+    .news-detail-content { font-size: .99rem; }
+}

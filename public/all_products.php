@@ -68,7 +68,7 @@ $result = mysqli_query($conn, $sql);
                     <?php } ?>
                 </div>
             </div>
-            <div class="pagination" style="margin-top: 20px; text-align:center;"></div>
+            <div class="pagination" ></div>
         </div>
     </div>
 </body>

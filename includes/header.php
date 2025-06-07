@@ -11,6 +11,7 @@
                     <li><a href="all_products.php">Cửa hàng</a></li>
                     <li><a href="all_doctors.php">Bác sĩ</a></li>
                     <li><a href="contact.php">Liên hệ</a></li>
+                    <li><a href="news.php">Tin tức</a></li>
                 </ul>
             </nav>
         </div>

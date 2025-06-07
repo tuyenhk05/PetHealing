@@ -1,7 +1,5 @@
 body {
-    background: linear-gradient(135deg, #47c9ad 0%, #3bbca5 100%);
-    font-family: 'Poppins', Arial, sans-serif;
-    margin: 0;
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
 }
 .news-detail-main {
     width: 100%;

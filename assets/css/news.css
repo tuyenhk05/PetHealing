@@ -1,0 +1,93 @@
+body {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+}
+.news-section-title {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 32px;
+    color: #ed53a1;
+    font-size: 2.7rem;
+    font-weight: 700;
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 38px;
+    margin-bottom: 80px;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 760px;     
+    max-width: 95vw;
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 8px 36px 0 #9ee7e41a;
+    padding: 30px 38px 30px 34px;
+    text-decoration: none;
+    transition: box-shadow .18s, transform .17s;
+    border: 3px solid transparent;
+    margin: 0 auto;
+}
+.news-card:hover {
+    box-shadow: 0 14px 38px 0 #ed53a140;
+    border: 3px solid #ed53a1;
+    transform: translateY(-3px) scale(1.035);
+}
+
+.news-thumb {
+    width: 160px;  /* HÌNH ẢNH TO */
+    height: 160px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-right: 32px;
+    background: #f3f3f3;
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px #ed53a120;
+}
+
+.news-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.news-title {
+    color: #ed53a1;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    margin-top: 0;
+    line-height: 1.18;
+    word-break: break-word;
+}
+
+.news-date {
+    color: #23C6C6;
+    font-size: 1.12rem;
+    margin-bottom: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.news-summary {
+    color: #21272b;
+    font-size: 1.13rem;
+    line-height: 1.58;
+    word-break: break-word;
+}
+
+@media (max-width: 850px) {
+    .news-card { width: 97vw; padding: 18px 3vw 22px 3vw; flex-direction: column; align-items: center; }
+    .news-thumb { width: 92vw; max-width: 96vw; height: 180px; margin: 0 0 13px 0; }
+    .news-info { width: 100%; align-items: flex-start; }
+    .news-title { font-size: 1.1rem; }
+    .news-summary { font-size: 1rem; }
+}

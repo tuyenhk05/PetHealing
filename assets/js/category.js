@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const paginationContainer = document.querySelector(".pagination");
     const categoryList = document.querySelectorAll(".category-list li");
 
+    const maxPageButtons = 4;
+
+
     const itemsPerPage = 6;
     let currentPage = 1;
     let currentCategory = "all";
@@ -42,22 +45,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Cập nhật nút phân trang
-    function updatePagination(totalItems) {
-        const totalPages = Math.ceil(totalItems / itemsPerPage);
-        paginationContainer.innerHTML = "";
+ function updatePagination(totalItems) {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const currentGroup = Math.floor((currentPage - 1) / maxPageButtons);
+    const startPage = currentGroup * maxPageButtons + 1;
+    const endPage = Math.min(startPage + maxPageButtons - 1, totalPages);
 
-        for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement("button");
-            btn.textContent = i;
-            btn.className = (i === currentPage) ? "active" : "";
-            btn.addEventListener("click", () => {
-                currentPage = i;
-                displayProducts(currentPage);
-            });
-            paginationContainer.appendChild(btn);
+    paginationContainer.innerHTML = "";
+
+    // Nút < (Previous)
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "<";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            displayProducts(currentPage);
         }
-        
+    });
+    paginationContainer.appendChild(prevBtn);
+
+    // Các nút trang từ startPage đến endPage (tối đa 4)
+    for (let i = startPage; i <= endPage; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.className = (i === currentPage) ? "active" : "";
+        btn.addEventListener("click", () => {
+            currentPage = i;
+            displayProducts(currentPage);
+        });
+        paginationContainer.appendChild(btn);
     }
+
+    // Nút > (Next)
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = ">";
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayProducts(currentPage);
+        }
+    });
+    paginationContainer.appendChild(nextBtn);
+}
+
+
 
     // Bắt sự kiện lọc theo danh mục
    categoryList.forEach(item => {

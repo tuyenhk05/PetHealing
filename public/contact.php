@@ -80,23 +80,24 @@ echo "<!-- This is a PHP file for the contact page of PetHealing website -->";
             <!-- Contact Form -->
             <div class="contact-form ">
                 <h2>Gửi tin nhắn</h2>
-                <form>
+                <form id="contact_form" method="post">
                     <label for="name">Họ tên</label>
-                    <input type="text" id="name" placeholder="Nguyễn Văn A">
+                    <input type="text" name="name" id="name" placeholder="Nguyễn Văn A" required>
 
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="example@email.com">
+                    <input type="email" name="email" id="email" placeholder="example@email.com" required>
 
                     <label for="phone">Số điện thoại</label>
-                    <input type="tel" id="phone" placeholder="0123456789">
+                    <input type="tel" id="phone" name="phone" placeholder="0123456789" required>
 
                     <label for="subject">Chủ đề</label>
-                    <input type="text" id="subject" placeholder="Tư vấn dịch vụ">
+                    <input type="text" id="subject" name="subject" placeholder="Tư vấn dịch vụ" required>
 
                     <label for="message">Nội dung</label>
-                    <textarea id="message" placeholder="Nhập nội dung tin nhắn của bạn..."></textarea>
+                    <textarea id="message" name="message" placeholder="Nhập nội dung tin nhắn của bạn..."></textarea>
 
                     <button type="submit" class="submit-btn">Gửi tin nhắn</button>
+                      <div id="message-container" class="message-container"></div>
                 </form>
             </div>
         </section>
@@ -110,8 +111,11 @@ echo "<!-- This is a PHP file for the contact page of PetHealing website -->";
             </div>
         </section>
     </div>
+    <script src="../assets/js/formContact.js"></script> <!-- Liên kết với file app.js -->
 
 </body>
+
+</html>
 <?php
 include('../includes/footer.php'); // Bao gồm footer
 ?>

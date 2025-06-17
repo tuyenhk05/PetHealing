@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Roboto', 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    background: linear-gradient(120deg, #e0fcff 0%, #bae7e8 100%);
     color: #333;
     line-height: 1.6;
 }

@@ -50,14 +50,17 @@ $result = mysqli_query($conn, $sql);
                         </ul>
                     </div>
                 <div class="product">
-                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <?php while ($row = mysqli_fetch_assoc($result)) { 
+                        // Định dạng giá tiền với dấu phân cách hàng nghìn
+                        $formattedPrice = number_format($row['gia'], 0, '', '.');
+                    ?>
                         <div class="card" data-category="<?php echo $row['loai']; ?>" data-name="<?php echo strtolower($row['ten']); ?>">
                             <div class="card-image" ><img src="../assets/image/<?php echo $row['ten']; ?>.jpg" alt="<?php echo $row['ten']; ?>"></div>
 
                             <div class="card-content">
                                 <h3><?php echo $row['ten']; ?></h3>
                                 <p><?php echo $row['mo_ta']; ?></p>
-                                <span><?php echo $row['gia']; ?> VND</span>
+                                <span><?php echo $formattedPrice; ?> VND</span>
 
                                 <div class="actions">
                                     <a href="#" class="details">Chi tiết</a>

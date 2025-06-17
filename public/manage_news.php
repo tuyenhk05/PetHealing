@@ -40,17 +40,19 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
         </form>
     </div>
 
-    <table>
+   <table>
         <tr>
-            <th>ID</th>
+            <th>STT</th>
             <th>Tiêu đề</th>
             <th>Nội dung</th>
             <th>Ngày đăng</th>
             <th>Xóa</th>
         </tr>
-        <?php while($row = $news->fetch_assoc()): ?>
+        <?php 
+        $stt = 1;
+        while($row = $news->fetch_assoc()): ?>
         <tr>
-            <td><?= $row['id'] ?></td>
+            <td><?= $stt++ ?></td>
             <td><?= htmlspecialchars($row['tieu_de']) ?></td>
             <td><?= htmlspecialchars(mb_substr($row['noi_dung'], 0, 50)) ?>...</td>
             <td><?= htmlspecialchars($row['ngay_dang']) ?></td>

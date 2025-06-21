@@ -16,12 +16,11 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetHealing - Trang chủ</title>
+    <title>PetHealing - Trang sản phẩm</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/category.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Liên kết với jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="../assets/js/category.js" defer></script>
 </head>
 <body>
@@ -36,46 +35,130 @@ $result = mysqli_query($conn, $sql);
             </form>
         </div>
     </div>
-    <!-- Danh mục sản phẩmphẩm -->
+
+    <!-- Danh mục sản phẩm -->
     <div class="container-category">
         <div class="store">
             <div class="category">
-                <!-- Bộ lọc theo danh mục -->
-                    <div class="category-filter">
-                        <h3><span class="icon"></span>Danh mục</h3>
-                        <ul class="category-list">
-                            <li data-category="all">Tất cả</li>
-                            <li data-category="thuc-an">Thức ăn</li>
-                            <li data-category="phu-kien">Phụ kiện</li>
-                        </ul>
-                    </div>
+                <div class="category-filter">
+                    <h2><span class="icon"></span>Danh mục</h2>
+                    <ul class="category-list">
+                        <li data-category="all" class="active">Tất cả</li>
+                        <li data-category="thuc-an">Thức ăn</li>
+                        <li data-category="phu-kien">Phụ kiện</li>
+                    </ul>
+                </div>
                 <div class="product">
-                    <?php while ($row = mysqli_fetch_assoc($result)) { 
-                        // Định dạng giá tiền với dấu phân cách hàng nghìn
+                    <?php while ($row = mysqli_fetch_assoc($result)) {
                         $formattedPrice = number_format($row['gia'], 0, '', '.');
-                    ?>
+                        ?>
                         <div class="card" data-category="<?php echo $row['loai']; ?>" data-name="<?php echo strtolower($row['ten']); ?>">
-                            <div class="card-image" ><img src="../assets/image/<?php echo $row['ten']; ?>.jpg" alt="<?php echo $row['ten']; ?>"></div>
-
+                            <div class="card-image">
+                                <img src="../assets/image/<?php echo $row['ten']; ?>.jpg" alt="<?php echo $row['ten']; ?>">
+                            </div>
                             <div class="card-content">
                                 <h3><?php echo $row['ten']; ?></h3>
                                 <p><?php echo $row['mo_ta']; ?></p>
                                 <span><?php echo $formattedPrice; ?> VND</span>
 
+                                <!-- Chọn số lượng với nút tăng giảm -->
+                                <div class="quantity-selector">
+                                    <label for="quantity-<?php echo $row['ten']; ?>">Số lượng:</label>
+                                    <button class="quantity-btn" onclick="updateQuantity('<?php echo $row['ten']; ?>', -1)">-</button>
+                                    <input type="number" id="quantity-<?php echo $row['ten']; ?>" name="quantity" min="1" value="1" readonly>
+                                    <button class="quantity-btn" onclick="updateQuantity('<?php echo $row['ten']; ?>', 1)">+</button>
+                                </div>
+
                                 <div class="actions">
                                     <a href="#" class="details">Chi tiết</a>
-                                    <button class="btn-filled"><i class="fa fa-shopping-cart"></i> Thêm</button>
+                                    <button class="btn-filled add-to-cart" data-name="<?php echo $row['ten']; ?>" data-price="<?php echo $formattedPrice; ?>"><i class="fa fa-shopping-cart"></i> Thêm</button>
                                 </div>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
-            <div class="pagination" ></div>
+            <div class="pagination"></div>
         </div>
     </div>
+
+    <div class="cart">
+        <a href="cart.php" class="btn-cart">
+            <i class="fa fa-shopping-cart"></i>  <span id="cart-count">0</span> 
+        </a>
+    </div>
+
+    <script>
+        const categoryItems = document.querySelectorAll(".category-list li");
+
+        categoryItems.forEach((item) => {
+            item.addEventListener("click", function () {
+                categoryItems.forEach((item) => item.classList.remove("active"));
+                this.classList.add("active");
+            });
+        });
+
+      const cart = [];
+
+// Cập nhật giỏ hàng vào localStorage
+function updateCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart-count').textContent = cart.length;
+}
+
+// Cập nhật số lượng sản phẩm
+function updateQuantity(productName, change) {
+    const quantityInput = document.getElementById('quantity-' + productName);
+    let currentQuantity = parseInt(quantityInput.value);
+    currentQuantity += change;
+    if (currentQuantity < 1) currentQuantity = 1; // Đảm bảo không giảm xuống dưới 1
+    quantityInput.value = currentQuantity;
+}
+
+// Thêm sản phẩm vào giỏ hàng
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const productName = this.getAttribute('data-name');
+        const productPrice = this.getAttribute('data-price');
+        const quantity = document.getElementById('quantity-' + productName).value;
+
+        const product = {
+            name: productName,
+            price: productPrice,
+            quantity: parseInt(quantity), // Chuyển số lượng thành số
+            selected:true
+        };
+
+        // Kiểm tra nếu sản phẩm đã có trong giỏ hàng
+        const existingProduct = cart.find(item => item.name === productName);
+
+        if (existingProduct) {
+            // Nếu sản phẩm đã có, chỉ cập nhật số lượng
+            existingProduct.quantity += product.quantity;
+        } else {
+            // Nếu sản phẩm chưa có, thêm mới
+            cart.push(product);
+        }
+
+        // Cập nhật giỏ hàng trong localStorage
+        updateCart();
+    });
+});
+
+// Tải giỏ hàng khi trang được tải lại
+window.onload = function() {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    storedCart.forEach(item => {
+        cart.push(item);  // Thêm sản phẩm từ localStorage vào giỏ hàng
+    });
+    updateCart();  // Cập nhật giỏ hàng sau khi tải
+};
+
+    </script>
 </body>
 </html>
-<?php 
+
+<?php
 include('../includes/footer.php'); // Bao gồm footer
 ?>

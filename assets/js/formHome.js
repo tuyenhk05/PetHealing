@@ -29,7 +29,7 @@
         const formData = new FormData(appointmentForm);
 
         // Send data via AJAX
-        fetch(`/PetHealing/includes/handle_form_appointment.php`, {
+        fetch(`/404/PetHealing/includes/handle_form_appointment.php`, {
             method: "POST",
             body: formData,
         })
@@ -48,7 +48,9 @@
                 console.error("Error:", error);
             });
     });
+    
 });
+
 const serviceName = localStorage.getItem("selectedService");
 console.log(localStorage.getItem("selectedService")); // Kiểm tra xem có lấy được tên dịch vụ không
 // Nếu có dịch vụ được chọn, điền vào ô input

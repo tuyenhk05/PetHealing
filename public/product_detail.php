@@ -46,11 +46,13 @@ if ($product_id && $product_type) {
     <title><?php echo $product['ten']; ?> - PetHealing</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/product_detail.css">
+   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
 </head>
 <body>
+      <div class="inf">Thêm vào giỏ hàng thành công</div>
     <div class="product-detail-container">
         <div class="product-detail">
             <div class="product-images">
@@ -146,6 +148,7 @@ if ($product_id && $product_type) {
         </a>
     </div>
 
+
     <script>
         // Hàm cập nhật số lượng
         function updateQuantity(change) {
@@ -193,8 +196,15 @@ if ($product_id && $product_type) {
             // Cập nhật số lượng trên icon giỏ hàng
             document.getElementById('cart-count').textContent = cart.length;
             
-            // Thông báo thêm vào giỏ hàng thành công
-            alert('Đã thêm ' + quantity + ' ' + productName + ' vào giỏ hàng!');
+           const infElement = document.querySelector('.inf');
+               
+                  infElement.classList.add('show');
+       
+
+                
+                setTimeout(() => {
+                  infElement.classList.remove('show');
+                }, 2000);  // 
         });
         
         // Cập nhật số lượng sản phẩm trong giỏ hàng khi trang được tải

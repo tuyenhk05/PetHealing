@@ -67,7 +67,7 @@ include('../includes/header.php'); // Bao gồm header
                     <button class="remove-item" onclick="removeItem('${item.name}')">Xóa</button>
                 </div>
                 <div class="total">
-                    <p>Tổng: ${(item.price * item.quantity).toLocaleString()},000 VND</p>
+                    <p>Tổng: ${(item.price * item.quantity).toLocaleString()} VND</p>
                 </div>
             `;
             cartItemsContainer.appendChild(itemElement);
@@ -76,7 +76,7 @@ include('../includes/header.php'); // Bao gồm header
             totalPrice += item.price * item.quantity;
         });
 
-        document.getElementById('cart-total').textContent = totalPrice.toLocaleString() + ',000 VND';
+        document.getElementById('cart-total').textContent = totalPrice.toLocaleString() + ' VND';
     } else {
         cartItemsContainer.innerHTML = '<p>Giỏ hàng của bạn hiện tại trống.</p>';
     }
@@ -152,7 +152,7 @@ function toggleSelectItem(productName) {
         }
     });
 
-    document.getElementById('cart-total').textContent = totalSelected.toLocaleString() + ',000 VND';
+    document.getElementById('cart-total').textContent = totalSelected.toLocaleString() + ' VND';
 }
 
 

@@ -34,12 +34,12 @@ include('../includes/header.php'); // Bao gồm header
                 <form id="appointment-form" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="full-name">Họ tên</label>
-                        <input type="text" id="full-name" name="ten_khach_hang" placeholder="Nguyễn Văn A" required>
+                        <input type="text" id="full-name" name="full-name" placeholder="Nguyễn Văn A" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Số điện thoại</label>
-                        <input type="tel" id="phone" name="so_dien_thoai_khach_hang" placeholder="0123456789" required>
+                        <input type="tel" id="phone" name="phone" placeholder="0123456789" required>
                     </div>
                    
                     <div class="form-group">
@@ -48,11 +48,11 @@ include('../includes/header.php'); // Bao gồm header
                     </div>
                     <div class="form-group">
                         <label for="pet-name">Tên thú cưng</label>
-                        <input type="text" id="pet-name" name="ten_thu_cung"  placeholder="Mèo/Chó..." required>
+                        <input type="text" id="pet-name" name="pet-name"  placeholder="Mèo/Chó..." required>
                     </div>
                     <div class="form-group">
                         <label for="pet-type">Loại thú cưng</label>
-                            <select id="pet-type" name="loai_thu_cung" required>
+                            <select id="pet-type" name="pet-type" required>
                                 <option value="" disabled selected>Chọn</option>
                                 <option value="dog">Chó</option>
                                 <option value="cat">Mèo</option>
@@ -62,17 +62,17 @@ include('../includes/header.php'); // Bao gồm header
                     
                     <div class="form-group">
                         <label for="appointment-date">Ngày hẹn</label>
-                        <input type="date" id="appointment-date" name="ngay_hen" required>
+                        <input type="date" id="appointment-date" name="appointment-date" required>
                     </div>
                     <div class="form-group">
                         <label for="appointment-time">Giờ hẹn</label>
-                        <input type="time" id="appointment-time" name="gio_hen" required>
+                        <input type="time" id="appointment-time" name="appointment-time" required>
                     </div>
                     <div class="form-group">
                         
                             
                             <label for="service">Dịch vụ</label>
-                            <select id="service" name="ten_dich_vu" required>
+                            <select id="service" name="service" required>
                                 <option value="" disabled selected>Chọn dịch vụ</option>
                                 <?php 
                                     include "../includes/db_connect.php";
@@ -87,7 +87,7 @@ include('../includes/header.php'); // Bao gồm header
                     </div>
                     <div class="form-group">
                         <label for="notes">Ghi chú</label>
-                        <textarea id="notes" name="ghi_chu" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt"></textarea>
+                        <textarea id="notes" name="notes" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt"></textarea>
                     </div>
                     <button type="submit" class="button_home" name="btn-appointment">
                         Đặt lịch ngay

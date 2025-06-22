@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $conn->prepare("INSERT INTO contact (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
         if ($stmt) {
             // Liên kết các tham số với prepared statement
-            $stmt->bind_param("sssss", $name, $phone, $email, $subject, $message);
+            $stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
             
             // Thực thi câu lệnh SQL
             if ($stmt->execute()) {

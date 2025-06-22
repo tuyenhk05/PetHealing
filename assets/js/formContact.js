@@ -29,7 +29,7 @@
         const formData = new FormData(appointmentForm);
 
         // Send data via AJAX
-        fetch(`/404/PetHealing/includes/handle_form_contact.php`, {
+        fetch(`/PetHealing/includes/handle_form_contact.php`, {
             method: "POST",
             body: formData,
         })

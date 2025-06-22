@@ -24,6 +24,7 @@ $result = mysqli_query($conn, $sql);
     <script src="../assets/js/category.js" defer></script>
 </head>
 <body>
+    <div class="inf">Thêm vào giỏ hàng thành công</div>
     <div class="inner-subnav">
         <div class="overlay">
             <h1>Cửa hàng <span>thú cưng</span></h1>
@@ -85,6 +86,7 @@ $result = mysqli_query($conn, $sql);
                 </div>
             </div>
             <div class="pagination"></div>
+            <div class="details"></div>
         </div>
     </div>
 
@@ -95,6 +97,7 @@ $result = mysqli_query($conn, $sql);
     </div>
 
     <script>
+       
         const categoryItems = document.querySelectorAll(".category-list li");
 
         categoryItems.forEach((item) => {
@@ -153,9 +156,18 @@ $result = mysqli_query($conn, $sql);
 
                 // Cập nhật giỏ hàng trong localStorage
                 updateCart();
+               const infElement = document.querySelector('.inf');
+               
+                  infElement.classList.add('show');
+       
+
                 
-                // Hiển thị thông báo
-                alert('Đã thêm ' + quantity + ' ' + productName + ' vào giỏ hàng!');
+                setTimeout(() => {
+                  infElement.classList.remove('show');
+                }, 2000);  // 
+
+               
+
             });
         });
 

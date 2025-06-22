@@ -123,7 +123,7 @@ $resultPK = mysqli_query($conn, $querypk);
                     <div class="form-group">
                        
                             <label for="service">Dịch vụ</label>
-                            <select id="service" name="ten_dich_vu" required>
+                            <select id="service" name="service" required>
                                 <option value="" disabled selected>Chọn dịch vụ</option>
                                 <?php
                                 include "../includes/db_connect.php";

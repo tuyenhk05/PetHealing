@@ -29,7 +29,7 @@ $resultPK = mysqli_query($conn, $querypk);
 
 
 
-
+    <div class="box">
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -197,7 +197,7 @@ $resultPK = mysqli_query($conn, $querypk);
         </div>
     </div>
 </section>
-
+        </div>
        
     <?php
     include('../includes/footer.php'); // Bao gồm navbar

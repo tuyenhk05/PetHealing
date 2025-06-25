@@ -21,7 +21,7 @@ echo "<!-- This is a PHP file for the contact page of PetHealing website -->";
 
 
 
-    <div class="bg-white ">
+    <div class="bg-white " style=" ">
 
         <!-- Hero Section -->
         <section class="heroo ">

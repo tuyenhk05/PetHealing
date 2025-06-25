@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $querybs);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 <body>
-
+    <div class="box">
 <section class="relative bg-gradient-to-r from-teal-500 to-teal-700 overflow-hidden">
   <div class="background-overlay"></div>
   <div class="content">
@@ -70,7 +70,7 @@ $result = mysqli_query($conn, $querybs);
    
 </div>
     </div>
-   
+   </div>
 </body>
 </html>
   <?php include('../includes/footer.php'); ?>

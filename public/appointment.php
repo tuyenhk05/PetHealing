@@ -15,7 +15,7 @@ include('../includes/header.php'); // Bao gồm header
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-   
+    <div class="box">
     <!-- navigation -->
      <div class="bg-title">
         
@@ -98,7 +98,7 @@ include('../includes/header.php'); // Bao gồm header
            </form>
               
    </div>
-
+        </div>
 </body>
 </html>
 <script src="../assets/js/formHome.js"></script> <!-- Liên kết với file app.js -->

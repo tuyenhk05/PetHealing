@@ -35,7 +35,7 @@ $related_result = mysqli_query($conn, $related_sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <main>
+    <main class="box">
         <?php if ($row): ?>
            
             <div class="news-detail-main">

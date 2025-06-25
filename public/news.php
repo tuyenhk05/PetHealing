@@ -28,7 +28,7 @@ $total_pages = ceil($total_articles / $per_page);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <main>
+    <main class="box">
         <h1 class="news-section-title">Tin tức thú cưng mới nhất</h1>
         <div class="news-list">
         <?php

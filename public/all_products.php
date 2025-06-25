@@ -8,7 +8,11 @@ $sql = "
     SELECT id, ten, mo_ta, gia, 'phu-kien' AS loai FROM PhuKien
     ORDER BY RAND()
 ";
-$result = mysqli_query($conn, $sql);
+$id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : "";
+
+
+    
+ $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +29,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
     <div class="inf">Thêm vào giỏ hàng thành công</div>
+    <div class="box">
     <div class="inner-subnav">
         <div class="overlay">
             <h1>Cửa hàng <span>thú cưng</span></h1>
@@ -92,10 +97,10 @@ $result = mysqli_query($conn, $sql);
 
     <div class="cart">
         <a href="cart.php" class="btn-cart">
-            <i class="fa fa-shopping-cart"></i> <span id="cart-count">0</span> 
+            <i class="fa fa-shopping-cart"></i> 
         </a>
     </div>
-
+        </div>
     <script>
        
         const categoryItems = document.querySelectorAll(".category-list li");
@@ -107,95 +112,57 @@ $result = mysqli_query($conn, $sql);
             });
         });
 
-        const cart = [];
+      
+    // Cập nhật số lượng
+    function updateQuantity(productId, change) {
+        const quantityInput = document.getElementById('quantity-' + productId);
+        let currentQuantity = parseInt(quantityInput.value);
+        currentQuantity += change;
+        if (currentQuantity < 1) currentQuantity = 1;
+        quantityInput.value = currentQuantity;
+    }
 
-        // Cập nhật giỏ hàng vào localStorage
-        function updateCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-            document.getElementById('cart-count').textContent = cart.length;
-        }
+    // Xử lý thêm vào giỏ hàng
+   document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.getAttribute('data-id');
+        const name = this.closest('.card').querySelector('.card-content h3').textContent;
+        const quantity = parseInt(document.getElementById('quantity-' + productId).value);
 
-        // Cập nhật số lượng sản phẩm
-        function updateQuantity(productId, change) {
-            const quantityInput = document.getElementById('quantity-' + productId);
-            let currentQuantity = parseInt(quantityInput.value);
-            currentQuantity += change;
-            if (currentQuantity < 1) currentQuantity = 1; // Đảm bảo không giảm xuống dưới 1
-            quantityInput.value = currentQuantity;
-        }
+        fetch('../includes/add_to_cart.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id_san_pham: productId,
+                so_luong: quantity,
+                name_sp: name
+            })
+        })
+        .then(res => res.text())
+        .then(data => {
+            console.log(data);
+            const infElement = document.querySelector('.inf');
+            infElement.classList.add('show');
+            setTimeout(() => infElement.classList.remove('show'), 2000);
+        })
+        .catch(error => console.error('Lỗi:', error));
+    });
+});
 
-        // Thêm sản phẩm vào giỏ hàng
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const productId = this.getAttribute('data-id');
-                const productName = this.getAttribute('data-name');
-                const productPrice = this.getAttribute('data-price');
-                const productType = this.getAttribute('data-type');
-                const quantity = document.getElementById('quantity-' + productId).value;
 
-                const product = {
-                    id: productId,
-                    name: productName,
-                    price: parseFloat(productPrice),
-                    quantity: parseInt(quantity),
-                    type: productType,
-                    selected: true
-                };
-
-                // Kiểm tra nếu sản phẩm đã có trong giỏ hàng
-                const existingProduct = cart.find(item => item.id === productId);
-
-                if (existingProduct) {
-                    // Nếu sản phẩm đã có, chỉ cập nhật số lượng
-                    existingProduct.quantity += product.quantity;
-                } else {
-                    // Nếu sản phẩm chưa có, thêm mới
-                    cart.push(product);
-                }
-
-                // Cập nhật giỏ hàng trong localStorage
-                updateCart();
-               const infElement = document.querySelector('.inf');
-               
-                  infElement.classList.add('show');
-       
-
-                
-                setTimeout(() => {
-                  infElement.classList.remove('show');
-                }, 2000);  // 
-
-               
-
-            });
+    // Tìm kiếm sản phẩm
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const productName = card.getAttribute('data-name');
+            card.style.display = productName.includes(searchTerm) ? 'block' : 'none';
         });
+    });
+</script>
 
-        // Tải giỏ hàng khi trang được tải lại
-        window.onload = function() {
-            const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-            storedCart.forEach(item => {
-                cart.push(item);  // Thêm sản phẩm từ localStorage vào giỏ hàng
-            });
-            updateCart();  // Cập nhật giỏ hàng sau khi tải
-        };
-
-        // Xử lý tìm kiếm
-        document.getElementById('searchForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.card');
-            
-            cards.forEach(card => {
-                const productName = card.getAttribute('data-name');
-                if (productName.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
+    
 </body>
 </html>
 

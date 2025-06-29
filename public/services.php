@@ -25,20 +25,21 @@ function slugify($text) {
 $querybs = 'SELECT * FROM dichvu';
 $result = mysqli_query($conn, $querybs);
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <title>Dịch vụ - PetHealing</title>
-   <link rel="stylesheet" href="../assets/css/style.css">
-   <link rel="stylesheet" href="../assets/css/services.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Liên kết với jQuery -->
-    <script src="../assets/js/services.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/services.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Liên kết với jQuery -->
+  <script src="../assets/js/services.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="box">
+
 <section class="services-section">
     <div class="intro-card-bg">
         <div class="intro-content-overlay">
@@ -67,10 +68,20 @@ while($row = mysqli_fetch_assoc($result)) {
     $desc = htmlspecialchars($row['mo_ta']);
     $price = !empty($row['gia']) ? number_format($row['gia'],0,',','.').'đ' : 'Theo tình trạng';
 
-    $image_name = $name . '.jpg';
+    // Kiểm tra nếu trường 'image' có dữ liệu
+    if (!empty($row['image'])) {
+        // Lấy ảnh từ trường 'image' trong cơ sở dữ liệu
+        $image_name = $row['image'];  
+        $image_path = "../assets/image/" . $image_name; 
+    } else {
+        // Nếu không có ảnh, lấy ảnh mặc định theo tên dịch vụ
+        $image_name = $name . '.jpg'; 
+        $image_path = "../assets/image/" . $image_name; 
+    }
 ?>
     <div class="service-card" data-category="<?php echo $category_slug; ?>" data="<?php echo $name; ?>">
-        <img src="../assets/image/<?php echo $image_name; ?>" alt="<?php echo $name; ?>">
+        <!-- Hiển thị ảnh -->
+        <img src="<?php echo $image_path; ?>" alt="<?php echo $name; ?>" style="width: 220px; height: 280px;">
         <div class="service-content">
             <h3><?php echo $name; ?></h3>
             <p><?php echo $desc; ?></p>
@@ -79,10 +90,12 @@ while($row = mysqli_fetch_assoc($result)) {
         </div>
     </div>
 <?php } ?>
+
 </div>
 <!-- Thanh phân trang -->
 <div class="pagination"></div>
-        </div>
+
 <?php include('../includes/footer.php'); ?>
+
 </body>
 </html>

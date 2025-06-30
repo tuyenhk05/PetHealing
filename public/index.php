@@ -9,7 +9,7 @@ $result = mysqli_query($conn, $querydv);
 $querybs = "SELECT * FROM BacSi LIMIT 3";
 $resultBs = mysqli_query($conn, $querybs);
 
-$querypk = "SELECT * FROM PhuKien LIMIT 4"; // Fetch the first 4 products, adjust as needed
+$querypk = "SELECT id, ten, mo_ta, gia, 'phu-kien' AS loai FROM PhuKien LIMIT 4"; // Fetch the first 4 products, adjust as needed
 $resultPK = mysqli_query($conn, $querypk);
 
 ?>
@@ -186,8 +186,7 @@ $resultPK = mysqli_query($conn, $querypk);
                     <img src="../assets/image/<?php echo $row['ten']; ?>.jpg" alt="<?php echo $row['ten']; ?>"> <!-- Placeholder for product images -->
                     <h4><?php echo $row['ten']; ?></h4>
                     <p><?php echo number_format($row['gia'], 0, ',', '.'); ?> đ</p>
-                    <a href="#" class="btn-secondary">Thêm vào giỏ hàng</a>
-                   
+                    <a href="product_detail.php?id=<?php echo $row['id']; ?>&type=<?php echo $row['loai']; ?>" class="btn-secondary">Xem chi tiết</a>
                 </div>
             <?php } ?>
         </div>

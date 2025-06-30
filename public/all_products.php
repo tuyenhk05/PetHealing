@@ -1,7 +1,6 @@
 <?php
 include('../includes/db_connect.php');
 include('../includes/header.php'); // Bao gồm header
-
 $sql = "
     SELECT id, ten, mo_ta, gia, 'thuc-an' AS loai FROM ThucAn
     UNION ALL
@@ -134,7 +133,9 @@ $id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : "";
     // Xử lý thêm vào giỏ hàng
    document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', function() {
-        const productId = this.getAttribute('data-id');
+       <?php
+       if ($id != "") { ?>
+         const productId = this.getAttribute('data-id');
         const name = this.closest('.card').querySelector('.card-content h3').textContent;
         const quantity = parseInt(document.getElementById('quantity-' + productId).value);
 
@@ -156,6 +157,13 @@ $id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : "";
         })
         .catch(error => console.error('Lỗi:', error));
     });
+        <?php } else { ?>
+        window.location.href = 'login.php';
+    });
+        <?php } ?>
+       
+       
+       
 });
 
 

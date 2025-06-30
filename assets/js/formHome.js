@@ -48,7 +48,6 @@
                 console.error("Error:", error);
             });
     });
-    
 });
 
 const serviceName = localStorage.getItem("selectedService");
@@ -57,3 +56,18 @@ console.log(localStorage.getItem("selectedService")); // Kiểm tra xem có lấ
 if (serviceName) {
     document.getElementById("service").value = serviceName;
 }
+
+const dateInput = document.getElementById("appointment-date");
+const timeInput = document.getElementById("appointment-time");
+
+// Set min date = hôm nay
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, "0");
+const dd = String(today.getDate()).padStart(2, "0");
+const minDate = `${yyyy}-${mm}-${dd}`;
+dateInput.min = minDate;
+
+// Set khung giờ hẹn từ 08:00 đến 18:00
+timeInput.min = "08:00";
+timeInput.max = "18:00";

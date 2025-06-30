@@ -9,14 +9,49 @@ if (isset($_POST['add'])) {
     $chat_lieu = $_POST['thanh_phan'];
     $cong_dung = $_POST['cong_dung'];
     $phu_hop = $_POST['phu_hop_voi_tuoi_thu_cung'];
+    $soluong = $_POST['so_luong'];
+
+    // Xử lý ảnh
+    $image_name = $_FILES['image']['name'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_size = $_FILES['image']['size'];
+    $image_error = $_FILES['image']['error'];
+
+    // Kiểm tra lỗi upload ảnh
+    if ($image_error === 0) {
+        // Lấy phần mở rộng của ảnh và chuyển thành chữ thường
+        $image_extension = pathinfo($image_name, PATHINFO_EXTENSION);
+        $image_extension = strtolower($image_extension); // Chuyển thành chữ thường
+        $image_new_name = uniqid('', true) . '.' . $image_extension; // Đổi tên ảnh để tránh trùng lặp
+        $image_upload_path = "../assets/image/" . $image_new_name;
+
+        // Kiểm tra nếu file là ảnh hợp lệ
+        $valid_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+        if (in_array($image_extension, $valid_extensions)) {
+            // Chuyển ảnh vào thư mục
+            if (move_uploaded_file($image_tmp_name, $image_upload_path)) {
+                // Thêm dữ liệu vào cơ sở dữ liệu
+                $stmt = $conn->prepare("INSERT INTO thucan (ten, danh_cho_loai, mo_ta, gia, xuat_su, thanh_phan, cong_dung, phu_hop_voi_lua_tuoi, so_luong, image) VALUES (?, ?, ?, ?, ?, ? , ? , ? , ?, ?)");
+                $stmt->bind_param("sssss", $ten, $danh_cho_loai, $mo_ta, $gia, $xuat_su, $chat_lieu, $cong_dung, $phu_hop, $soluong, $image_new_name);
+                $stmt->execute();
+                $stmt->close();
+                header("Location: manage_thucan.php"); // Quay lại trang quản lý dịch vụ
+                exit();
+            } else {
+                echo "Lỗi khi tải ảnh lên.";
+            }
+        } else {
+            echo "Chỉ hỗ trợ tải lên ảnh có định dạng JPG, JPEG, PNG, GIF.";
+        }
+    }
 
     
 
-    $query = "INSERT INTO ThucAn (ten, danh_cho_loai, mo_ta, gia, xuat_su, thanh_phan, cong_dung, phu_hop_voi_tuoi_thu_cung) 
-              VALUES ('$ten', '$danh_cho_loai', '$mo_ta', '$gia', '$xuat_su', '$chat_lieu', '$cong_dung', '$phu_hop')";
-    mysqli_query($conn, $query);
-    header("Location: manage_thucan.php");
-    exit();
+    // $query = "INSERT INTO ThucAn (ten, danh_cho_loai, mo_ta, gia, xuat_su, thanh_phan, cong_dung, phu_hop_voi_tuoi_thu_cung, so_luong) 
+    //           VALUES ('$ten', '$danh_cho_loai', '$mo_ta', '$gia', '$xuat_su', '$chat_lieu', '$cong_dung', '$phu_hop' , '$soluong')";
+    // mysqli_query($conn, $query);
+    // header("Location: manage_thucan.php");
+    // exit();
 }
 
 if (isset($_GET['delete'])) {
@@ -43,120 +78,15 @@ $result = mysqli_query($conn, "SELECT * FROM ThucAn LIMIT $limit OFFSET $offset"
 <html>
 <head>
     <title>Quản lý Thức ăn</title>
-    <style>
-        
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f9f9f9;
-        }
-        h2, h3 {
-            text-align: center;
-            color: #333;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-        tr:hover { background-color: #f1f1f1; }
-        img {
-            width: 40px;
-            height: auto;
-            border-radius: 8px;
-        }
-        form {
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            max-width: 600px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover { background-color: #218838; }
-
-        .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-        gap: 6px;
-        }
-
-        .pagination a {
-        display: inline-block;
-        padding: 8px 14px;
-        background-color: #28a745;
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: bold;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: all 0.25s ease-in-out;
-        }
-
-        .pagination a:hover {
-        background-color: #218838;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-        }
-
-        .pagination a.active {
-        background-color: #155724;
-        pointer-events: none;
-        transform: scale(1.05);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-        }
-        .back a{
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            font-size: 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 40px;   
-        }
-        .back a:hover {
-            background-color: #ccc;
-            color: #000;
-        }
-</style>
+        <link rel="stylesheet" href="../assets/css/manage_product.css">
 
 
-    </style>
 </head>
 <body>
         
-    <h2>Quản lý Phụ Kiện</h2>
+    <h2>Quản lý Thức ăn</h2>
     <body>
-    <button id="toggleFormBtn" class="btn btn-success mb-3">Thêm sản phẩm</button>
+    <button id="toggleFormBtn" class="btn btn-success mb-3">Thêm</button>
     <div id="formContainer" style="display: none;">
         
             <form method="POST" enctype="multipart/form-data">
@@ -166,30 +96,43 @@ $result = mysqli_query($conn, "SELECT * FROM ThucAn LIMIT $limit OFFSET $offset"
             <input type="number" name="gia" placeholder="Giá" required>
             <input type="text" name="xuat_su" placeholder="Xuất xứ">
             <input type="text" name="thanh_phan" placeholder="Thành phần">
+            <input type="int" name="so_luong" placeholder="Số lượng">
             <textarea name="cong_dung" placeholder="Công dụng"></textarea>
             <input type="text" name="phu_hop_voi_tuoi_thu_cung" placeholder="Phù hợp với tuổi thú cưng">
-            <input type="file" name="hinh" accept="image/*" required>
+            <input type="file" name="image" accept="image/*" required><br>
             <button type="submit" name="add">Thêm sản phẩm</button>
             </form>
         </div>
     
 </div>
-    <table>
-        <tr>
-            <th>Hình ảnh</th><th>Tên sản phẩm</th><th>Loại thú cưng</th><th>Giá</th><th>Xóa</th>
-        </tr>
-        <?php while($row = mysqli_fetch_assoc($result)) {
-            $imgPath = "assets/image/" . $row['ten'] . ".jpg";
-        ?>
-        <tr>
-            <td><img src="../assets/image/<?php echo $row['ten']; ?>.jpg" alt="<?php echo $row['ten']; ?>"></td>
-            <td><?php echo $row['ten']; ?></td>
-            <td><?php echo $row['danh_cho_loai']; ?></td>
-            <td><?php echo number_format($row['gia']); ?> VND</td>
-            <td><a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Xác nhận xóa?')">Xóa</a></td>
-        </tr>
-        <?php } ?>
-    </table>
+    <div class="form-vip">
+        <table>
+            <tr>
+                <th>ID</th><th>Hình ảnh</th><th>Tên sản phẩm</th><th>Loại thú cưng</th><th>Mô tả</th><th>Giá</th><th>Thành phần</th><th>Công dụng</th><th>Độ tuổi</th><th>Xuất sứ</th><th>Số lượng</th><th>Sửa</th><th>Xóa</th>
+            </tr>
+            <?php while($row = mysqli_fetch_assoc($result)) {
+               // Kiểm tra nếu có ảnh
+            $imagePath = $row['image'] ? "../assets/image/" . $row['image'] : "../assets/image/" . $row['ten'] . ".jpg";
+            ?>
+            <tr>
+                <td><?php echo $row['id']; ?></td>
+                 <td><img src="<?php echo $imagePath; ?>" alt="<?php echo $row['ten']; ?>"></td>
+                <td><?php echo $row['ten']; ?></td>
+                <td><?php echo $row['danh_cho_loai']; ?></td>
+                <td><?php echo $row['mo_ta']; ?></td>
+                <td><?php echo number_format($row['gia']); ?> VND</td>
+                <td><?php echo $row['thanh_phan']; ?></td>
+                <td><?php echo $row['cong_dung']; ?></td>
+                <td><?php echo $row['phu_hop_voi_tuoi_thu_cung']; ?></td>
+                <td><?php echo $row['xuat_su']; ?></td>
+                <td><?php echo $row['so_luong']; ?></td>
+
+                <td id="delete"><a href="edit_thucan.php?id=<?php echo $row['id']; ?>">Sửa</a></td>
+                <td id="delete"><a href="?delete=<?php echo $row['id']; ?>" onclick="return confirm('Xác nhận xóa?')">Xóa</a></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div>
     <div class="back">
         <a href="manage_product.php">Quay lại</a>
     </div>

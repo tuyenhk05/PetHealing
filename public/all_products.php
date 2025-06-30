@@ -8,11 +8,9 @@ $sql = "
     SELECT id, ten, mo_ta, gia, 'phu-kien' AS loai FROM PhuKien
     ORDER BY RAND()
 ";
-$id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : "";
-
-
-    
+$id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : "";  
  $result = mysqli_query($conn, $sql);
+ 
 ?>
 
 <!DOCTYPE html>
@@ -57,10 +55,21 @@ $id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : "";
                 <div class="product">
                     <?php while ($row = mysqli_fetch_assoc($result)) { 
                         $formattedPrice = number_format($row['gia'], 0, '', '.');
+                        $name = htmlspecialchars($row['ten']);  
+                        // Kiểm tra nếu trường 'image' có dữ liệu
+                            if (!empty($row['image'])) {
+                                // Lấy ảnh từ trường 'image' trong cơ sở dữ liệu
+                                $image_name = $row['image'];  
+                                $image_path = "../assets/image/" . $image_name; 
+                            } else {
+                                // Nếu không có ảnh, lấy ảnh mặc định theo tên dịch vụ
+                                $image_name = $name . '.jpg'; 
+                                $image_path = "../assets/image/" . $image_name; 
+                            }
                         ?>
-                        <div class="card" data-category="<?php echo $row['loai']; ?>" data-name="<?php echo strtolower($row['ten']); ?>">
+                        <div class="card" data-category="<?php echo $row['loai']; ?>" data="<?php echo $name; ?>">
                             <div class="card-image">
-                                <img src="../assets/image/<?php echo $row['ten']; ?>.jpg" alt="<?php echo $row['ten']; ?>">
+                                <img src="<?php echo $image_path; ?>" alt="<?php echo $name; ?>">
                             </div>
                             <div class="card-content">
                                 <h3><?php echo $row['ten']; ?></h3>

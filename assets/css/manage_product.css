@@ -1,0 +1,126 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        tr:hover { background-color: #f1f1f1; }
+        img {
+            width: 40px;
+            height: auto;
+            border-radius: 8px;
+        }
+        form {
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #218838; }
+
+        .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 6px;
+        }
+
+        .pagination a {
+        display: inline-block;
+        padding: 8px 14px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.25s ease-in-out;
+        }
+
+        .pagination a:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .pagination a.active {
+        background-color: #155724;
+        pointer-events: none;
+        transform: scale(1.05);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+        .back a{
+            background-color: #F56C93;
+            color: white;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 40px;   
+        }
+        .back a:hover {
+            background-color:  #e07b00;
+            
+        }
+         #toggleFormBtn {
+            background-color: #F56C93; /* Màu chủ đạo */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #toggleFormBtn:hover {
+            background-color: #e07b00;
+        }
+        #delete a{
+            padding:5px;
+            border-radius: 8px;
+            margin: 0;
+            text-decoration: none;
+            color:#fff;
+            background-color: #F56C93;
+        }
+        #delete a:hover {
+            background-color: #e07b00;
+        }

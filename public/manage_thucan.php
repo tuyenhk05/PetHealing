@@ -86,6 +86,9 @@ $result = mysqli_query($conn, "SELECT * FROM thucan LIMIT $limit OFFSET $offset"
 </head>
 <body>
       <?php if ($isAdmin) { ?>
+    <button onclick="window.history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </button>
         <h2>Quản lý Thức ăn</h2>
     <button id="toggleFormBtn" class="btn btn-success mb-3">+ Thêm sản phẩm</button>
 

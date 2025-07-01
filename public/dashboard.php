@@ -37,6 +37,9 @@ $isAdmin = false;
             <div class="muc_luc_item">
                 <a href="manage_news.php">Quản lí tin tức</a>
             </div>
+            <div class="muc_luc_item">
+                <a href="manage_doctors.php">Quản lý Thông tin bác sĩ</a>
+            </div>
         </div>
         </div>
     <?php } else {

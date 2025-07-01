@@ -37,10 +37,33 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
             <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .back-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
 
+            .back-button i {
+                margin-right: 6px;
+            }
+
+            .back-button:hover {
+                background: #0056b3;
+            }
+    </style>
 </head>
 <body>
         <?php if ($isAdmin) { ?>
+    <button onclick="window.history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </button>
     <h2>Quản lý Tin tức</h2>
     <div class="form-section">
         <h3>Thêm tin mới</h3>

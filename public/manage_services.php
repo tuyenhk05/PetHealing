@@ -196,6 +196,25 @@ $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset"
             background-color: #dc3545;
             color: white;
         }
+        .back-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+
+            .back-button i {
+                margin-right: 6px;
+            }
+
+            .back-button:hover {
+                background: #0056b3;
+            }
     </style>
 </head>
 <body>
@@ -208,6 +227,9 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
     echo "<div class='status-message " . $status . "'>" . $message . "</div>";
 }
 ?>
+    <button onclick="window.history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </button>
     <h2>Quản Lý Dịch Vụ</h2>
 
     <!-- Nút thêm dịch vụ -->
@@ -259,7 +281,6 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
     </table>
 
     <!-- Nút quay lại -->
-    <button onclick="history.back()" class="btn btn-back">Quay lại</button>
 
     <!-- Phân trang -->
     <div class="pagination">

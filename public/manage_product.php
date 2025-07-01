@@ -27,11 +27,33 @@ if ($vai_tro == 'Admin') {
             border-radius: 5px;
             font-size: 20px;
         }
+        .back-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+
+            .back-button i {
+                margin-right: 6px;
+            }
+
+            .back-button:hover {
+                background: #0056b3;
+            }
         a.button:hover { background-color: #218838; }
     </style>
 </head>
 <body>
       <?php if ($isAdmin) { ?>
+    <button onclick="window.history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </button>
     <div style="text-align:center">
     <h1>QUẢN LÝ SẢN PHẨM</h1>
     <a class="button" href="manage_phukien.php">Quản lý Phụ kiện</a>

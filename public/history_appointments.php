@@ -1,6 +1,6 @@
 <?php
 session_start(); // Khởi động session
-
+include "../includes/header.php";
 // Kiểm tra xem khách hàng đã đăng nhập chưa (bằng cookie)
 if (!isset($_COOKIE['user_name'])) {
     echo "Vui lòng đăng nhập để xem lịch sử đặt lịch hẹn!";
@@ -8,7 +8,7 @@ if (!isset($_COOKIE['user_name'])) {
 }
 
 // Lấy thông tin khách hàng từ cookie
-$customer_name = $_COOKIE['user_name'];  
+$customer_email = $_COOKIE['user_email'];  
 $customer_id = $_COOKIE['user_id'];  
 
 // Kết nối cơ sở dữ liệu
@@ -18,7 +18,7 @@ if (isset($_POST['cancel_id'])) {
     $cancel_id = $_POST['cancel_id'];
 
     // Kiểm tra xem lịch hẹn có phải của khách hàng này không và trạng thái có phải là "Chờ xác nhận" không
-    $sql_check = "SELECT * FROM lichhen WHERE id = $cancel_id AND ten_khach_hang = '$customer_name' AND trang_thai = 'Chờ xác nhận'";
+    $sql_check = "SELECT * FROM lichhen WHERE id = $cancel_id AND email_khach_hang = '$customer_email' AND trang_thai = 'Chờ xác nhận'";
     $result_check = mysqli_query($conn, $sql_check);
     
     // Nếu lịch hẹn tồn tại và trạng thái là "Chờ xác nhận"
@@ -37,8 +37,9 @@ if (isset($_POST['cancel_id'])) {
 }
 
 // Truy vấn lịch sử đặt lịch hẹn của khách hàng
-$sql = "SELECT * FROM lichhen WHERE ten_khach_hang = '$customer_name' ORDER BY ngay_hen DESC, gio_hen DESC"; // Lọc theo tên khách hàng
+$sql = "SELECT * FROM lichhen WHERE email_khach_hang = '$customer_email' "; // Lọc theo tên khách hàng
 $result = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -46,19 +47,11 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Lịch sử đặt lịch hẹn</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffffff;
-            color: #333;
-        }
+       
 
         h1 {
             text-align: center;
@@ -131,8 +124,9 @@ $result = mysqli_query($conn, $sql);
     </style>
 </head>
 <body>
-
+    <div class="box" style="margin:20px">
     <h1>Lịch sử đặt lịch hẹn</h1>
+    <?php if(isset($result)){?>
     <table>
         <thead>
             <tr>
@@ -167,6 +161,11 @@ $result = mysqli_query($conn, $sql);
             <?php endwhile; ?>
         </tbody>
     </table>
+    <?php } else {?>
+    <h2>Bạn chưa có lịch hẹn nào.</h2>
+    <?php } ?>
+        </div>
 
 </body>
 </html>
+<?php include "../includes/footer.php"?>

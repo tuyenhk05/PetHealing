@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $querybs);
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <div class="box">
 <section class="services-section">
     <div class="intro-card-bg">
         <div class="intro-content-overlay">
@@ -94,7 +94,7 @@ while($row = mysqli_fetch_assoc($result)) {
 </div>
 <!-- Thanh phân trang -->
 <div class="pagination"></div>
-
+        </div>
 <?php include('../includes/footer.php'); ?>
 
 </body>

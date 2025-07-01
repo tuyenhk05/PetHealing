@@ -7,7 +7,7 @@ include("../includes/header.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $phone = trim($_POST["phone"]);
-    $password = trim($_POST["password"]);
+    $password = md5(trim($_POST["password"]));
     $name = trim($_POST["name"]);
     $role = "user"; // Vai trò mặc định
 

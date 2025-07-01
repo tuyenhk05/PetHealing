@@ -6,13 +6,12 @@ include("../includes/header.php");
 // Kiểm tra yêu cầu đăng nhập (POST)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $password = md5($_POST["password"]);
 
     // Chuẩn bị câu truy vấn SQL với placeholder
     $query = "SELECT * FROM nguoidung WHERE email = ? AND mat_khau = ?";
     $stmt = mysqli_prepare($conn, $query);
 
-    // Ràng buộc tham số với kiểu dữ liệu (s: string, i: integer, d: double, b: blob)
     mysqli_stmt_bind_param($stmt, "ss", $email, $password);
 
     // Thực thi câu truy vấn

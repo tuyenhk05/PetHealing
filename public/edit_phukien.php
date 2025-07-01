@@ -1,6 +1,12 @@
 <?php
 include('../includes/db_connect.php');
-
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else {
+    $isAdmin = false;
+    $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
+}
 // Lấy ID từ URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -83,7 +89,8 @@ if (isset($_POST['capnhat'])) {
     <link rel="stylesheet" href="../assets/css/edit_product.css">
 </head>
 <body>
-    <div class="container">
+     <?php if ($isAdmin) { ?>
+     <div class="container">
         <h2>Sửa sản phẩm</h2>
         <form method="POST" enctype="multipart/form-data">
             <label>Tên sản phẩm:</label>
@@ -120,5 +127,9 @@ if (isset($_POST['capnhat'])) {
         </form>
         <a href="manage_phukien.php" class="back-link">← Quay lại</a>
     </div>
+    <?php } else {
+         echo $content;
+     } ?>
+   
 </body>
 </html>

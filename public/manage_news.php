@@ -1,5 +1,6 @@
 <?php
 include('../includes/db_connect.php');
+include "../includes/header.php";
 
 
 if(isset($_GET['delete'])){
@@ -18,7 +19,13 @@ if(isset($_POST['add_news'])){
     exit;
 }
 
-
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else {
+    $isAdmin = false;
+    $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
+}
 $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
@@ -27,8 +34,13 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
     <meta charset="UTF-8">
     <title>Quản lý Tin tức</title>
     <link rel="stylesheet" href="../assets/css/manage_news.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+            <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 <body>
+        <?php if ($isAdmin) { ?>
     <h2>Quản lý Tin tức</h2>
     <div class="form-section">
         <h3>Thêm tin mới</h3>
@@ -64,5 +76,11 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
         </tr>
         <?php endwhile; ?>
     </table>
+    <?php } else {
+            echo $content;
+        } ?>
+   
 </body>
 </html>
+<?php include "../includes/footer.php";
+?>

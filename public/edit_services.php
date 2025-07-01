@@ -1,6 +1,12 @@
 <?php
 include('../includes/db_connect.php'); // Kết nối cơ sở dữ liệu
-
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else {
+    $isAdmin = false;
+    $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
+}
 // Lấy ID dịch vụ từ URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -118,7 +124,8 @@ if (isset($_POST['update'])) {
 </head>
 <body>
 
-<h2>Cập nhật dịch vụ</h2>
+      <?php if ($isAdmin) { ?>
+    <h2>Cập nhật dịch vụ</h2>
 
 <?php if (isset($service)): ?>
     <form method="POST" enctype="multipart/form-data">
@@ -137,6 +144,10 @@ if (isset($_POST['update'])) {
 <?php else: ?>
     <p>Không tìm thấy dịch vụ để cập nhật.</p>
 <?php endif; ?>
+    <?php } else {
+          echo $content;
+      } ?>
+
 
 </body>
 </html>

@@ -3,6 +3,7 @@ session_start();
 include("../includes/db_connect.php");
 include("../includes/header.php");
 
+
 // Kiểm tra yêu cầu đăng nhập (POST)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST["email"];
@@ -27,13 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setcookie("user_id", $user['id'], time() + 3600, "/");
         setcookie("user_email", $user['email'], time() + 3600, "/");
         setcookie("user_name", $user['ho_ten'], time() + 3600, "/");
+        setcookie("vai_tro", $user['vai_tro'], time() + 3600, "/");
         // Chuyển hướng sang trang chủ
         header("Location: index.php");
         exit();
     } else {
         $error_message = "Email hoặc mật khẩu sai.";
     }
-
     // Đóng kết nối
     mysqli_stmt_close($stmt);
 }

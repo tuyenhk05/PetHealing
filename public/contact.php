@@ -34,8 +34,8 @@ echo "<!-- This is a PHP file for the contact page of PetHealing website -->";
 
         <!-- Contact Info & Form -->
         <section class="contact-info-form">
-
-            <div class="contact-info ">
+            <div style="max-width:1200px;margin-left:auto;margin-right:auto;display:flex">
+            <div class="contact-info " >
                 <h2>Thông tin liên hệ</h2>
                 <div class="contact-detail">
                     <div class="contact-icon address"></div>
@@ -100,6 +100,7 @@ echo "<!-- This is a PHP file for the contact page of PetHealing website -->";
                       <div id="message-container" class="message-container"></div>
                 </form>
             </div>
+                </div>
         </section>
 
         <!-- Map Section -->

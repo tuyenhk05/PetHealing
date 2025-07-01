@@ -1,6 +1,6 @@
 <?php
 include('../includes/db_connect.php');
-
+include "../includes/header.php";
 // Xóa lịch hẹn
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
@@ -8,7 +8,13 @@ if (isset($_GET['delete'])) {
     echo "<script>alert('Đã xóa lịch hẹn!');location.href='manage_appointments.php';</script>";
     exit;
 }
-
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else {
+    $isAdmin = false;
+    $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
+}
 // Lấy danh sách lịch hẹn (mới nhất lên trên)
 $appointments = $conn->query("SELECT * FROM LichHen ORDER BY ngay_hen DESC, gio_hen DESC");
 ?>
@@ -18,10 +24,15 @@ $appointments = $conn->query("SELECT * FROM LichHen ORDER BY ngay_hen DESC, gio_
     <meta charset="UTF-8">
     <title>Quản lý Lịch hẹn</title>
     <link rel="stylesheet" href="../assets/css/manage_appointments.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 <body>
-    <h2>Quản lý Lịch hẹn</h2>
-    <table>
+        <?php if ($isAdmin) { ?>
+     <h2>Quản lý Lịch hẹn</h2>
+    <table style="max-width:1200px!important">
         <tr>
             <th>STT</th>
             <th>Khách hàng</th>
@@ -59,5 +70,12 @@ $appointments = $conn->query("SELECT * FROM LichHen ORDER BY ngay_hen DESC, gio_
         </tr>
         <?php endwhile; ?>
     </table>
+    <?php } else {
+            echo $content;
+        } ?>
+
+   
 </body>
 </html>
+<?php include "../includes/footer.php";
+?>

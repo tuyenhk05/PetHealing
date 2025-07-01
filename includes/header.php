@@ -1,5 +1,11 @@
 <?php
 $name = isset($_COOKIE["user_name"]) ? $_COOKIE["user_name"] : "";
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else{
+    $isAdmin = false;
+}
 ?>
 <style>
     .logout:hover{
@@ -20,7 +26,10 @@ $name = isset($_COOKIE["user_name"]) ? $_COOKIE["user_name"] : "";
                     <li><a href="all_products.php">Cửa hàng</a></li>
                     <li><a href="all_doctors.php">Bác sĩ</a></li>
                     <li><a href="contact.php">Liên hệ</a></li>
-                    <li><a href="news.php">Tin tức</a></li>               
+                    <li><a href="news.php">Tin tức</a></li>   
+                    <?php if($isAdmin){ ?>
+                        <li><a href="dashboard.php">Quản lý</a></li>
+                    <?php } ?>
                     <?php if(isset($name) && $name!=""){ ?>
                     <li style="color: #2EB292">
                         <i class="fa-solid fa-user"></i> <?php echo $name; ?> 
@@ -45,6 +54,7 @@ $name = isset($_COOKIE["user_name"]) ? $_COOKIE["user_name"] : "";
                     document.cookie = "user_name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     document.cookie = "user_email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "vai_tro=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     // Có thể xóa thêm các cookie khác nếu cần
                     window.location.href = "login.php";
                 });

@@ -1,6 +1,13 @@
 <?php
 include('../includes/db_connect.php'); // Kết nối cơ sở dữ liệu
-
+include "../includes/header.php";
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else {
+    $isAdmin = false;
+    $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
+}
 // Thêm dịch vụ
 if (isset($_POST['add'])) {
     $ten_dich_vu = $_POST['ten_dich_vu'];
@@ -72,13 +79,12 @@ $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Quản lý Dịch Vụ</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f9f9f9;
-        }
+      
         h2, h3 {
             text-align: center;
             color: #34C9A5;
@@ -193,7 +199,8 @@ $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset"
     </style>
 </head>
 <body>
-<?php
+     <?php if ($isAdmin) { ?>
+    <?php
 // Thông báo nếu có
 if (isset($_GET['status']) && isset($_GET['message'])) {
     $status = $_GET['status'];
@@ -261,7 +268,7 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
         <?php endfor; ?>
     </div>
 
-    <script>
+ <script>
         // Kiểm tra nếu có thông báo status
     const statusMessage = document.querySelector('.status-message');
     if (statusMessage) {
@@ -281,6 +288,13 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
             }
         });
     </script>
+    <?php } else {
+         echo $content;
+     } ?>
+
+   
 
 </body>
 </html>
+<?php include "../includes/footer.php";
+?>

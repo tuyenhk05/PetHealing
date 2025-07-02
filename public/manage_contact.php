@@ -1,7 +1,15 @@
 <?php
 include('../includes/db_connect.php');
+include "../includes/header.php";
 $sql = "SELECT * FROM contact ORDER BY id DESC";
 $result = $conn->query($sql);
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else {
+    $isAdmin = false;
+    $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,14 +17,11 @@ $result = $conn->query($sql);
 <head>
     <title>Quản lý liên hệ khách hàng</title>
     <meta charset="UTF-8">
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 20px;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="../assets/css/style.css">
 
+    <style>
+       
         h2 {
             color: #34C9A5;
             text-align: center;
@@ -65,13 +70,38 @@ $result = $conn->query($sql);
         .contact-btn:hover {
             background-color: #2cb092;
         }
+        .back-button {
+            background: #34C9A5;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .back-button i {
+                margin-right: 6px;
+            }
+
+            .back-button:hover {
+                background: #22866E;
+            }
     </style>
 </head>
 <body>
+            <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;margin-bottom:20px">
+
+    <button onclick="window.history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i>  Quay lại
+    </button>
+     <?php if ($isAdmin) { ?>
     <h2>Danh sách liên hệ khách hàng</h2>
     <table>
         <tr>
-            <th>ID</th>
             <th>Họ tên</th>
             <th>Email</th>
             <th>Số điện thoại</th>
@@ -82,7 +112,7 @@ $result = $conn->query($sql);
         </tr>
         <?php while($row = $result->fetch_assoc()): ?>
         <tr>
-            <td><?= $row['id'] ?></td>
+           
             <td><?= htmlspecialchars($row['name']) ?></td>
             <td><?= htmlspecialchars($row['email']) ?></td>
             <td><?= htmlspecialchars($row['phone']) ?></td>
@@ -98,5 +128,10 @@ $result = $conn->query($sql);
         </tr>
         <?php endwhile; ?>
     </table>
+    <?php } else {
+         echo $content;
+     } ?>
+    </div>
 </body>
 </html>
+<?php include "../includes/footer.php";?>

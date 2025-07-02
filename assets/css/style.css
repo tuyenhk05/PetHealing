@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "DM Sans", sans-serif!important
+    
 }
 @keyframes fadeInUp {
     from {
@@ -32,6 +32,7 @@ body {
     color: #333;
     line-height: 1.6;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -77,6 +78,7 @@ a {
     .header .nav ul {
         list-style: none;
         display: flex;
+        align-items: center;
     }
 
         .header .nav ul li {
@@ -197,26 +199,29 @@ a {
     padding: 0 50px;
 }
 
-.service-card {
+.service-card1 {
     background-color: #F8F8F8;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
     text-align: center;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
-    .service-card h3 {
+    .service-card1 h3 {
         font-size: 20px;
         font-weight: 600;
         margin-bottom: 10px;
     }
 
-    .service-card p {
+    .service-card1 p {
         font-size: 16px;
         margin-bottom: 20px;
     }
 
-    .service-card .btn-primary {
+    .service-card1 .btn-primary {
         background-color: #F56C93;
         color: white;
         padding: 10px 20px;
@@ -225,7 +230,7 @@ a {
         text-decoration: none;
     }
 
-        .service-card .btn-primary:hover {
+        .service-card1 .btn-primary:hover {
             opacity: 0.8;
         }
 

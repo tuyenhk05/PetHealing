@@ -168,22 +168,23 @@ main {
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    gap: 10px;
     margin-top: 30px;
 }
 
     .pagination a {
-        padding: 8px 16px;
-        background: #3b82f6;
-        color: #fff;
-        text-decoration: none;
+        border: 1px solid #fff;
+        background: white;
+        color: #34C9A5;
+        padding: 6px 12px;
+        margin: 0 4px;
         border-radius: 6px;
-        font-size: 0.95rem;
-        transition: background-color 0.3s ease;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
     }
 
         .pagination a:hover {
-            background: #1d4ed8;
+            background: #22866E;
         }
 
 /* Hiệu ứng fade-in */

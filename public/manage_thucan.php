@@ -82,9 +82,32 @@ $result = mysqli_query($conn, "SELECT * FROM thucan LIMIT $limit OFFSET $offset"
                     <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+        <style>
+        .back-button {
+            background: #34C9A5;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
+            .back-button i {
+                margin-right: 6px;
+            }
+
+            .back-button:hover {
+                background: #22866E;
+            }
+    </style>
 </head>
 <body>
+                <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;margin-bottom:20px;">
+
       <?php if ($isAdmin) { ?>
     <button onclick="window.history.back()" class="back-button">
         <i class="fas fa-arrow-left"></i> Quay lại
@@ -135,9 +158,7 @@ $result = mysqli_query($conn, "SELECT * FROM thucan LIMIT $limit OFFSET $offset"
         </table>
     </div>
 
-    <div class="back">
-        <a href="manage_product.php">Quay lại</a>
-    </div>
+
 
     <div class="pagination">
         <?php for ($i = 1; $i <= $total_pages; $i++): ?>
@@ -146,7 +167,7 @@ $result = mysqli_query($conn, "SELECT * FROM thucan LIMIT $limit OFFSET $offset"
             </a>
         <?php endfor; ?>
     </div>
-
+</div>
 <script>
     document.getElementById("toggleFormBtn").addEventListener("click", function () {
         var form = document.getElementById("formContainer");

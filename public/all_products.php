@@ -22,7 +22,7 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/category.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         crossorigin="anonymous"
@@ -62,9 +62,10 @@ $result = mysqli_query($conn, $sql);
                         $imagePath = "../assets/image/";
                         while ($row = mysqli_fetch_assoc($result)) { 
                             $formattedPrice = number_format($row['gia'], 0, '', '.');
-                            $name = htmlspecialchars($row['ten']);  
+                            $name = htmlspecialchars($row['ten']);
                             // Xử lý ảnh: nếu có ảnh và file tồn tại mới lấy, không thì lấy default
                             if (!empty($row['image']) && file_exists($imagePath . $row['image'])) {
+                                
                                 $image_path = $imagePath . $row['image'];
                             } else {
                                 $image_path = $imagePath . "default.jpg";

@@ -52,9 +52,11 @@ $result = mysqli_query($conn, $querybs);
                         ?>
                     </div>
                     <div class="doctor-actions">
-                        <button class="btn contact-btn"><i class="fa-solid fa-phone"></i> Liên hệ</button>
-                        <button class="btn message-btn"><i class="fa-regular fa-envelope"></i> Gửi tin nhắn</button>
+                         <a class="btn contact-btn" href="tel:0123456789"><i class="fa-solid fa-phone"></i> Liên hệ</a>
+                        <a class="btn message-btn" href="mailto:doctor@example.com"><i class="fa-regular fa-envelope"></i> Gửi tin nhắn</a>
+                        
                     </div>
+                      
                     <div class="doctor-rating">
                         <?php for ($i=0; $i<5; $i++) echo '<i class="fa-solid fa-star"></i>'; ?>
                     </div>

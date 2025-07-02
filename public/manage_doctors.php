@@ -133,9 +133,24 @@ $result = mysqli_query($conn, "SELECT * FROM BacSi LIMIT $limit OFFSET $offset")
         button { background-color: #34C9A5; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;}
         button:hover { background-color: #218838;}
         .pagination { display: flex; justify-content: center; margin-top: 30px; gap: 6px;}
-        .pagination a { padding: 8px 14px; background-color: #34C9A5; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.25s;}
+            .pagination a {
+                border: 1px solid #34C9A5;
+                background: white;
+                color: #34C9A5;
+                padding: 6px 12px;
+                margin: 0 4px;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-weight: 600;
+            }
         .pagination a:hover { background-color: #218838; transform: translateY(-2px);}
-        .pagination a.active { background-color: #F56C93; pointer-events: none;}
+                .pagination a.active {
+                    background-color: #34C9A5;
+                    color: white;
+                    cursor: default;
+                   
+                }
         .btn-back { background-color: #F56C93; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-top: 20px; display: inline-block;}
         .btn-back:hover { background-color: #34C9A5;}
         .status-message { padding: 15px; margin-bottom: 20px; border-radius: 5px; text-align: center; font-weight: bold;}
@@ -144,12 +159,15 @@ $result = mysqli_query($conn, "SELECT * FROM BacSi LIMIT $limit OFFSET $offset")
     </style>
 </head>
 <body>
+        <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;margin-bottom:20px">
+
      <?php if ($isAdmin) { ?>
      <?php if (isset($_GET['status'], $_GET['message'])): ?>
         <div class="status-message <?= $_GET['status'] ?>"><?= htmlspecialchars($_GET['message']) ?></div>
     <?php endif; ?>
-        <a href="javascript:history.back()" class="btn-back">Quay lại</a>
-
+    <button onclick="window.history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </button>
     <h2>Quản Lý Bác Sĩ</h2>
     <button id="toggleFormBtn"><?= $editingDoctor ? "Ẩn Form Sửa" : "Thêm Bác Sĩ" ?></button>
     <div id="formContainer" style="<?= $editingDoctor ? 'display:block;' : 'display:none;' ?>">
@@ -204,7 +222,7 @@ $result = mysqli_query($conn, "SELECT * FROM BacSi LIMIT $limit OFFSET $offset")
             <a href="?page=<?= $i ?>" class="<?= $i == $page ? 'active' : '' ?>"><?= $i ?></a>
         <?php endfor; ?>
     </div>
-
+            </div>
     <script>
         const status = document.querySelector('.status-message');
         if (status) setTimeout(() => status.style.display = 'none', 2000);

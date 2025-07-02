@@ -22,7 +22,7 @@ $resultPK = mysqli_query($conn, $querypk);
     <title>PetHealing - Trang chủ</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Liên kết với jQuery -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -66,10 +66,10 @@ $resultPK = mysqli_query($conn, $querypk);
         <div class="container">
             <h2>Dịch vụ nổi bật</h2>
             <div class="services-grid"><?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="service-card">
+                <div class="service-card1">
                     <h3><?php echo $row['ten_dich_vu']; ?></h3>
                     <p><?php echo $row['mo_ta']; ?></p>
-                    <a href="services.php" class="btn-primary">Tìm hiểu thêm</a>
+                    <a href="appointment.php" class="btn-primary">Đặt lịch ngay</a>
                 </div><?php } ?>
             </div>
         </div>

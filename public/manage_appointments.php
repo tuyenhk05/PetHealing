@@ -43,7 +43,8 @@ $res2 = $conn->query($sql2);
     <link rel="stylesheet" href="../assets/css/manage_appointments.css">
     <style>
         .back-button {
-            background: #007bff;
+           
+            background: #34C9A5;
             color: white;
             border: none;
             padding: 8px 14px;
@@ -52,6 +53,7 @@ $res2 = $conn->query($sql2);
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            margin-bottom: 20px;
         }
 
             .back-button i {
@@ -59,15 +61,16 @@ $res2 = $conn->query($sql2);
             }
 
             .back-button:hover {
-                background: #0056b3;
+                background: #22866E;
             }
     </style>
 </head>
 <body>
     <?php if ($isAdmin) { ?>
+    <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;">
     <button onclick="window.history.back()" class="back-button">
         <i class="fas fa-arrow-left"></i> Quay lại
-    </button>
+    </button></div>
     <h2>Quản Lý Lịch Hẹn Của Thú Cưng</h2>
     <div class="table-container">
 

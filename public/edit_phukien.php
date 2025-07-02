@@ -1,5 +1,7 @@
 <?php
 include('../includes/db_connect.php');
+include "../includes/header.php";
+
 $vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
 if ($vai_tro == 'Admin') {
     $isAdmin = true;
@@ -86,6 +88,8 @@ if (isset($_POST['capnhat'])) {
 <head>
     <title>Sửa sản phẩm phụ kiện</title>
     <meta charset="utf-8">
+                    <link rel="stylesheet" href="../assets/css/style.css">
+
     <link rel="stylesheet" href="../assets/css/edit_product.css">
 </head>
 <body>
@@ -133,3 +137,5 @@ if (isset($_POST['capnhat'])) {
    
 </body>
 </html>
+<?php include "../includes/footer.php";
+?>

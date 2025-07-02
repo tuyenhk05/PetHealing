@@ -39,7 +39,7 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
             <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         .back-button {
-            background: #007bff;
+            background: #34C9A5;
             color: white;
             border: none;
             padding: 8px 14px;
@@ -48,6 +48,7 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            margin-bottom: 20px;
         }
 
             .back-button i {
@@ -55,11 +56,12 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
             }
 
             .back-button:hover {
-                background: #0056b3;
+                background: #22866E;
             }
     </style>
 </head>
 <body>
+    <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;">
         <?php if ($isAdmin) { ?>
     <button onclick="window.history.back()" class="back-button">
         <i class="fas fa-arrow-left"></i> Quay lại
@@ -102,7 +104,7 @@ $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
     <?php } else {
             echo $content;
         } ?>
-   
+   </div>
 </body>
 </html>
 <?php include "../includes/footer.php";

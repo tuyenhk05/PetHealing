@@ -21,14 +21,14 @@ if ($vai_tro == 'Admin') {
             display: inline-block;
             padding: 15px 30px;
             margin: 20px;
-            background-color: #28a745;
+            background-color: #34C9A5;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-size: 20px;
         }
         .back-button {
-            background: #007bff;
+            background: #34C9A5;
             color: white;
             border: none;
             padding: 8px 14px;
@@ -37,6 +37,7 @@ if ($vai_tro == 'Admin') {
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            margin-bottom: 20px;
         }
 
             .back-button i {
@@ -44,12 +45,14 @@ if ($vai_tro == 'Admin') {
             }
 
             .back-button:hover {
-                background: #0056b3;
+                background: #22866E;
             }
         a.button:hover { background-color: #218838; }
     </style>
 </head>
 <body>
+        <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;">
+
       <?php if ($isAdmin) { ?>
     <button onclick="window.history.back()" class="back-button">
         <i class="fas fa-arrow-left"></i> Quay lại
@@ -62,7 +65,7 @@ if ($vai_tro == 'Admin') {
     <?php } else {
           echo $content;
       } ?>
-    
+    </div>
 </body>
 </html>
 <?php include "../includes/footer.php";

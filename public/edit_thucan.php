@@ -90,8 +90,10 @@ if (isset($_POST['capnhat'])) {
     <title>Sửa sản phẩm thức ăn</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../assets/css/edit_product.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+
         <?php if ($isAdmin) { ?>
     <div class="container">
         <h2>Sửa sản phẩm</h2>

@@ -134,26 +134,27 @@ $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset"
             display: flex;
             justify-content: center;
             margin-top: 30px;
-            gap: 6px;
         }
-        .pagination a {
-            display: inline-block;
-            padding: 8px 14px;
-            background-color: #34C9A5;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.25s ease-in-out;
-        }
+            .pagination a {
+                border: 1px solid #34C9A5;
+                background: white;
+                color: #34C9A5;
+                padding: 6px 12px;
+                margin: 0 4px;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-weight: 600;
+            }
         .pagination a:hover {
             background-color: #218838;
             transform: translateY(-2px);
         }
-        .pagination a.active {
-            background-color: #F56C93;
-            pointer-events: none;
-        }
+                .pagination a.active {
+                    background-color: #34C9A5;
+                    color: white;
+                    cursor: default;
+                }
         #toggleFormBtn {
             background-color: #F56C93;
             color: white;
@@ -197,7 +198,7 @@ $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset"
             color: white;
         }
         .back-button {
-            background: #007bff;
+            background: #34C9A5;
             color: white;
             border: none;
             padding: 8px 14px;
@@ -206,6 +207,7 @@ $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset"
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            margin-bottom: 20px;
         }
 
             .back-button i {
@@ -213,7 +215,7 @@ $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset"
             }
 
             .back-button:hover {
-                background: #0056b3;
+                background: #22866E;
             }
     </style>
 </head>
@@ -227,6 +229,7 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
     echo "<div class='status-message " . $status . "'>" . $message . "</div>";
 }
 ?>
+    <div style="max-width: 1200px; margin-left: auto; margin-right: auto;margin-bottom:20px; ">
     <button onclick="window.history.back()" class="back-button">
         <i class="fas fa-arrow-left"></i> Quay lại
     </button>
@@ -288,7 +291,7 @@ if (isset($_GET['status']) && isset($_GET['message'])) {
         <a href="?page=<?= $i ?>" class="<?= ($i == $page) ? 'active' : '' ?>"><?= $i ?></a>
         <?php endfor; ?>
     </div>
-
+        </div>
  <script>
         // Kiểm tra nếu có thông báo status
     const statusMessage = document.querySelector('.status-message');

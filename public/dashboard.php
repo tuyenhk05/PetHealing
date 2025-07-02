@@ -40,6 +40,9 @@ $isAdmin = false;
             <div class="muc_luc_item">
                 <a href="manage_doctors.php">Quản lý Thông tin bác sĩ</a>
             </div>
+            <div class="muc_luc_item">
+                <a href="manage_contact.php">Quản lý Thông tin liên hệ</a>
+            </div>
         </div>
         </div>
     <?php } else {

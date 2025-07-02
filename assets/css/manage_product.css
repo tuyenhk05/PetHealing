@@ -1,18 +1,15 @@
 
-        h2, h3 {
-            text-align: center;
-            color: #333;
-        }
+      
         table {
             border-collapse: collapse;
             width: 100%;
             background: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
+th {
+    background-color: #34C9A5;
+    color: white;
+}
         th, td {
             border: 1px solid #ddd;
             padding: 10px;
@@ -52,20 +49,19 @@
         display: flex;
         justify-content: center;
         margin-top: 30px;
-        gap: 6px;
         }
 
-        .pagination a {
-        display: inline-block;
-        padding: 8px 14px;
-        background-color: #28a745;
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: bold;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: all 0.25s ease-in-out;
-        }
+            .pagination a {
+                border: 1px solid #34C9A5;
+                background: white;
+                color: #34C9A5;
+                padding: 6px 12px;
+                margin: 0 4px;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-weight: 600;
+            }
 
         .pagination a:hover {
         background-color: #218838;
@@ -73,11 +69,11 @@
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
 
-        .pagination a.active {
-        background-color: #155724;
-        pointer-events: none;
-        transform: scale(1.05);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+                .pagination a.active {
+                    background-color: #34C9A5;
+                    color: white;
+                    cursor: default;
+                }
         }
         .back a{
             background-color: #F56C93;

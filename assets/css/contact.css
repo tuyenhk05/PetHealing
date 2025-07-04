@@ -222,9 +222,13 @@
 
     .contact-info, .contact-form {
         width: 100%;
+        margin-bottom:20px;
     }
 
     .map-frame iframe {
         height: 300px;
+    }
+    .contact-info-form .box {
+        display: block!important;
     }
 }

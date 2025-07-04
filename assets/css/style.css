@@ -127,13 +127,13 @@ a {
     }
 
     .hero h1 {
-        font-size: 50px;
+        font-size: clamp(30px,2vw,50px);
         margin-bottom: 20px;
         font-weight: 600;
     }
 
     .hero p {
-        font-size: 18px;
+        font-size: clamp(13px,2vw,18px);
         margin-bottom: 30px;
         max-width: 450px;
     }
@@ -145,7 +145,7 @@ a {
     .hero-buttons .btn-primary,
     .hero-buttons .btn-secondary {
         padding: 15px 30px;
-        font-size: 16px;
+        font-size: clamp(12px,2vw,15px);
         border-radius: 25px;
         margin-right: 20px;
         text-decoration: none;
@@ -514,7 +514,7 @@ a {
         width: 100%;
         display: inline;
         text-align: center;
-        font-size: 30px;
+        font-size: clamp(15px,2vw,30px);
         font-weight: 600;
         margin-bottom: 40px;
     }
@@ -762,4 +762,87 @@ a {
 }
 .header .nav ul li{
   cursor:pointer;
+}
+@media(max-width:992px){
+    .appointment_image img{
+        display:none;
+    }
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding: 0 50px;
+    }
+}
+@media(max-width:860px) {
+    body {
+        overflow: overlay;
+    }
+    .hero-image img {
+        max-width:300px;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        
+        font-weight: 500;
+    }
+    .team-member{
+        width:100%;
+    }
+        .team-member img{
+            width:77%;
+            height:80%;
+        }
+}
+@media(max-width:720px) {
+    .hero-image{
+        display:none;
+    }
+    .hero p{
+        max-width:520px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .hero-buttons{
+        display:block;
+    }
+    .hero{
+        height:60vh;
+    }
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 30px;
+        padding: 0 50px;
+    }
+}
+@media(max-width:520px) {
+    .form-group:nth-child(1) {
+        display: inline-block;
+        width: 100%;
+    }
+    .form-group:nth-child(2) {
+        width: 100%;
+        display: inline-block;
+    }
+    .services-grid{
+        padding:0 25px;
+    }
+}
+@media(max-width:435px) {
+    .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
+        padding: 10px 15px;
+        font-size: clamp(12px,2vw,15px);
+        border-radius: 25px;
+        margin-right: 15px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .about-us{
+        padding:38px 0;
+    }
+    .products-grid{
+        padding:0 30px;
+    }
 }

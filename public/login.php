@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("../includes/db_connect.php");
-include("../includes/header.php");
 
 
 // Kiểm tra yêu cầu đăng nhập (POST)
@@ -35,9 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $error_message = "Email hoặc mật khẩu sai.";
     }
+
     // Đóng kết nối
     mysqli_stmt_close($stmt);
 }
+include("../includes/header.php");
+
 ?>
 
 <html>

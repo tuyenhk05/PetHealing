@@ -56,7 +56,7 @@ $result = mysqli_query($conn, $sql);
         h1 {
             text-align: center;
             margin: 20px 0;
-            font-size: 24px;
+            font-size: clamp(15px,2vw,24px);
             color: #34C9A5; /* Màu xanh chủ đạo */
         }
 
@@ -76,6 +76,7 @@ $result = mysqli_query($conn, $sql);
             padding: 10px;
             text-align: center;
             border: 1px solid #ddd;
+            font-size:clamp(12px,2vw,16px);
         }
 
         table th {

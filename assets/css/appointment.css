@@ -29,15 +29,15 @@
 
 .bg-sub-title h1 {
     margin-top: 60px;
-    font-size: 50px;
+    font-size: clamp(35px,2vw,50px);
 }
 .bg-sub-title h2{
     color: #EB4798;
     padding: 20px 0;
-    font-size: 40px;
+    font-size: clamp(30px,2vw,40px);
 }
 .bg-sub-title p{
-    font-size: 35px;
+    font-size: clamp(20px,3vw,35px);
 }
 
 .container-form{
@@ -50,4 +50,36 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+}
+@media(max-width:1200px){
+    .container-form {
+        margin-top: 40px;
+        margin-left: 300px;
+        margin-right: 300px;
+        margin-bottom: 40px;
+    }
+}
+@media(max-width:992px) {
+    .container-form {
+        margin-top: 20px;
+        margin-left: 200px;
+        margin-right: 200px;
+        margin-bottom: 20px;
+    }
+}
+@media(max-width:800px) {
+    .form-group:nth-child(1) {
+        display: inline-block;
+        width: 100%;
+    }
+    .form-group:nth-child(2) {
+        width: 100%;
+        display: inline-block;
+    }
+    .container-form {
+        margin-top: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+    }
 }

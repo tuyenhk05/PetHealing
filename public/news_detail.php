@@ -1,6 +1,5 @@
 <?php
 include('../includes/db_connect.php');
-include('../includes/header.php');
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $sql = "SELECT * FROM tintuc WHERE id = $id";
 $result = mysqli_query($conn, $sql);
@@ -17,6 +16,8 @@ $related_sql = $category
     ? "SELECT * FROM tintuc WHERE category = '$category' AND id != $id ORDER BY ngay_dang DESC LIMIT 3"
     : "SELECT * FROM tintuc WHERE id != $id ORDER BY ngay_dang DESC LIMIT 3";
 $related_result = mysqli_query($conn, $related_sql);
+include('../includes/header.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">

@@ -1,6 +1,6 @@
 <?php
 include('../includes/db_connect.php');
-include('../includes/header.php');
+$user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : null;
 
 // Lấy ID sản phẩm từ URL
 $product_id = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -32,6 +32,8 @@ if ($product_id && $product_type) {
     header('Location: index.php');
     exit();
 }
+include('../includes/header.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -182,30 +184,41 @@ if ($product_id && $product_type) {
     if (currentQuantity < 1) currentQuantity = 1;
     quantityInput.value = currentQuantity;
   }
-
+  function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
   // Thêm sản phẩm vào giỏ hàng
-  document.querySelector('.add-to-cart').addEventListener('click', function () {
-    const productId = this.getAttribute('data-id');
-    const name = this.getAttribute('data-name');
-    const quantity = parseInt(document.getElementById('quantity').value);
+    document.querySelector('.add-to-cart').addEventListener('click', function () {
+        const get = getCookie('user_id');
+        if (get) {
+            const productId = this.getAttribute('data-id');
+            const name = this.getAttribute('data-name');
+            const quantity = parseInt(document.getElementById('quantity').value);
 
-    fetch('../includes/add_to_cart.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id_san_pham: productId,
-        so_luong: quantity,
-        name_sp: name
-      })
-    })
-    .then(res => res.text())
-    .then(data => {
-      console.log(data);
-      const infElement = document.querySelector('.inf');
-      infElement.classList.add('show');
-      setTimeout(() => infElement.classList.remove('show'), 2000);
-    })
-    .catch(error => console.error('Lỗi:', error));
+            fetch('../includes/add_to_cart.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id_san_pham: productId,
+                    so_luong: quantity,
+                    name_sp: name
+                })
+            })
+                .then(res => res.text())
+                .then(data => {
+                    console.log(data);
+                    const infElement = document.querySelector('.inf');
+                    infElement.classList.add('show');
+                    setTimeout(() => infElement.classList.remove('show'), 2000);
+                })
+                .catch(error => console.error('Lỗi:', error));
+        }
+        else {
+            window.location.href = 'login.php';
+        }
+   
   });
 
   // Hàm chuyển tab

@@ -1,6 +1,5 @@
 <?php
 include('../includes/db_connect.php');
-include "../includes/header.php";
 
 
 if(isset($_GET['delete'])){
@@ -27,6 +26,8 @@ if ($vai_tro == 'Admin') {
     $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
 }
 $news = $conn->query("SELECT * FROM tintuc ORDER BY id DESC");
+include "../includes/header.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">

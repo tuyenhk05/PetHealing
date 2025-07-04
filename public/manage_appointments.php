@@ -1,6 +1,5 @@
 <?php
 include('../includes/db_connect.php');
-include "../includes/header.php";
 if (isset($_GET['delete_id'])) {
     $conn->query("DELETE FROM lichhen WHERE id = ".intval($_GET['delete_id']));
     header("Location: manage_appointments.php"); exit();
@@ -31,6 +30,8 @@ $sql2 = "SELECT * FROM lichhen WHERE trang_thai IN ('Đã xong', 'Đã hủy')";
 if ($search) $sql2 .= " AND (ten_khach_hang LIKE '%$search%' OR ten_thu_cung LIKE '%$search%' OR ten_dich_vu LIKE '%$search%')";
 $sql2 .= " ORDER BY ngay_hen DESC, gio_hen DESC";
 $res2 = $conn->query($sql2);
+include "../includes/header.php";
+
 ?>
 <!DOCTYPE html>
 <html>

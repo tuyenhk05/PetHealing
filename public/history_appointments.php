@@ -1,6 +1,5 @@
 <?php
 session_start(); // Khởi động session
-include "../includes/header.php";
 // Kiểm tra xem khách hàng đã đăng nhập chưa (bằng cookie)
 if (!isset($_COOKIE['user_name'])) {
     echo "Vui lòng đăng nhập để xem lịch sử đặt lịch hẹn!";
@@ -39,6 +38,7 @@ if (isset($_POST['cancel_id'])) {
 // Truy vấn lịch sử đặt lịch hẹn của khách hàng
 $sql = "SELECT * FROM lichhen WHERE email_khach_hang = '$customer_email' "; // Lọc theo tên khách hàng
 $result = mysqli_query($conn, $sql);
+include "../includes/header.php";
 
 ?>
 

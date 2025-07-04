@@ -1,6 +1,5 @@
 <?php
 include('../includes/db_connect.php'); // Kết nối cơ sở dữ liệu
-include "../includes/header.php";
 $vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
 if ($vai_tro == 'Admin') {
     $isAdmin = true;
@@ -36,7 +35,7 @@ if (isset($_POST['add'])) {
                 $stmt->bind_param("sssss", $ten_dich_vu, $loai, $gia, $mo_ta, $image_new_name);
                 $stmt->execute();
                 $stmt->close();
-                header("Location: manage_services.php?status=success&message=Thêm dịch vụ thành công!");
+                header("location: manage_services.php?status=success&message=Thêm dịch vụ thành công!");
                 exit();
             } else {
                 header("Location: manage_services.php?status=error&message=Lỗi khi tải ảnh lên.");
@@ -72,6 +71,8 @@ $total_records = $total_row['total'];
 $total_pages = ceil($total_records / $limit);
 
 $result = mysqli_query($conn, "SELECT * FROM dichvu LIMIT $limit OFFSET $offset");
+include "../includes/header.php";
+
 ?>
 
 <!DOCTYPE html>

@@ -43,6 +43,9 @@ $isAdmin = false;
             <div class="muc_luc_item">
                 <a href="manage_contact.php">Quản lý Thông tin liên hệ</a>
             </div>
+            <div class="muc_luc_item">
+                <a href="baocao_gui.php">Xuất file báo cáo</a>
+            </div>
         </div>
         </div>
     <?php } else {

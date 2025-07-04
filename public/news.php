@@ -1,6 +1,5 @@
 <?php
 include('../includes/db_connect.php');
-include('../includes/header.php');
 
 // Phân trang
 $per_page = 6;
@@ -14,6 +13,8 @@ $sql_total = "SELECT COUNT(*) as total FROM tintuc";
 $result_total = mysqli_query($conn, $sql_total);
 $total_articles = mysqli_fetch_assoc($result_total)['total'];
 $total_pages = ceil($total_articles / $per_page);
+include('../includes/header.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">

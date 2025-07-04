@@ -1,19 +1,27 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "benhvienthucung");
-$conn->set_charset("utf8");
+// User final code block (baocao_gui)
 
-if ($conn->connect_error) {
-    die("Kết nối thất bại: " . $conn->connect_error);
+include('../includes/db_connect.php');
+$vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
+if ($vai_tro == 'Admin') {
+    $isAdmin = true;
+} else {
+    $isAdmin = false;
+    $content = "<br/><h1> Bạn không có quyền truy cập trang này. </h1><br/><br/><br/>";
 }
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['report_type'])) {
         $type = $_POST['report_type'];
 
-        header("Content-Type: application/vnd.ms-excel");
-        header("Content-Disposition: attachment; filename={$type}_report.xls");
+        header("Content-Type: text/csv; charset=UTF-8");
+        header("Content-Disposition: attachment; filename={$type}_report.csv");
         header("Pragma: no-cache");
         header("Expires: 0");
+
+        echo "\xEF\xBB\xBF"; // UTF-8 BOM for Excel
 
         switch ($type) {
             case "tongquan":
@@ -36,12 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             case "doanhthu":
                 echo "=== DOANH THU DỊCH VỤ (LỊCH HẸN) ===\n";
-                $res = $conn->query("
-                    SELECT lh.ten_dich_vu, COUNT(*) AS so_luot, dv.gia 
-                    FROM lichhen lh 
-                    JOIN dichvu dv ON lh.ten_dich_vu = dv.ten_dich_vu 
-                    GROUP BY lh.ten_dich_vu, dv.gia
-                ");
+                $res = $conn->query("SELECT lh.ten_dich_vu, COUNT(*) AS so_luot, dv.gia FROM lichhen lh JOIN dichvu dv ON lh.ten_dich_vu = dv.ten_dich_vu GROUP BY lh.ten_dich_vu, dv.gia");
                 echo "Dịch vụ\tSố lượt\tDoanh thu\n";
                 $tong_dv = 0;
                 while ($row = $res->fetch_assoc()) {
@@ -62,9 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $ten = $conn->real_escape_string($row['name_sp']);
                     $soluong = $row['sl'];
                     $gia = 0;
-                    $sqlGia = "SELECT gia FROM thucan WHERE ten = '$ten' 
-                               UNION 
-                               SELECT gia FROM phukien WHERE ten = '$ten'";
+                    $sqlGia = "SELECT gia FROM thucan WHERE ten = '$ten' UNION SELECT gia FROM phukien WHERE ten = '$ten'";
                     $resGia = $conn->query($sqlGia);
                     if ($resGia && $giaRow = $resGia->fetch_assoc()) {
                         $gia = $giaRow['gia'];
@@ -95,12 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $year = $_POST['year'] ?? date('Y');
 
                 echo "=== DOANH THU DỊCH VỤ THÁNG $month/$year ===\n";
-                $res = $conn->query("SELECT lh.ten_dich_vu, COUNT(*) AS so_luot, dv.gia 
-                    FROM lichhen lh 
-                    JOIN dichvu dv ON lh.ten_dich_vu = dv.ten_dich_vu 
-                    WHERE MONTH(lh.ngay_hen) = $month AND YEAR(lh.ngay_hen) = $year
-                    GROUP BY lh.ten_dich_vu, dv.gia");
-
+                $res = $conn->query("SELECT lh.ten_dich_vu, COUNT(*) AS so_luot, dv.gia FROM lichhen lh JOIN dichvu dv ON lh.ten_dich_vu = dv.ten_dich_vu WHERE MONTH(lh.ngay_hen) = $month AND YEAR(lh.ngay_hen) = $year GROUP BY lh.ten_dich_vu, dv.gia");
                 echo "Dịch vụ\tSố lượt\tDoanh thu\n";
                 $tong = 0;
                 while ($row = $res->fetch_assoc()) {
@@ -111,7 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Tổng doanh thu:\t\t$tong VND\n";
                 break;
 
-                
             case "tonkho":
                 echo "=== TỒN KHO THỨC ĂN ===\n";
                 $res = $conn->query("SELECT ten, danh_cho_loai, so_luong FROM thucan");
@@ -131,10 +126,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             default:
                 echo "Không có báo cáo phù hợp.";
         }
-
         exit();
     }
 }
+;
+    
+
+
+
+include('../includes/header.php'); // Bao gồm header
 ?>
 
 <!-- Giao diện chọn báo cáo -->
@@ -142,18 +142,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+        <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Xuất báo cáo chuyên mục</title>
   <style>
-    body { font-family: Arial; background: #f3f3f3; padding: 40px; }
-    .container { max-width: 500px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px #aaa; }
+  
     h2 { text-align: center; margin-bottom: 20px; }
     select, button { width: 100%; padding: 10px; margin-top: 10px; }
-    button { background: #28a745; color: white; border: none; border-radius: 5px; font-weight: bold; }
+    button { background: #28a745; color: white; border: none; border-radius: 5px; font-weight: bold;width:150px; }
     button:hover { background: #218838; }
+      .back-button {
+          background: #34C9A5;
+          color: white;
+          border: none;
+          padding: 8px 14px;
+          border-radius: 5px;
+          font-size: 14px;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          margin-bottom: 20px;
+          width:150px;
+      }
+
+          .back-button i {
+              margin-right: 6px;
+          }
+
+          .back-button:hover {
+              background: #22866E;
+          }
+      .container1 {
+          margin-bottom: 20px;
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+      }
   </style>
 </head>
 <body>
-<div class="container">
+     <?php if ($isAdmin) { ?>
+    
+    <div class="container1">
+        <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;">
+    <button onclick="window.history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </button></div>
   <h2>Xuất Báo Cáo</h2>
   <form method="POST">
     <label>Chọn loại báo cáo:</label>
@@ -190,5 +224,13 @@ function toggleDateInputs(value) {
   document.getElementById('dateInputs').style.display = value === 'doanhthu_thang' ? 'block' : 'none';
 }
 </script>
+    <?php } else {
+         echo $content;
+     } ?>
+
+
 </body>
 </html>
+<?php
+include('../includes/footer.php');
+?>

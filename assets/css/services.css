@@ -1,12 +1,11 @@
 /* Reset cơ bản */
-* {
-  margin: 0; padding: 0; box-sizing: border-box;
-}
+
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #FEFEFE;
-  color: #333;
+    font-family: 'Poppins', sans-serif !important;
+    background-color: #FEFEFE;
+    color: #333;
+    line-height: 1.6;
 }
 .button_service {
     color: #34C9A5;

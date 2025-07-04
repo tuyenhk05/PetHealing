@@ -116,33 +116,7 @@
     }
 
     /* Thêm icon cho từng mục */
-    .muc_luc_item:nth-child(1) a::before {
-        content: '📅';
-        font-size: 2rem;
-        display: block;
-        margin-bottom: 15px;
-    }
-
-    .muc_luc_item:nth-child(2) a::before {
-        content: '🛍️';
-        font-size: 2rem;
-        display: block;
-        margin-bottom: 15px;
-    }
-
-    .muc_luc_item:nth-child(3) a::before {
-        content: '🏥';
-        font-size: 2rem;
-        display: block;
-        margin-bottom: 15px;
-    }
-
-    .muc_luc_item:nth-child(4) a::before {
-        content: '📰';
-        font-size: 2rem;
-        display: block;
-        margin-bottom: 15px;
-    }
+    
 
 /* Responsive Design */
 @media (max-width: 768px) {

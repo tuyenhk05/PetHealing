@@ -27,7 +27,7 @@
     align-items: center;
 }
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif!important;
     background-color: #FEFEFE;
     color: #333;
     line-height: 1.6;

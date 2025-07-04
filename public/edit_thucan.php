@@ -1,6 +1,5 @@
 <?php
 include('../includes/db_connect.php');
-include "../includes/header.php";
 $vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
 if ($vai_tro == 'Admin') {
     $isAdmin = true;
@@ -81,6 +80,8 @@ if (isset($_POST['capnhat'])) {
         exit();
     }
 }
+include "../includes/header.php";
+
 ?>
 
 

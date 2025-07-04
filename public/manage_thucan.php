@@ -1,6 +1,5 @@
 <?php
 include('../includes/db_connect.php');
-include "../includes/header.php";
 $vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
 if ($vai_tro == 'Admin') {
     $isAdmin = true;
@@ -72,6 +71,8 @@ $total_records = $total_row['total'];
 $total_pages = ceil($total_records / $limit);
 
 $result = mysqli_query($conn, "SELECT * FROM thucan LIMIT $limit OFFSET $offset");
+include "../includes/header.php";
+
 ?>
 
 <!DOCTYPE html>

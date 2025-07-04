@@ -1,7 +1,6 @@
 <?php
-include('../includes/header.php');
 include('../includes/db_connect.php');
-$user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : null;
+$user_id = isset($_COOKIE['user_name']) ? $_COOKIE['user_id'] : null;
 if (!$user_id) {
     header("Location: ./login.php");
     exit();
@@ -13,6 +12,8 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, 'i', $user_id);
 mysqli_stmt_execute($stmt);
 $orders = mysqli_stmt_get_result($stmt);
+include('../includes/header.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -20,6 +21,8 @@ $orders = mysqli_stmt_get_result($stmt);
     <meta charset="UTF-8">
     <title>Lịch sử mua hàng</title>
     <link rel="stylesheet" href="../assets/css/order_history.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 <main class="history-container">

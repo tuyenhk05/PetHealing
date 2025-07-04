@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("../includes/db_connect.php");
-include("../includes/header.php");
 
 // Xử lý đăng ký
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,6 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     mysqli_stmt_close($check_stmt);
 }
+include("../includes/header.php");
+
 ?>
 
 <!DOCTYPE html>

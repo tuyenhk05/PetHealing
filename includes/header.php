@@ -177,6 +177,8 @@ $isAdmin = ($vai_tro == 'Admin');
                         </div>
                         <div class="user-menu" id="userMenu">
                             <a href="history_appointments.php"><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử đặt lịch hẹn</a>
+                            <a href="order_history.php"><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử đặt hàng</a>
+
                             <a href="#" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i> &nbsp;Đăng xuất</a>
                         </div>
                     </li>
@@ -202,6 +204,8 @@ $isAdmin = ($vai_tro == 'Admin');
     } ?>
     <?php if (!empty($name)) { ?>
         <a href="history_appointments.php">Lịch sử đặt lịch hẹn</a>
+                                <a href="order_history.php" ><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử đặt hàng</a>
+
         <a href="#" id="logoutLinkMobile">Đăng xuất</a>
     <?php } else { ?>
         <a href="login.php">Đăng nhập</a>
@@ -236,13 +240,12 @@ $isAdmin = ($vai_tro == 'Admin');
     }
 
     logout?.addEventListener('click', function (e) {
-        e.preventDefault();
         clearCookiesAndRedirect();
     });
 
     logoutMobile?.addEventListener('click', function (e) {
-        e.preventDefault();
         clearCookiesAndRedirect();
+        
     });
 
     function toggleSidebar() {

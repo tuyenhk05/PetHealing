@@ -6,7 +6,7 @@ body {
 }
 .history-container {
     max-width: 920px;
-    margin: 40px auto 0 auto;
+    margin: 40px auto 40px auto;
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 4px 28px 0 rgba(53, 196, 210, 0.09);

@@ -6,7 +6,7 @@ body {
 }
 .checkout-wrapper {
     max-width: 950px;
-    margin: 44px auto 0 auto;
+    margin: 44px auto 44px auto;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 4px 28px 0 rgba(53, 196, 210, 0.09);

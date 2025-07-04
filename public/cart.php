@@ -82,8 +82,8 @@ if (!$user_id) {
                         <strong>Tổng cộng (tất cả):</strong>
                         <span><?php echo number_format($total, 0, '', '.'); ?> VND</span>
                     </div>
-                    <div class="checkout-btn">
-                        <button type="submit" class="btn-filled">Thanh toán các sản phẩm đã chọn</button>
+                   <div class="checkout-btn">
+                    <a href="checkout.php" class="btn-filled">Thanh toán các sản phẩm đã chọn</a>
                     </div>
                 <?php else: ?>
                     <p>Giỏ hàng của bạn đang trống.</p>

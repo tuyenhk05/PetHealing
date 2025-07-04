@@ -1,0 +1,72 @@
+body {
+    background: linear-gradient(120deg, #d6f5f8 0%, #b6e0e4 100%);
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.history-container {
+    max-width: 920px;
+    margin: 40px auto 0 auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 28px 0 rgba(53, 196, 210, 0.09);
+    padding: 35px 32px 32px 32px;
+}
+.history-container h1 {
+    text-align: center;
+    color: #23b1a5;
+    font-size: 2.6rem;
+    margin-bottom: 38px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+.order-block {
+    background: #eafffa;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    padding: 22px 22px 18px 22px;
+    box-shadow: 0 1px 9px rgba(0, 0, 0, 0.03);
+}
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.11rem;
+    color: #0a6462;
+    font-weight: 600;
+    margin-bottom: 13px;
+    flex-wrap: wrap;
+}
+.order-header span {
+    margin-right: 22px;
+}
+.order-info {
+    background: #f5fffe;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #235353;
+    margin-bottom: 13px;
+}
+.order-info b {color: #22866E;}
+.order-products ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+.order-products li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #336;
+}
+@media (max-width: 600px) {
+    .history-container {
+        padding: 10px 2vw;
+    }
+    .order-block {
+        padding: 12px 4vw 12px 4vw;
+    }
+    .order-header {
+        flex-direction: column;
+        gap: 3px;
+    }
+}

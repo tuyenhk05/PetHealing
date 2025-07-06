@@ -32,7 +32,7 @@
                 <li><a href="appointment.php">Đặt lịch hẹn</a></li>
                 <li><a href="all_products.php">Cửa hàng</a></li>
        
-                <li><a href="about.php">Liên hệ</a></li>
+                <li><a href="contact.php">Liên hệ</a></li>
             </ul>
 
             <h3>Thông tin liên hệ</h3>

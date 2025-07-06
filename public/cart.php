@@ -70,7 +70,7 @@ if (!$user_id) {
                                     <input type="hidden" name="name_sp" value="<?php echo $row['name_sp']; ?>">
                                     <button name="action" value="decrease">-</button>
                                     <button name="action" value="increase">+</button>
-                                    <button name="action" value="delete">X</button>
+                                    <button name="action" value="delete">Xóa</button>
                                 </form>
                             </div>
                             <div class="total">

@@ -1,6 +1,5 @@
 body {
     background: linear-gradient(120deg, #d6f5f8 0%, #b6e0e4 100%);
-    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -141,7 +140,6 @@ body {
 .checkout-btn:hover {
     background: #229292;
 }
-
 /* Popup đặt hàng thành công */
 .success-modal {
     position: fixed; z-index: 3000; left: 0; top: 0; width: 100vw; height: 100vh;

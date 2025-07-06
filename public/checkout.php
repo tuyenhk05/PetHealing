@@ -76,17 +76,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $success = true;
 }
 include('../includes/header.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <title>Xác nhận thanh toán</title>
+    <!-- Google Fonts: Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/checkout.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/style.css">
-    
+    <style>
+        :root {
+            --main-font: 'Noto Sans', Arial, sans-serif;
+        }
+        body, input, textarea, button, select, h1, h2, h3, h4, h5, h6 {
+            font-family: var(--main-font) !important;
+            letter-spacing: 0;
+        }
+    </style>
 </head>
 <body>
 <div class="checkout-wrapper">
@@ -151,4 +160,4 @@ include('../includes/header.php');
 </div>
 </body>
 </html>
- <?php include('../includes/footer.php'); ?>
+<?php include('../includes/footer.php'); ?>

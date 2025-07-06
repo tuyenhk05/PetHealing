@@ -28,7 +28,7 @@ if (isset($_POST['add'])) {
         $valid_extensions = ['jpg', 'jpeg', 'png', 'gif'];
 
         if (in_array($image_extension, $valid_extensions)) {
-            $image_new_name = uniqid('', true) . '.' . $image_extension;
+            $image_new_name = basename($image_name);
             $image_upload_path = "../assets/image/" . $image_new_name;
 
             if (move_uploaded_file($image_tmp_name, $image_upload_path)) {

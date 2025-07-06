@@ -17,7 +17,7 @@ if (isset($_POST['cancel_id'])) {
     $cancel_id = $_POST['cancel_id'];
 
     // Kiểm tra xem lịch hẹn có phải của khách hàng này không và trạng thái có phải là "Chờ xác nhận" không
-    $sql_check = "SELECT * FROM lichhen WHERE id = $cancel_id AND email_khach_hang = '$customer_email' AND trang_thai = 'Chờ xác nhận'";
+    $sql_check = "SELECT * FROM lichhen WHERE id = $cancel_id AND trang_thai = 'Chờ xác nhận'";
     $result_check = mysqli_query($conn, $sql_check);
     
     // Nếu lịch hẹn tồn tại và trạng thái là "Chờ xác nhận"

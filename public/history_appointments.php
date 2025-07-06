@@ -7,7 +7,7 @@ if (!isset($_COOKIE['user_name'])) {
 }
 
 // Lấy thông tin khách hàng từ cookie
-$customer_email = $_COOKIE['user_email'];  
+
 $customer_id = $_COOKIE['user_id'];  
 
 // Kết nối cơ sở dữ liệu
@@ -36,7 +36,7 @@ if (isset($_POST['cancel_id'])) {
 }
 
 // Truy vấn lịch sử đặt lịch hẹn của khách hàng
-$sql = "SELECT * FROM lichhen WHERE email_khach_hang = '$customer_email' "; // Lọc theo tên khách hàng
+$sql = "SELECT * FROM lichhen WHERE id_khach = '$customer_id' "; // Lọc theo tên khách hàng
 $result = mysqli_query($conn, $sql);
 include "../includes/header.php";
 

@@ -21,12 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($res && $res->num_rows === 1) {
         if ($new_pass === $confirm_pass) {
             $conn->query("UPDATE nguoidung SET mat_khau = '$new_pass' WHERE id = $user_id");
-            $msg = "<p style='color:green;'>\u2705 Đổi mật khẩu thành công!</p>";
+            $msg = "<p style='color:green;'> Đổi mật khẩu thành công!</p>";
         } else {
-            $msg = "<p style='color:red;'>\u274c Mật khẩu mới và xác nhận không khớp.</p>";
+            $msg = "<p style='color:red;'> Mật khẩu mới và xác nhận không khớp.</p>";
         }
     } else {
-        $msg = "<p style='color:red;'>\u274c Mật khẩu cũ không đúng.</p>";
+        $msg = "<p style='color:red;'> Mật khẩu cũ không đúng.</p>";
     }
 }
 include('../includes/header.php');

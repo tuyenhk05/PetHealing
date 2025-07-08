@@ -82,6 +82,9 @@ $revenue_month = $res_month->fetch_assoc()['revenue_month'] ?? 0;
         <div class="menu-item"><a href="manage_news.php"><i class="fas fa-newspaper"></i> Quản lý tin tức</a></div>
         <div class="menu-item"><a href="manage_doctors.php"><i class="fas fa-user-md"></i> Quản lý bác sĩ</a></div>
         <div class="menu-item"><a href="manage_contact.php"><i class="fas fa-envelope"></i> Quản lý liên hệ</a></div>
+        <div class="menu-item"><a href="manage_users.php"><i class="fa-solid fa-user"></i> Quản lý người dùng</a></div>  
+        <div class="menu-item"><a href="change_password.php"><i class="fa-solid fa-lock"></i> Đổi mật khẩu</a></div>  
+
         <!-- <div class="menu-item"><a href="baocao_gui.php"><i class="fas fa-file-export"></i> Xuất báo cáo</a></div> -->
     </div>
 </div>

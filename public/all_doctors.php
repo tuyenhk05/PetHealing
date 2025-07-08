@@ -35,7 +35,10 @@ $result = mysqli_query($conn, $querybs);
             ?>
             <div class="doctor-card">
                 <div class="doctor-img">
-                    <img src="../assets/image/<?php echo $row['ho_ten']; ?>.jpg" alt="<?php echo $row['ho_ten']; ?>>">
+                    <!--<img src="../assets/image/<?php echo $row['ho_ten']; ?>.jpg" alt="<?php echo $row['ho_ten']; ?>>">-->
+
+                     <?php $imagePath = $row['image'] ? "../assets/image/{$row['image']}" : "../assets/image/{$row['ho_ten']}.jpg"; ?>
+                <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($row['ho_ten']) ?>">
                 </div>
                 <div class="doctor-info">
                     <div class="doctor-name">TS. <?php echo htmlspecialchars($row['ho_ten']); ?></div>

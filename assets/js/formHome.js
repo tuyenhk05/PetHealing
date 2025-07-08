@@ -47,6 +47,9 @@
                 showMessage("Đã có lỗi xảy ra. Vui lòng thử lại sau.", false);
                 console.error("Error:", error);
             });
+        setTimeout(() => {
+            this.reset(); // Xoá toàn bộ dữ liệu đã nhập
+        }, 300); // chờ xử lý xong mới reset
     });
 });
 

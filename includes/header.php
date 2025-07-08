@@ -204,7 +204,7 @@ $isAdmin = ($vai_tro == 'Admin');
     } ?>
     <?php if (!empty($name)) { ?>
         <a href="history_appointments.php">Lịch sử đặt lịch hẹn</a>
-                                <a href="order_history.php" ><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử mua hàng</a>
+                                <a href="order_history.php" >Lịch sử mua hàng</a>
 
         <a href="#" id="logoutLinkMobile">Đăng xuất</a>
     <?php } else { ?>

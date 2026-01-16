@@ -7,6 +7,14 @@
     box-sizing: border-box;
     
 }
+:root {
+    --pet-green: #2EB292;
+    --pet-dark: #248f76;
+    --pet-white: #ffffff;
+    --transition-mượt: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-hq: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    --pet-orange: #f39c12;
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -180,10 +188,13 @@ a {
         transform: rotate(5deg);
     }
     /* Featured Services Section */
-    .featured-services {
-        padding: 50px 0;
-        background-color: white;
-    }
+.featured-services {
+    padding: 50px 0;
+    background-color: white;
+    height: 60%;
+    text-align: center;
+
+}
 
     .featured-services h2 {
         text-align: center;
@@ -195,7 +206,7 @@ a {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 50px;
     padding: 0 50px;
 }
 
@@ -407,285 +418,487 @@ a {
     }
 }
 /*appointment*/
+
+
+/* 2. SECTION APPOINTMENT - Đã đổi màu hồng thành màu thương hiệu rứa mô */
 .appointment {
-    background-color: #EB4798;
-    color: #fff;
-    padding: 50px 0;
+    background-color: var(--pet-green);
+    padding: 80px 0;
+    overflow: hidden; /* Chặn scroll ngang khi animation đang chạy */
 }
+
     .appointment .content_app {
-        padding: 50px 0;
         text-align: center;
+        margin-bottom: 50px;
     }
-    .appointment_main {
-        display: flex;
-    }
-.appointment_image img{
-    aspect-ratio:3/4;
-    object-fit:cover;
-    max-height:500px;
+
+        .appointment .content_app h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+.appointment_main {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
 }
+
+/* 3. FORM CONTAINER - Thuật ngữ: Box Model */
 .form-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #fff;
-    color: #000;
-    padding: 20px;
-    border-radius: 10px;
+    background-color: var(--pet-white);
+    padding: 40px;
+    border-radius: 20px;
     width: 100%;
-    max-width: 600px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
+    flex: 1;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    width: 100%;
 }
-    .form-group:nth-child(1) {
-        display:inline-block;
-        width: 49%;
-    }
-    .form-group:nth-child(2) {
-        width: 49%;
-        display: inline-block;
-    }
-    .form-group:nth-child(4) {
-        display: inline-block;
-        width: 49%;
+
+    .form-group.half {
+        width: calc(50% - 7.5px); /* Chia đôi cho chuẩn rứa mô */
     }
 
-    .form-group:nth-child(6) {
-        width: 49%;
-        display: inline-block;
-    }
-    .form-group:nth-child(7) {
-        display: inline-block;
-        width: 49%;
-    }
-
-    .form-group:nth-child(5) {
-        width: 49%;
-        display: inline-block;
-    }
     .form-group label {
         display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
+        margin-bottom: 8px;
+        font-weight: 700;
+        color: #333;
+        font-size: 0.9rem;
     }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .form-group input, .form-group select, .form-group textarea {
         width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
+        padding: 12px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        font-family: inherit;
+        transition: 0.3s;
     }
 
-    .form-group textarea {
-        resize: vertical;
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--pet-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46, 178, 146, 0.1);
+        }
+
+.appointment_image {
+    flex: 0 0 400px;
+}
+
+    .appointment_image img {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+        height: 550px;
     }
 
-    .form-group input[type="date"],
-    .form-group input[type="time"] {
-        padding: 8px;
+/* 4. BUTTON & MESSAGES */
+.button_home {
+    background-color: var(--pet-green);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+    .button_home:hover {
+        background-color: var(--pet-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
 
-    .form-group select {
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        background: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
-        background-size: 20px;
+/* 5. TUYỆT KỸ REVEAL - Thuật ngữ: Transition & Transform */
+.reveal-up, .reveal-left, .reveal-right {
+    opacity: 0;
+    transition: var(--transition-mượt);
+}
+
+.reveal-up {
+    transform: translateY(50px);
+}
+
+.reveal-left {
+    transform: translateX(-80px);
+}
+
+.reveal-right {
+    transform: translateX(80px);
+}
+
+/* Khi lọt vào tầm mắt (Active class) rứa mô */
+.active.reveal-up, .active.reveal-left, .active.reveal-right {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* 6. RESPONSIVE - Thuật ngữ: Adaptive Design */
+@media (max-width: 992px) {
+    .appointment_main {
+        flex-direction: column;
     }
 
+    .appointment_image {
+        display: none;
+    }
+
+    .form-group.half {
+        width: 100%;
+    }
+}
 /* Team Section */
 .team {
-    padding: 80px 0;
-    background-color: #fff;
-    text-align: center;
+    padding: 100px 0;
+    background-color: #ffffff;
+    overflow: hidden; /* Chống tràn khi bay lượn rứa mô */
 }
 
-    .team .container {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
-    .team .team_content {
-        width: 100%;
-        display: inline;
-        text-align: center;
-        font-size: clamp(15px,2vw,30px);
-        font-weight: 600;
-        margin-bottom: 40px;
-    }
-    .team > p {
-        display: inline;
-        width: 100%;
-        text-align: center;
-        font-size: 18px;
-        color: #666;
-    }
-    .team-member {
-        background-color: white;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 250px;
-        margin: 20px;
-        text-align: center;
-        transition: transform 0.3s ease;
+.team_content {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 80px;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    color: #777;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* GRID TRẬN ĐỒ - Thuật ngữ: CSS Grid (Hệ thống lưới) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 50px;
+    align-items: center; /* Căn giữa dọc để thấy rõ sự "xấp xỉ" rứa mô */
+    padding-top: 50px;
+}
+
+/* 3. THẺ Y SĨ - Nâng cấp toàn diện rứa */
+.team-member {
+    background: #fff;
+    border-radius: 35px;
+    padding: 45px 35px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.04);
+    border: 1px solid #f1f1f1;
+    transition: var(--transition-hq);
+    opacity: 0;
+    transform: translateY(80px); /* Bắt đầu từ dưới rứa */
+}
+
+    /* Tuyệt kỹ Xấp xỉ (Stepped Layout): Bay cao hơn rứa mô! */
+    .team-member.featured-member {
+        background: linear-gradient(145deg, #ffffff, var(--pet-light-bg));
+        border: 1px solid rgba(46, 178, 146, 0.2);
+        z-index: 5;
     }
 
-    .team-member:hover {
-        transform: translateY(-10px);
+    /* Khi đã lọt vào tầm mắt (Active state) */
+    .team-member.active {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .team-member img {
+    /* Thẻ ở giữa khi Active sẽ nhô cao hơn hẳn rứa mô */
+    .team-member.featured-member.active {
+        transform: translateY(-50px);
+        box-shadow: 0 30px 70px rgba(46, 178, 146, 0.18);
+    }
+
+/* 4. CHÂN DUNG Y SĨ - Circular Design (Thiết kế hình tròn) */
+.member-image {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 7px solid #fff;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+    .member-image img {
         width: 100%;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 20px;
+        transition: transform 0.6s ease;
     }
 
-    .team-member h4 {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: #333;
-    }
-
-    .team-member p {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 15px;
-    }
-
-    .team-member .btn-primary {
-        background-color: #F56C93;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 25px;
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-        .team-member .btn-primary:hover {
-            opacity: 0.8;
-        }
-
-.view-all {
-    margin-top: 40px;
-    text-align: center;
+.team-member:hover .member-image img {
+    transform: scale(1.15);
 }
 
-    .view-all a {
-        color: #34C9A5;
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 18px;
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(46, 178, 146, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.team-member:hover .image-overlay {
+    opacity: 1;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.3rem;
+    margin: 0 12px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+    .social-icons a:hover {
+        transform: scale(1.4);
     }
 
-        .view-all a:hover {
-            color: #F56C93;
-        }
+/* 5. THÔNG TIN CHI TIẾT */
+.member-info h4 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.specialty {
+    color: var(--pet-green);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.rating {
+    color: #ffc107;
+    font-size: 0.85rem;
+}
+
+/* 6. NÚT XEM TẤT CẢ */
+.view-all {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.btn-all-doctors {
+    display: inline-block;
+    padding: 16px 45px;
+    background: var(--pet-green);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 12px 30px rgba(46, 178, 146, 0.3);
+    transition: var(--transition-hq);
+}
+
+    .btn-all-doctors:hover {
+        background: var(--pet-dark);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 18px 40px rgba(46, 178, 146, 0.45);
+    }
+
+/* 7. THÍCH ỨNG - Thuật ngữ: Responsive Design */
+@media (max-width: 1024px) {
+    .team-member.featured-member.active {
+        transform: translateY(0);
+    }
+
+    .team-grid {
+        gap: 30px;
+    }
+}
 
 /* Product Store Section */
 .product-store {
-    padding: 80px 0;
-    background-color: #f8f8f8;
-    text-align: center;
+    padding: 100px 0;
+    background-color: #f8fbf9; /* Màu nền nhẹ nhàng rứa mô */
+    overflow: hidden;
 }
 
-    .product-store h2 {
-        font-size: 30px;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
+.store-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 80px;
+}
 
-    .product-store p {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 40px;
-    }
-
+/* GRID HỆ THỐNG - Thuật ngữ: Responsive Grid (Lưới thích ứng) */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
-    padding: 0 50px;
+    align-items: center; /* Quan trọng để thấy sự "xấp xỉ" rứa mô */
+    padding-top: 40px;
 }
 
+/* 3. PRODUCT CARD - Nâng cấp visual rứa */
 .product-card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background: #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    transition: var(--transition-hq);
+    opacity: 0;
+    transform: translateY(60px);
+    border: 1px solid #eee;
 }
 
-    .product-card img {
+    /* Tuyệt kỹ Xấp xỉ: Các thẻ ở giữa hàng nhô cao hơn rứa mô! */
+    .product-card.featured-product {
+        border-color: rgba(46, 178, 146, 0.2);
+    }
+
+    .product-card.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Khi lọt vào tầm mắt, thẻ nhô cao sẽ bay xa hơn rứa */
+    .product-card.featured-product.active {
+        transform: translateY(-35px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    }
+
+.product-image-box {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: #fdfdfd;
+}
+
+    .product-image-box img {
         width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 20px;
+        height: 100%;
+        object-fit: contain; /* Giữ nguyên hình dáng bảo vật rứa */
+        padding: 20px;
+        transition: transform 0.5s ease;
     }
 
-    .product-card h4 {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: #333;
-    }
+.product-card:hover .product-image-box img {
+    transform: scale(1.1);
+}
 
-    .product-card p {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 20px;
-    }
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--pet-orange);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
 
-    .product-card .btn-primary,
-    .product-card .btn-secondary {
-        padding: 10px 20px;
-        font-size: 14px;
-        border-radius: 25px;
-        margin-right: 10px;
-        text-decoration: none;
-        font-weight: 600;
-    }
-
-    .product-card .btn-primary {
-        background-color: #F56C93;
-        color: white;
-    }
-
-    .product-card .btn-secondary {
-        background-color: #34C9A5;
-        color: white;
-    }
-
-        .product-card .btn-primary:hover,
-        .product-card .btn-secondary:hover {
-            opacity: 0.8;
-        }
-
-.view-all {
-    margin-top: 40px;
+/* 4. PRODUCT INFO */
+.product-info {
+    padding: 25px;
     text-align: center;
 }
 
-    .view-all a {
-        color: #34C9A5;
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 18px;
+    .product-info h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-        .view-all a:hover {
-            color: #F56C93;
-        }
+.price-tag {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--pet-green);
+    margin-bottom: 20px;
+}
 
+    .price-tag .currency {
+        font-size: 0.9rem;
+        margin-right: 2px;
+    }
+
+.btn-detail {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #f2f2f2;
+    color: #555;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.product-card:hover .btn-detail {
+    background: var(--pet-green);
+    color: #fff;
+}
+
+/* 5. NÚT XEM TẤT CẢ */
+.view-all {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.btn-all-products {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent;
+    color: var(--pet-green);
+    text-decoration: none;
+    border: 2px solid var(--pet-green);
+    border-radius: 50px;
+    font-weight: 700;
+    transition: var(--transition-hq);
+}
+
+    .btn-all-products:hover {
+        background: var(--pet-green);
+        color: #fff;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(46, 178, 146, 0.3);
+    }
+
+/* 6. RESPONSIVE - Thuật ngữ: Breakpoints (Điểm ngắt) rứa mô */
+@media (max-width: 992px) {
+    .product-card.featured-product.active {
+        transform: translateY(0);
+    }
+
+    .products-grid {
+        gap: 20px;
+    }
+}
 /*end css Trang chủ*/
 
 .button_home {
@@ -846,3 +1059,139 @@ a {
         padding:0 30px;
     }
 }
+:root {
+    --pet-green: #2EB292;
+}
+
+.about-us {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    overflow: hidden; /* Che khuất phần dư thừa (Overflow Hidden) */
+}
+
+.container.overflow-hidden {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Tuyệt kỹ Slider Track - Dòng chảy của nội dung */
+.slider-track {
+    display: flex;
+    gap: 30px;
+    width: calc(300px * 6 + 30px * 6); /* Tính toán độ dài dựa trên số thẻ rứa */
+    animation: scrollInfinite 20s linear infinite; /* Chạy vô tận (Infinite Animation) */
+}
+
+
+.info-card {
+    flex: 0 0 300px; /* Độ rộng cố định của mỗi thẻ (Fixed Width) */
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.icon-box {
+    font-size: 40px;
+    color: #F56C93;
+    margin-bottom: 20px;
+}
+
+.info-card h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.info-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Định nghĩa hoạt ảnh (Keyframes) */
+@keyframes scrollInfinite {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Trượt sang trái đúng bằng độ dài của 4 thẻ ban đầu rứa mô */
+        transform: translateX(calc(-300px * 4 - 30px * 4));
+    }
+}
+.featured-services {
+    padding: 80px 0;
+    background-color: #fff;
+    height: auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: center; /* Đảm bảo căn giữa theo chiều dọc rứa */
+    padding-top: 40px;
+}
+.service-card1 {
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0; /* Mặc định ẩn để làm hiệu ứng hiện ra rứa mô */
+    transform: translateY(50px);
+}
+
+    /* Layout xấp xỉ: Thẻ giữa cao hơn rứa */
+    .service-card1.center-card {
+        transform: translateY(30px); /* Bắt đầu thấp hơn một chút để khi hiện ra nó bay lên cao hơn */
+        background: linear-gradient(145deg, #ffffff, #f9fefc);
+        border: 1px solid rgba(46, 178, 146, 0.2);
+        z-index: 10;
+    }
+
+    /* Khi đã được kích hoạt (Active class) */
+    .service-card1.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .service-card1.center-card.active {
+        transform: translateY(-30px); /* Thẻ giữa bay cao hơn hẳn hai bên rứa mô */
+        box-shadow: 0 20px 50px rgba(46, 178, 146, 0.15);
+    }
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: #f2fefc;
+    color: var(--pet-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+}
+
+.btn-primary-pet {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: var(--pet-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+    .btn-primary-pet:hover {
+        background-color: var(--pet-dark);
+        transform: scale(1.05);
+    }

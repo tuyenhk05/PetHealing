@@ -80,7 +80,7 @@ if (isset($_POST['capnhat'])) {
         exit();
     }
 }
-include "../includes/header.php";
+include "../includes/admin_header.php";
 
 ?>
 
@@ -94,7 +94,7 @@ include "../includes/header.php";
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
+    <div id="content">
         <?php if ($isAdmin) { ?>
     <div class="container">
         <h2>Sửa sản phẩm</h2>
@@ -136,7 +136,6 @@ include "../includes/header.php";
     <?php } else {
             echo $content;
         } ?>
-    
+    </div>
 </body>
 </html>
-<?php include "../includes/footer.php"?>

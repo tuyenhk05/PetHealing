@@ -67,7 +67,7 @@
 .price {
     font-size: 24px;
     font-weight: bold;
-    color: #ff6b6b;
+    color: #F56C93;
     margin-bottom: 20px;
 }
 
@@ -138,7 +138,7 @@
 
 .btn-filled {
     padding: 12px 25px;
-    background-color: #ff6b6b;
+    background-color: #F56C93;
     color: white;
     border: none;
     border-radius: 4px;
@@ -241,11 +241,11 @@
             color: #555;
             position: relative;
         }
-        
-        .tab-btn.active {
-            color: #ff6b6b;
-            font-weight: bold;
-        }
+
+            .tab-btn.active {
+                color: #F56C93;
+                font-weight: bold;
+            }
         
         .tab-btn.active::after {
             content: '';

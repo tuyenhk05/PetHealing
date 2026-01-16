@@ -29,7 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setcookie("user_name", $user['ho_ten'], time() + 3600, "/");
         setcookie("vai_tro", $user['vai_tro'], time() + 3600, "/");
         // Chuyển hướng sang trang chủ
-        header("Location: index.php");
+        if($user['vai_tro']== 'Admin'){
+            header("Location: ../admin/index.php");
+        }
+        else{
+                    header("Location: index.php");
+
+        }
         exit();
     } else {
         $error_message = "Email hoặc mật khẩu sai.";

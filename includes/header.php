@@ -1,4 +1,8 @@
 <?php
+// Thuật ngữ: PHP_SELF - Một biến chứa tên file của script đang thực thi rứa mô.
+// basename() - Hàm dùng để lấy ra cái tên file cuối cùng từ một đường dẫn rứa.
+$current_page = basename($_SERVER['PHP_SELF']);
+
 $name = isset($_COOKIE["user_name"]) ? $_COOKIE["user_name"] : "";
 $vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
 $isAdmin = ($vai_tro == 'Admin');
@@ -16,8 +20,6 @@ $isAdmin = ($vai_tro == 'Admin');
         position: relative;
         z-index: 999;
     }
-
-    
 
     .logo a {
         font-size: 20px;
@@ -46,6 +48,31 @@ $isAdmin = ($vai_tro == 'Admin');
         text-decoration: none;
         color: #333;
         font-weight: 500;
+        padding: 5px 0;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    /* Chiêu thức Active State - Làm sáng đường link khi đang ở trang đó rứa mô */
+    nav ul li a.active {
+        color: #2EB292;
+        font-weight: 700;
+    }
+
+    /* Hiệu ứng gạch chân cho thêm phần uy nghi */
+    nav ul li a.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #2EB292;
+        border-radius: 2px;
+    }
+
+    nav ul li a:hover {
+        color: #2EB292;
     }
 
     /* Dropdown user */
@@ -130,6 +157,13 @@ $isAdmin = ($vai_tro == 'Admin');
         font-weight: 500;
     }
 
+    .sidebar a.active {
+        color: #2EB292;
+        font-weight: bold;
+        border-left: 4px solid #2EB292;
+        padding-left: 10px;
+    }
+
     .sidebar a:hover {
         color: #2EB292;
     }
@@ -142,7 +176,7 @@ $isAdmin = ($vai_tro == 'Admin');
     }
 
     @media (max-width: 1180px) {
-        .nav{
+        .nav {
             display: none;
         }
 
@@ -153,22 +187,21 @@ $isAdmin = ($vai_tro == 'Admin');
 </style>
 
 <header class="header">
-    <div class="container">
+    <div class="container d-flex justify-content-between align-items-center">
         <div class="logo">
             <a href="index.php"><img src="../assets/image/logo.jpg" alt="Logo"> PetHealing</a>
         </div>
         <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
         <nav class="nav">
             <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="services.php">Dịch vụ</a></li>
-                <li><a href="all_products.php">Cửa hàng</a></li>
-                <li><a href="all_doctors.php">Bác sĩ</a></li>
-                <li><a href="contact.php">Liên hệ</a></li>
-                <li><a href="news.php">Tin tức</a></li>
-                <?php if ($isAdmin) { ?>
-                    <li><a href="dashboard.php">Quản lý</a></li>
-                <?php } ?>
+                <!-- Huynh thấy đệ lồng ghép PHP vào class chưa rứa? Rất ảo diệu mô! -->
+                <li><a href="index.php" class="<?= $current_page == 'index.php' ? 'active' : '' ?>">Trang chủ</a></li>
+                <li><a href="services.php" class="<?= $current_page == 'services.php' ? 'active' : '' ?>">Dịch vụ</a></li>
+                <li><a href="all_products.php" class="<?= ($current_page == 'all_products.php' || $current_page == 'product_detail.php') ? 'active' : '' ?>">Cửa hàng</a></li>
+                <li><a href="all_doctors.php" class="<?= $current_page == 'all_doctors.php' ? 'active' : '' ?>">Bác sĩ</a></li>
+                <li><a href="contact.php" class="<?= $current_page == 'contact.php' ? 'active' : '' ?>">Liên hệ</a></li>
+                <li><a href="news.php" class="<?= $current_page == 'news.php' ? 'active' : '' ?>">Tin tức</a></li>
+                
                 <?php if (!empty($name)) { ?>
                     <li class="user-dropdown">
                         <div class="user-name" id="userToggle">
@@ -176,14 +209,16 @@ $isAdmin = ($vai_tro == 'Admin');
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="user-menu" id="userMenu">
-                            <a href="history_appointments.php"><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử đặt lịch hẹn</a>
-                            <a href="order_history.php"><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử mua hàng</a>
-
+                            <a href="history_appointments.php" class="<?= $current_page == 'history_appointments.php' ? 'active' : '' ?>"><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử đặt lịch hẹn</a>
+                            <a href="order_history.php" class="<?= $current_page == 'order_history.php' ? 'active' : '' ?>"><i class="fa-solid fa-clock-rotate-left"></i> &nbsp;Lịch sử mua hàng</a>
+                            <?php if ($isAdmin) { ?>
+                                <a href="../admin/index.php"><i class="fa-solid fa-user-gear"></i> &nbsp;Quản lý Admin</a>
+                            <?php } ?>
                             <a href="#" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i> &nbsp;Đăng xuất</a>
                         </div>
                     </li>
                 <?php } else { ?>
-                    <li><a href="login.php"><i class="fa-regular fa-user"></i> Đăng nhập</a></li>
+                    <li><a href="login.php" class="<?= $current_page == 'login.php' ? 'active' : '' ?>"><i class="fa-regular fa-user"></i> Đăng nhập</a></li>
                 <?php } ?>
             </ul>
         </nav>
@@ -193,22 +228,19 @@ $isAdmin = ($vai_tro == 'Admin');
 <!-- Sidebar cho mobile -->
 <div class="sidebar" id="sidebar">
     <div class="close-btn" onclick="toggleSidebar()">✖</div>
-    <a href="index.php">Trang chủ</a>
-    <a href="services.php">Dịch vụ</a>
-    <a href="all_products.php">Cửa hàng</a>
-    <a href="all_doctors.php">Bác sĩ</a>
-    <a href="contact.php">Liên hệ</a>
-    <a href="news.php">Tin tức</a>
-    <?php if ($isAdmin) {
-        echo '<a href="dashboard.php">Quản lý</a>';
-    } ?>
+    <a href="index.php" class="<?= $current_page == 'index.php' ? 'active' : '' ?>">Trang chủ</a>
+    <a href="services.php" class="<?= $current_page == 'services.php' ? 'active' : '' ?>">Dịch vụ</a>
+    <a href="all_products.php" class="<?= $current_page == 'all_products.php' ? 'active' : '' ?>">Cửa hàng</a>
+    <a href="all_doctors.php" class="<?= $current_page == 'all_doctors.php' ? 'active' : '' ?>">Bác sĩ</a>
+    <a href="contact.php" class="<?= $current_page == 'contact.php' ? 'active' : '' ?>">Liên hệ</a>
+    <a href="news.php" class="<?= $current_page == 'news.php' ? 'active' : '' ?>">Tin tức</a>
+    
     <?php if (!empty($name)) { ?>
-        <a href="history_appointments.php">Lịch sử đặt lịch hẹn</a>
-                                <a href="order_history.php" >Lịch sử mua hàng</a>
-
+        <a href="history_appointments.php" class="<?= $current_page == 'history_appointments.php' ? 'active' : '' ?>">Lịch sử đặt lịch hẹn</a>
+        <a href="order_history.php" class="<?= $current_page == 'order_history.php' ? 'active' : '' ?>">Lịch sử mua hàng</a>
         <a href="#" id="logoutLinkMobile">Đăng xuất</a>
     <?php } else { ?>
-        <a href="login.php">Đăng nhập</a>
+        <a href="login.php" class="<?= $current_page == 'login.php' ? 'active' : '' ?>">Đăng nhập</a>
     <?php } ?>
 </div>
 
@@ -224,7 +256,7 @@ $isAdmin = ($vai_tro == 'Admin');
     });
 
     document.addEventListener('click', function () {
-        menu.style.display = 'none';
+        if (menu) menu.style.display = 'none';
     });
 
     menu?.addEventListener('click', function (e) {
@@ -240,12 +272,13 @@ $isAdmin = ($vai_tro == 'Admin');
     }
 
     logout?.addEventListener('click', function (e) {
+        e.preventDefault();
         clearCookiesAndRedirect();
     });
 
     logoutMobile?.addEventListener('click', function (e) {
+        e.preventDefault();
         clearCookiesAndRedirect();
-        
     });
 
     function toggleSidebar() {

@@ -170,7 +170,7 @@
     font-size: 25px;
     
 }
-.active {
+.activee {
     background-color: #34C9A5 !important;
     color: white;
 }
@@ -376,12 +376,16 @@
     color: #1f2937;
     
 }
+    .actions .details:hover {
+        transform: scale(1.1);
+        border-color: #34C9A5;
+        transition: all 0.3s ease;
+    }
 
-.actions .btn-filled:hover {
-    color: aquamarine;
-    background-color: #fff;
-    
-}
+    .actions .btn-filled:hover {
+        color: aquamarine;
+        background-color: #fff;
+    }
 .actions .btn-filled {
     width: 80px;
     padding: 8px 12px;
@@ -427,12 +431,12 @@
     .pagination button {
         border: 1px solid #34C9A5;
         background: white;
-        color: #34C9A5;
         padding: 6px 12px;
         margin: 0 4px;
         border-radius: 6px;
         cursor: pointer;
         transition: all 0.3s ease;
+        color: #34C9A5;
         font-weight: 600;
     }
 

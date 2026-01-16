@@ -52,7 +52,7 @@ $result = mysqli_query($conn, $sql);
                     <div class="category-filter">
                         <h2><span class="icon"></span>Danh mục</h2>
                         <ul class="category-list">
-                            <li data-category="all" class="active">Tất cả</li>
+                            <li data-category="all" class="activee">Tất cả</li>
                             <li data-category="thuc-an">Thức ăn</li>
                             <li data-category="phu-kien">Phụ kiện</li>
                         </ul>
@@ -122,8 +122,8 @@ $result = mysqli_query($conn, $sql);
 
         categoryItems.forEach((item) => {
             item.addEventListener("click", function () {
-                categoryItems.forEach((i) => i.classList.remove("active"));
-                this.classList.add("active");
+                categoryItems.forEach((i) => i.classList.remove("activee"));
+                this.classList.add("activee");
 
                 const category = this.getAttribute("data-category");
                 const cards = document.querySelectorAll(".card");

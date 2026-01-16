@@ -172,7 +172,6 @@ main {
 }
 
     .pagination a {
-        border: 1px solid #fff;
         background: white;
         color: #34C9A5;
         padding: 6px 12px;
@@ -184,7 +183,8 @@ main {
     }
 
         .pagination a:hover {
-            background: #22866E;
+            background: #34C7A4;
+            color:white;
         }
 
 /* Hiệu ứng fade-in */

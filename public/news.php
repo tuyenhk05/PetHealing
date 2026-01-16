@@ -69,13 +69,13 @@ include('../includes/header.php');
         </div>
         <div class="pagination">
             <?php if ($page > 1): ?>
-                <a href="?page=<?php echo $page - 1; ?>">Trước</a>
+                <a href="?page=<?php echo $page - 1; ?>"><</a>
             <?php endif; ?>
             <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <a href="?page=<?php echo $i; ?>" <?php echo $i == $page ? 'style="background: #1d4ed8;"' : ''; ?>><?php echo $i; ?></a>
+                <a href="?page=<?php echo $i; ?>" <?php echo $i == $page ? 'style="background: #34C7A4;color: white !important;"' : ''; ?>><?php echo $i; ?></a>
             <?php endfor; ?>
             <?php if ($page < $total_pages): ?>
-                <a href="?page=<?php echo $page + 1; ?>">Sau</a>
+                <a href="?page=<?php echo $page + 1; ?>">></a>
             <?php endif; ?>
         </div>
     </main>

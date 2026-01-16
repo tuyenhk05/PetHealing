@@ -1,5 +1,5 @@
 <?php
-include "../includes/header.php";
+include "../includes/admin_header.php";
 $vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
 if ($vai_tro == 'Admin') {
     $isAdmin = true;
@@ -51,12 +51,10 @@ if ($vai_tro == 'Admin') {
     </style>
 </head>
 <body>
-        <div  style=" max-width: 1200px; margin-left: auto; margin-right: auto;">
+        <div   id="content">
 
       <?php if ($isAdmin) { ?>
-    <button onclick="window.history.back()" class="back-button">
-        <i class="fas fa-arrow-left"></i> Quay lại
-    </button>
+ 
     <div style="text-align:center">
     <h1>QUẢN LÝ SẢN PHẨM</h1>
     <a class="button" href="manage_phukien.php">Quản lý Phụ kiện</a>
@@ -68,5 +66,4 @@ if ($vai_tro == 'Admin') {
     </div>
 </body>
 </html>
-<?php include "../includes/footer.php";
-?>
+

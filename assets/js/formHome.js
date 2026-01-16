@@ -18,7 +18,7 @@
                     "error",
                     "fade-out"
                 );
-            }, 2000); // Delay 2 seconds to hide the message
+            }, 5000); // Delay 2 seconds to hide the message
         }, 2000);
     }
 
@@ -74,3 +74,95 @@ dateInput.min = minDate;
 // Set khung giờ hẹn từ 08:00 đến 18:00
 timeInput.min = "08:00";
 timeInput.max = "18:00";
+document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.reveal-card');
+
+    const observerOptions = {
+        threshold: 0.2 // Kích hoạt khi thấy được 20% thẻ rứa
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const card = entry.target;
+
+                // Tuyệt kỹ: Staggered Delay (Trễ so le)
+                if (card.classList.contains('center-card')) {
+                    // Thẻ giữa hiện ra ngay lập tức rứa
+                    setTimeout(() => card.classList.add('active'), 300);
+                } else {
+                    // Hai thẻ bên cạnh hiện ra trễ hơn 400ms rứa mô
+                    setTimeout(() => card.classList.add('active'), 800);
+                }
+                observer.unobserve(card); // Chỉ chạy một lần cho uy nghiêm rứa
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach(card => observer.observe(card));
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Tuyệt kỹ Staggered Delay (Trễ so le) rứa mô
+                // Đệ sẽ cho cái Header hiện trước, rồi tới Form và Ảnh
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, 400);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => observer.observe(el));
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const revealElements = document.querySelectorAll('.reveal-up');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => observer.observe(el));
+});
+ document.addEventListener('DOMContentLoaded', function() {
+        const revealElements = document.querySelectorAll('.reveal-up');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Khi phần tử lọt vào tầm mắt, ta ban cho nó class 'active' rứa mô
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Xong rồi thì thôi, không soi nữa rứa
+                }
+            });
+        }, { 
+            threshold: 0.1, // Thấy 10% thẻ là kích hoạt "võ công" rứa mô
+            rootMargin: '0px 0px -50px 0px' 
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+ });
+document.addEventListener('DOMContentLoaded', function () {
+    const revealElements = document.querySelectorAll('.reveal-up');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => observer.observe(el));
+});

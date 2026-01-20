@@ -18,7 +18,7 @@ include('../includes/header.php');
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Lịch sử mua hàng</title>
+    <title>PetHealing - Lịch sử mua hàng</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/order_history.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />

@@ -434,8 +434,7 @@ a {
 
         .appointment .content_app h2 {
             font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
+            font-weight: 700;
         }
 
 .appointment_main {
@@ -577,7 +576,7 @@ a {
 
 .section-title {
     font-size: 2.8rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #222;
     margin-bottom: 15px;
 }

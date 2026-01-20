@@ -101,6 +101,7 @@ $types_res = $conn->query("SELECT DISTINCT loai FROM dichvu WHERE loai != ''");
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Quản lý dịch vụ</title>
 
 <style>
     :root {

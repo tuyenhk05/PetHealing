@@ -112,6 +112,7 @@ $origins_res = $conn->query("SELECT DISTINCT xuat_su FROM thucan WHERE xuat_su !
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Quản lý thức ăn</title>
 
 <style>
     /* CSS CHUẨN HÓA PETHEALING */

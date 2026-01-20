@@ -12,6 +12,9 @@ $resultBs = mysqli_query($conn, $querybs);
 $querypk = "SELECT id, ten, mo_ta, gia, 'phu-kien' AS loai FROM PhuKien LIMIT 4"; // Fetch the first 4 products, adjust as needed
 $resultPK = mysqli_query($conn, $querypk);
 
+$querydv = "SELECT ten_dich_vu FROM dichvu"; // Fetch the first 4 products, adjust as needed
+$resultDV = mysqli_query($conn, $querydv);
+
 ?>
 
 <!DOCTYPE html>
@@ -181,13 +184,9 @@ $resultPK = mysqli_query($conn, $querypk);
                         <label for="service">Chọn loại dịch vụ</label>
                         <select id="service" name="service" required>
                             <option value="" disabled selected>Chọn dịch vụ </option>
-                            <?php
-                            // Chỗ này Huynh dùng logic Database như cũ nhé
-                            $mock_dv = ['Khám tổng quát', 'Tiêm chủng', 'Làm đẹp/Spa'];
-                            foreach ($mock_dv as $dv) {
-                                echo "<option>$dv</option>";
-                            }
-                            ?>
+                            <?php while ($row = mysqli_fetch_assoc($resultDV)) { ?>
+                                        <option><?= htmlspecialchars($row['ten_dich_vu']) ?></option>
+                                    <?php } ?>
                         </select>
                     </div>
 

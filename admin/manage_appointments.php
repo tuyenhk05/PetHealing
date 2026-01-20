@@ -67,6 +67,7 @@ $res2 = $conn->query($sql2);
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Quản lý lịch hẹn</title>
 
 <style>
     :root {

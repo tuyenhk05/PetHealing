@@ -30,7 +30,7 @@ $result = mysqli_query($conn, $querybs);
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Dịch vụ - PetHealing</title>
+  <title>PetHealing - Dịch vụ  </title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/services.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Liên kết với jQuery -->

@@ -20,7 +20,7 @@ include('../includes/header.php');
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Tin tức thú cưng mới nhất</title>
+    <title>PetHealing - Tin tức</title>
     <meta name="description" content="Cập nhật tin tức mới nhất về chăm sóc thú cưng, sức khỏe và các mẹo hữu ích tại PetHealing.">
     <link rel="stylesheet" href="../assets/css/news.css">
     <link rel="stylesheet" href="../assets/css/style.css">

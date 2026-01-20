@@ -88,7 +88,7 @@ include "../includes/admin_header.php";
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sửa sản phẩm thức ăn</title>
+    <title>PetHealing - Sửa sản phẩm thức ăn</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../assets/css/edit_product.css">
     <link rel="stylesheet" href="../assets/css/style.css">

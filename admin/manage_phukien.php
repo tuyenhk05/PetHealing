@@ -110,6 +110,7 @@ $origins_res = $conn->query("SELECT DISTINCT xuat_su FROM phukien WHERE xuat_su 
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Quản lý phụ kiện</title>
 
 <style>
     :root {

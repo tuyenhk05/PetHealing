@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Thay đổi mật khẩu</title>
 
 <style>
     /* CSS CHUẨN HÓA HỆ THỐNG QUẢN TRỊ PETHEALING */

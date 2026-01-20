@@ -51,7 +51,7 @@ include "../includes/header.php";
     <link rel="stylesheet" href="../assets/css/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <title>Lịch sử đặt lịch hẹn</title>
+    <title>PetHealing - Lịch sử đặt lịch hẹn</title>
     <style>
         /* GIỮ NGUYÊN CSS CỦA HUYNH RỨA MÔ */
         h1 {

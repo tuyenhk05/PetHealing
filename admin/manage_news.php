@@ -93,6 +93,7 @@ if (isset($_GET['edit_id'])) {
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Quản lý tin tức</title>
 
 <style>
     /* CSS CHUẨN HÓA HỆ THỐNG QUẢN TRỊ PETHEALING */

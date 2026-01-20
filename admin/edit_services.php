@@ -184,6 +184,7 @@ include "../includes/admin_header.php";
         color: var(--pet-green);
     }
 </style>
+    <title>PetHealing - Chỉnh sửa dịch vụ</title>
 
 <div id="content">
     <div class="container">

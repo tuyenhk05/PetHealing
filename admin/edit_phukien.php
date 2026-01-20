@@ -83,6 +83,7 @@ if (isset($_POST['capnhat'])) {
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Chỉnh sửa phụ kiện</title>
 
 <style>
     :root {

@@ -7,7 +7,7 @@ $name = isset($_COOKIE["user_name"]) ? $_COOKIE["user_name"] : "";
 $vai_tro = isset($_COOKIE["vai_tro"]) ? $_COOKIE["vai_tro"] : "";
 $isAdmin = ($vai_tro == 'Admin');
 ?>
-
+<link rel="shortcut icon" type="image/x-icon" href="../assets/image/logo.jpg">
 <style>
     * {
         box-sizing: border-box;

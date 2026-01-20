@@ -100,6 +100,7 @@ $doctors = $conn->query("SELECT * FROM BacSi ORDER BY id DESC LIMIT $limit OFFSE
 
 include "../includes/admin_header.php";
 ?>
+    <title>PetHealing - Quản lý thông tin bác sĩ</title>
 
 <style>
     /* CSS CHUẨN HÓA HỆ THỐNG QUẢN TRỊ */

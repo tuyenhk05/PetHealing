@@ -52,6 +52,8 @@ $result = $conn->query($sql);
 include "../includes/admin_header.php";
 ?>
 
+    <title>PetHealing - Quản lý người dùng</title>
+
 <style>
     /* CSS CHUẨN HÓA HỆ THỐNG QUẢN TRỊ PETHEALING */
     :root {

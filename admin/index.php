@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include "../includes/db_connect.php";
 include "../includes/admin_header.php"; // Đã bao gồm sidebar và check quyền Admin
 
@@ -44,6 +44,7 @@ $recent_apps = $conn->query("
     ORDER BY lh.id DESC LIMIT 5
 ");
 ?>
+    <title>PetHealing - Dashboard</title>
 
 <div class="container-fluid" id="content">
     <div class="row mb-4">

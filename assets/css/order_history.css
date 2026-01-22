@@ -1,6 +1,8 @@
 ﻿/* Hệ thống: PetHealing Stylesheet
-    Mục tiêu: Giao diện Lịch sử mua hàng rứa mô
-    Kỹ thuật: Custom External CSS 
+    Mục tiêu: Giao diện Lịch sử mua hàng kèm Trạng thái (Order Status)
+    Thuật ngữ: 
+    - Status Mapping: Ánh xạ trạng thái rứa mô.
+    - Conditional Styling: Thiết lập kiểu dáng có điều kiện mô.
 */
 
 :root {
@@ -8,7 +10,10 @@
     --pet-teal: #20b2aa;
     --pet-dark-teal: #1a6160;
     --pet-pink: #F56C93;
-    --bg-gradient: linear-gradient(120deg, #e0fcfc 0%, #b8e2e6 100%);
+    --status-pending: #f39c12; /* Chờ xác nhận - Màu cam rứa */
+    --status-shipped: #3498db; /* Đã gửi - Màu xanh biển mô */
+    --status-delivered: #2ecc71; /* Đã giao - Màu lục bảo rứa */
+    --bg-gradient: linear-gradient(135deg, #e0fcfc 0%, #b8e2e6 100%);
     --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -20,22 +25,21 @@ body {
 
 .history-container {
     max-width: 1000px;
-    margin: 50px auto;
+    margin: 60px auto;
     background: rgba(255, 255, 255, 0.95);
-    border-radius: 25px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-    padding: 45px;
+    border-radius: 30px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.1);
+    padding: 40px;
     backdrop-filter: blur(10px);
 }
 
 h1 {
     text-align: center;
     color: var(--pet-dark-teal);
-    font-weight: 900;
-    font-size: 2.8rem;
-    margin-bottom: 45px;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
     text-transform: uppercase;
-    letter-spacing: -1px;
 }
 
 /* THẺ ĐƠN HÀNG */
@@ -43,133 +47,91 @@ h1 {
     background: #ffffff;
     border-radius: 20px;
     border: 1px solid #eef2f2;
-    margin-bottom: 35px;
-    padding: 0;
+    margin-bottom: 30px;
     overflow: hidden;
     transition: var(--transition-smooth);
     box-shadow: 0 5px 15px rgba(0,0,0,0.02);
 }
 
     .order-block:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(32, 178, 170, 0.12);
-        border-color: var(--pet-teal);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(32, 178, 170, 0.1);
     }
 
 .order-header {
     background: #f8fdfd;
-    padding: 20px 30px;
+    padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #edf5f4;
 }
 
-.order-code {
-    color: var(--pet-dark-teal);
+/* PHÙ HIỆU TRẠNG THÁI - Thuật ngữ: Status Badge rứa mô */
+.status-badge {
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
     font-weight: 700;
-    font-size: 1.1rem;
+    text-transform: uppercase;
 }
 
-.order-time {
-    font-size: 0.9rem;
-    color: #888;
+.status-0 {
+    background: rgba(243, 156, 18, 0.1);
+    color: var(--status-pending);
+    border: 1px solid var(--status-pending);
 }
 
-.order-total {
-    color: var(--pet-teal);
-    font-size: 1.3rem;
-    font-weight: 800;
+.status-1 {
+    background: rgba(52, 152, 219, 0.1);
+    color: var(--status-shipped);
+    border: 1px solid var(--status-shipped);
+}
+
+.status-2 {
+    background: rgba(46, 204, 113, 0.1);
+    color: var(--status-delivered);
+    border: 1px solid var(--status-delivered);
 }
 
 .order-body {
-    padding: 30px;
+    padding: 25px;
 }
 
-/* THÔNG TIN NGƯỜI NHẬN */
 .order-info {
     background: #fdfdfd;
     border-left: 5px solid var(--pet-teal);
     border-radius: 8px;
-    padding: 20px;
-    font-size: 1rem;
+    padding: 15px 20px;
+    font-size: 0.95rem;
     color: #555;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 8px;
 }
 
-    .order-info b {
-        color: var(--pet-dark-teal);
-        font-weight: 600;
-    }
-
-/* DANH SÁCH LINH VẬT */
-.order-products {
-    padding: 0 10px;
+.order-products li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
 }
 
-    .order-products ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .order-products li {
-        padding: 12px 0;
-        border-bottom: 1px dashed #eee;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1rem;
-    }
-
-        .order-products li:last-child {
-            border-bottom: none;
-        }
-
-.prod-name {
-    font-weight: 600;
-    color: #333;
-}
-
-.prod-qty {
-    color: #888;
-    font-size: 0.9rem;
-}
-
-.prod-price {
-    font-weight: 700;
-    color: var(--pet-dark-teal);
-}
-
-/* NÚT THAO TÁC */
 .btn-delete-order {
-    background: #fff;
     color: var(--pet-pink);
-    border: 2px solid #ffebee;
-    padding: 8px 25px;
-    border-radius: 50px;
+    text-decoration: none;
     font-weight: 700;
     font-size: 0.85rem;
     transition: 0.3s;
-    text-decoration: none;
 }
 
     .btn-delete-order:hover {
-        background: var(--pet-pink);
-        color: #fff;
-        border-color: var(--pet-pink);
-        box-shadow: 0 5px 15px rgba(245, 108, 147, 0.3);
+        color: #d63031;
     }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
-    .history-container {
-        padding: 25px 15px;
-        margin: 20px auto;
-    }
-
     .order-header {
         flex-direction: column;
         align-items: flex-start;
@@ -178,9 +140,5 @@ h1 {
 
     .order-info {
         grid-template-columns: 1fr;
-    }
-
-    h1 {
-        font-size: 2rem;
     }
 }

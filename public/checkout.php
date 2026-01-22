@@ -47,11 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payment_method = $_POST['payment_method'];
     $order_time = date('Y-m-d H:i:s');
     $order_code = 'DH' . date('YmdHis') . rand(10,99);
-
+    $status = 0;
     // Insert vào bảng lichsumuahang
-    $stmt = $conn->prepare("INSERT INTO lichsumuahang (user_id, receiver_name, receiver_phone, receiver_address, payment_method, order_time, order_code, total)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("issssssi", $user_id, $receiver_name, $receiver_phone, $receiver_address, $payment_method, $order_time, $order_code, $total);
+    $stmt = $conn->prepare("INSERT INTO lichsumuahang (user_id, receiver_name, receiver_phone, receiver_address, payment_method, order_time, order_code, total,status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)");
+    $stmt->bind_param("issssssii", $user_id, $receiver_name, $receiver_phone, $receiver_address, $payment_method, $order_time, $order_code, $total,$status);
     $stmt->execute();
     $order_id = $stmt->insert_id;
 

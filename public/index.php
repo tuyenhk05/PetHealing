@@ -1,19 +1,17 @@
 <?php
-include('../includes/db_connect.php');  // Kết nối cơ sở dữ liệu
-include('../includes/header.php'); // Bao gồm header
+include('../includes/db_connect.php');
+include('../includes/header.php');
 
-// Truy vấn dữ liệu cần hiển thị (ví dụ: các dịch vụ)
-$querydv = "SELECT * FROM dichvu LIMIT 3";
-$result = mysqli_query($conn, $querydv);
+// Truy vấn dữ liệu cho các phân đoạn rứa mô
+$querydv_limit = "SELECT * FROM dichvu LIMIT 3";
+$resultDV_feat = mysqli_query($conn, $querydv_limit);
 
 $querybs = "SELECT * FROM BacSi LIMIT 3";
 $resultBs = mysqli_query($conn, $querybs);
 
-$querypk = "SELECT id, ten, mo_ta, gia, 'phu-kien' AS loai FROM PhuKien LIMIT 4"; // Fetch the first 4 products, adjust as needed
+$querypk = "SELECT id, ten, mo_ta, gia, 'phu-kien' AS loai, image FROM PhuKien LIMIT 4";
 $resultPK = mysqli_query($conn, $querypk);
-
-$querydv = "SELECT ten_dich_vu FROM dichvu"; // Fetch the first 4 products, adjust as needed
-$resultDV = mysqli_query($conn, $querydv);
+$isloggedin = isset($_COOKIE['user_id']);
 
 ?>
 
@@ -26,7 +24,159 @@ $resultDV = mysqli_query($conn, $querydv);
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Liên kết với jQuery -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    :root {
+        --pet-green: #2EB292;
+        --pet-pink: #F56C93;
+        --pet-dark: #1e7a64;
+        --transition-hq1: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .journey-section {
+        padding: 100px 0;
+        background: #2EB292;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Con đường tơ lụa (The main line) rứa */
+    .timeline-main {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+        .timeline-main::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: rgba(255,255,255,0.3);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+    .timeline-item {
+        position: relative;
+        background: inherit;
+        width: 50%;
+        padding: 20px 40px;
+        box-sizing: border-box;
+    }
+
+        /* Các điểm nút (The nodes) rứa */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--pet-pink);
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: 0.3s;
+        }
+
+    .left {
+        left: 0;
+        text-align: right;
+    }
+
+    .right {
+        left: 50%;
+        text-align: left;
+    }
+
+        .right::after {
+            left: -13px;
+        }
+
+    .timeline-content {
+        padding: 30px;
+        background: white;
+        color: #333;
+        border-radius: 20px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: var(--transition-hq1);
+    }
+
+        .timeline-content h3 {
+            color: var(--pet-green);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .year {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--pet-pink);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .timeline-item:hover .timeline-content {
+        transform: scale(1.05);
+    }
+
+    .timeline-item:hover::after {
+        transform: scale(1.3);
+        background-color: var(--pet-pink);
+    }
+    .reveal-up, .reveal-left, .reveal-right {
+        opacity: 0;
+        transition: var(--transition-hq1);
+    }
+
+    .reveal-up {
+        transform: translateY(50px);
+    }
+
+    .reveal-left {
+        transform: translateX(-80px);
+    }
+
+    .reveal-right {
+        transform: translateX(80px);
+    }
+
+    .active.reveal-up, .active.reveal-left, .active.reveal-right {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    @media (max-width: 768px) {
+        .timeline-main::after {
+            left: 31px;
+        }
+
+        .timeline-item {
+            width: 100%;
+            padding-left: 70px;
+            padding-right: 25px;
+            text-align: left;
+        }
+
+            .timeline-item::after {
+                left: 19px;
+            }
+
+        .left::after, .right::after {
+            left: 19px;
+        }
+
+        .team-member.featured-member, .product-card.featured-product, .service-card1.center-card {
+            transform: translateY(0);
+        }
+    }
+
+</style>
 </head>
+
 <body>
 
            <div id="message-container" class="message-container"></div>
@@ -39,8 +189,14 @@ $resultDV = mysqli_query($conn, $querydv);
                 <h1>Chăm sóc sức khỏe thú cưng của bạn</h1>
                 <p>Đội ngũ bác sĩ chuyên nghiệp và tận tâm, cùng với trang thiết bị hiện đại, chúng tôi mang đến dịch vụ chăm sóc thú cưng tốt nhất.</p>
                 <div class="hero-buttons">
+                    <?php if ($isloggedin): ?>
                     <a href="appointment.php" class="btn-primary">Đặt lịch ngay</a>
-                    <a href="services.php" class="btn-secondary">Khám phá dịch vụ</a>
+                    <a href="services.php" class="btn-secondary">Khám phá dịch vụ</a>     
+                    <?php else: ?>
+                    <a href="login.php" class="btn-primary">Đăng nhập để khám phá thêm</a>
+
+                    <?php endif; ?>
+
                 </div>
             </div>
             <div class="hero-image">
@@ -97,8 +253,7 @@ $resultDV = mysqli_query($conn, $querydv);
         <h2 class="section-title text-center mb-5">Dịch vụ nổi bật</h2>
         <div class="services-grid">
             <?php
-            // Giả lập dữ liệu từ Database nếu Huynh chưa có biến $result rứa mô
-            // Trong thực tế, Huynh dùng vòng lặp while ($row = mysqli_fetch_assoc($result)) như cũ nhé
+
             $mock_services = [
                 ['ten_dich_vu' => 'Tiêm chủng', 'mo_ta' => 'Phòng ngừa bệnh tật cho linh thú bằng linh dược tiên tiến nhất rứa.'],
                 ['ten_dich_vu' => 'Phẫu thuật chuyên sâu', 'mo_ta' => 'Đội ngũ y sĩ tay nghề cao, trang thiết bị hiện đại bậc nhất mô.'],
@@ -124,90 +279,47 @@ $resultDV = mysqli_query($conn, $querydv);
     </div>
 </section>
 
-    <section class="appointment">
-    <div class="container">
-        <!-- Header Section: Hiện lên từ dưới rứa mô -->
-
-        <div class="content_app reveal-up">
-            <h2 class="section-title text-white">Đặt lịch hẹn ngay</h2>
-            <p class="text-white opacity-90">Đặt lịch hẹn trực tiếp để được phục vụ tốt nhất. Chúng tôi sẽ liên hệ xác nhận trong vòng 24 giờ .</p>
-        </div>
-
-        <div class="appointment_main">
-            <!-- Form: Bay từ bên trái sang (Reveal Left) -->
-            <div class="form-container reveal-left shadow-lg">
-                <form id="appointment-form">
-                    <div class="form-row">
-                        <div class="form-group half">
-                            <label for="full-name">Họ tên</label>
-                            <input type="text" id="full-name" name="full-name" placeholder="Nguyễn Văn A" required>
-                        </div>
-                        <div class="form-group half">
-                            <label for="phone">Số điện thoại</label>
-                            <input type="tel" id="phone" name="phone" placeholder="0123456789" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email công vụ</label>
-                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group half">
-                            <label for="pet-name">Tên thú cưng</label>
-                            <input type="text" id="pet-name" name="pet-name" placeholder="Mèo/Chó..." required>
-                        </div>
-                        <div class="form-group half">
-                            <label for="pet-type">Chủng loại</label>
-                            <select id="pet-type" name="pet-type" required>
-                                <option value="" disabled selected>Chọn loài</option>
-                                <option value="dog">Chó</option>
-                                <option value="cat">Mèo</option>
-                                <option value="other">Loài khác</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group half">
-                            <label for="appointment-date">Ngày đến khám</label>
-                            <input type="date" id="appointment-date" name="appointment-date" required>
-                        </div>
-                        <div class="form-group half">
-                            <label for="appointment-time">Giờ</label>
-                            <input type="time" id="appointment-time" name="appointment-time" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="service">Chọn loại dịch vụ</label>
-                        <select id="service" name="service" required>
-                            <option value="" disabled selected>Chọn dịch vụ </option>
-                            <?php while ($row = mysqli_fetch_assoc($resultDV)) { ?>
-                                        <option><?= htmlspecialchars($row['ten_dich_vu']) ?></option>
-                                    <?php } ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="notes">Ghi chú </label>
-                        <textarea id="notes" name="notes" placeholder="Mô tả triệu chứng hoặc yêu cầu đặc biệt ..."></textarea>
-                    </div>
-
-                    <button type="submit" class="button_home w-100 mt-3">
-                        <i class="fa-solid fa-paper-plane me-2"></i>  Đặt Lịch
-                    </button>
-                </form>
+    <section class="journey-section">
+        <div class="container">
+            <div class="text-center mb-5 reveal-up">
+                <h2 class="display-5 fw-bold">Lịch sử hoạt động PetHealing</h2>
+                <p class="opacity-75">Cùng nhìn lại phát triển rực rỡ của chúng tôi </p>
             </div>
 
-            <!-- Image: Bay từ bên phải sang (Reveal Right) -->
-            <div class="appointment_image reveal-right">
-                <img src="../assets/image/form-post.jpeg" alt="Đặt lịch hẹn" class="shadow-lg" />
-            </div>
-        </div>
+            <div class="timeline-main">
+               <div class="timeline-item left reveal-left">
+    <div class="timeline-content">
+        <span class="year">2020</span>
+        <h3>Thành Lập Phòng Khám Đầu Tiên</h3>
+        <p>Chính thức ra mắt phòng khám thú cưng đầu tiên tại khu vực ngoại thành với đội ngũ y bác sĩ giàu kinh nghiệm và tận tâm với nghề.</p>
     </div>
-</section>
+</div>
+
+<div class="timeline-item right reveal-right">
+    <div class="timeline-content">
+        <span class="year">2021</span>
+        <h3>Nâng Cấp Hệ Thống Chẩn Đoán</h3>
+        <p>Đầu tư đồng bộ hệ thống chẩn đoán hình ảnh tiên tiến, hỗ trợ tối đa trong việc tầm soát và đưa ra phác đồ điều trị chính xác cho thú cưng.</p>
+    </div>
+</div>
+
+<div class="timeline-item left reveal-left">
+    <div class="timeline-content">
+        <span class="year">2022</span>
+        <h3>Mở Rộng Quy Mô & Dịch Vụ Cấp Cứu</h3>
+        <p>Khai trương chi nhánh thứ 5 và thành lập Trung tâm cấp cứu thú cưng chuyên biệt, hoạt động 24/7 để đáp ứng mọi nhu cầu khẩn cấp.</p>
+    </div>
+</div>
+
+<div class="timeline-item right reveal-right">
+    <div class="timeline-content">
+        <span class="year">2024</span>
+        <h3>Khẳng Định Vị Thế Thương Hiệu</h3>
+        <p>Trở thành hệ thống chăm sóc thú cưng hàng đầu với sự tin tưởng của hơn 10.000 khách hàng, khẳng định chất lượng và uy tín trên thị trường.</p>
+    </div>
+</div>
+        </div>
+    </section>
 
 
 <section class="team">
@@ -343,7 +455,28 @@ $resultDV = mysqli_query($conn, $querydv);
     </div>
 </section>
         </div>
-       
+       <script>
+    /**
+     * Tuyệt kỹ: Intersection Observer (Bộ quan sát giao thoa rứa mô)
+     * Giúp các phần tử "xuất chiêu" (hiện ra) khi quan khách roll chuột tới rứa.
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px' /* Kích hoạt sớm một chút cho mượt rứa */
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+    });
+</script>
     <?php
     include('../includes/footer.php'); // Bao gồm navbar
           ?>

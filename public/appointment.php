@@ -1,7 +1,13 @@
 <?php
+$isLogin = isset($_COOKIE['user_id']); 
+if (!$isLogin) {
+    header("Location: login.php");
+    exit();
+}
 include('../includes/header.php'); // Bao gồm header
 
-    ?>
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

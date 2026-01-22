@@ -49,8 +49,8 @@ $recent_apps = $conn->query("
 <div class="container-fluid" id="content">
     <div class="row mb-4">
         <div class="col-12">
-            <h2 class="fw-bold text-dark"><i class="fa-solid fa-chart-pie text-success me-2"></i> Tổng Quan Chiến Lược</h2>
-            <p class="text-secondary">Chào mừng Huynh trở lại! Ngân khố hôm nay có vẻ rất "rủng rỉnh" rứa mô!</p>
+            <h2 class="fw-bold text-dark"><i class="fa-solid fa-chart-pie text-success me-2"></i> Tổng Quan </h2>
+            <p class="text-secondary">Chào mừng bạn trở lại với trang Quản trị</p>
         </div>
     </div>
 

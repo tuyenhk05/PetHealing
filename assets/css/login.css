@@ -167,10 +167,10 @@
     .divider::before {
         content: '';
         position: absolute;
-        top: 50%;
+        top: 120%;
         left: 0;
         right: 0;
-        height: 1px;
+        height: 2px;
         background: #e1e5e9;
     }
 

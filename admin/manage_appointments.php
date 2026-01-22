@@ -6,7 +6,7 @@ include('../includes/db_connect.php');
 if (isset($_GET['delete_id'])) {
     $id_to_delete = intval($_GET['delete_id']);
     $conn->query("DELETE FROM lichhen WHERE id = $id_to_delete");
-    header("Location: manage_appointments.php?status=success&message=Đã xóa lịch hẹn thành công rứa mô!");
+    header("Location: manage_appointments.php?status=success&message=Đã xóa lịch hẹn thành công !");
     exit();
 }
 
@@ -222,13 +222,13 @@ include "../includes/admin_header.php";
                                     </td>
                                     <td class="text-center">
                                         <!-- Thuật ngữ: Dynamic Parameter (Tham số động) - Truyền ID thật của dòng vào hàm JS -->
-                                        <a href="javascript:void(0)" onclick="showConfirmModal('Huynh có chắc muốn xóa lịch hẹn của khách <?= addslashes($row['ten_khach_hang']) ?> không rứa?', '?delete_id=<?= $row['id'] ?>', 'danger')" 
+                                        <a href="javascript:void(0)" onclick="showConfirmModal('Bạn có chắc muốn xóa lịch hẹn của khách <?= addslashes($row['ten_khach_hang']) ?> không ?', '?delete_id=<?= $row['id'] ?>', 'danger')" 
                                            class="btn btn-sm btn-outline-danger border-0"><i class="fa-solid fa-trash-can"></i></a>
                                     </td>
                                 </tr>
                                 <?php endwhile; ?>
                             <?php else: ?>
-                                <tr><td colspan="6" class="text-center py-4 text-secondary small">Không có dữ liệu rứa mô.</td></tr>
+                                <tr><td colspan="6" class="text-center py-4 text-secondary small">Không có dữ liệu.</td></tr>
                             <?php endif; ?>
                         </tbody>
                     </table>
@@ -269,14 +269,14 @@ include "../includes/admin_header.php";
                                     </td>
                                     <td class="text-center">
                                         <a href="javascript:void(0)" class="text-danger small" 
-                                           onclick="showConfirmModal('Xóa vĩnh viễn lịch hẹn này khỏi sử sách rứa mô?', '?delete_id=<?= $row['id'] ?>', 'danger')">
+                                           onclick="showConfirmModal('Xóa vĩnh viễn lịch hẹn này khỏi danh sách ?', '?delete_id=<?= $row['id'] ?>', 'danger')">
                                             <i class="fa-solid fa-xmark"></i>
                                         </a>
                                     </td>
                                 </tr>
                                 <?php endwhile; ?>
                             <?php else: ?>
-                                <tr><td colspan="6" class="text-center py-4 text-muted small">Chưa có lịch sử phù hợp rứa mô.</td></tr>
+                                <tr><td colspan="6" class="text-center py-4 text-muted small">Chưa có lịch sử phù hợp .</td></tr>
                             <?php endif; ?>
                         </tbody>
                     </table>

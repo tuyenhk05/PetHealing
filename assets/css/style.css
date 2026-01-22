@@ -191,7 +191,7 @@ a {
 .featured-services {
     padding: 50px 0;
     background-color: white;
-    height: 60%;
+    height: 100vh;
     text-align: center;
 
 }
@@ -1125,7 +1125,6 @@ a {
 .featured-services {
     padding: 80px 0;
     background-color: #fff;
-    height: auto;
 }
 
 .services-grid {

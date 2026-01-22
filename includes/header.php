@@ -15,12 +15,21 @@ $isAdmin = ($vai_tro == 'Admin');
 
     .header {
         background-color: #fff;
-        border-bottom: 1px solid #ddd;
-        padding: 10px 20px;
-        position: relative;
-        z-index: 999;
+        border-bottom: 1px solid #edf2f2;
+        padding: 12px 0;
+        /* Thuật ngữ: Fixed Positioning - Cố định vị trí trên cùng rứa mô */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        /* Thuật ngữ: Transition - Giúp Header ẩn/hiện mượt mà rứa */
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
     }
-
+    .header-hidden {
+        transform: translateY(-100%);
+    }
     .logo a {
         font-size: 20px;
         font-weight: bold;
@@ -186,7 +195,7 @@ $isAdmin = ($vai_tro == 'Admin');
     }
 </style>
 
-<header class="header">
+<header class="header" id="mainHeader">
     <div class="container d-flex justify-content-between align-items-center">
         <div class="logo">
             <a href="index.php"><img src="../assets/image/logo.jpg" alt="Logo"> PetHealing</a>
@@ -285,4 +294,21 @@ $isAdmin = ($vai_tro == 'Admin');
         const sidebar = document.getElementById("sidebar");
         sidebar.classList.toggle("active");
     }
+    let lastScrollY = window.scrollY;
+    const header = document.getElementById('mainHeader');
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Khi quan khách lướt xuống -> Ẩn thân rứa mô!
+            header.classList.add('header-hidden');
+        } else {
+            // Khi quan khách lướt lên -> Hiện hình rứa!
+            header.classList.remove('header-hidden');
+        }
+
+        // Cập nhật lại vị trí cũ để so sánh rứa
+        lastScrollY = currentScrollY;
+    });
 </script>
